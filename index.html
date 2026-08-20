@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Piotr Piotrowski | Architecture, Circularity & Spatial Design</title>
+  <meta name="description" content="Piotr Piotrowski — Architectural practice, circular construction frameworks, computational design and BIM/VDC consulting.">
+  
+  <!-- Google Fonts: Tenor Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="loading-state">
+
+  <!-- Mobile Top Bar (Visible only on mobile/tablet) -->
+  <header class="mobile-header" id="mobileHeader">
+    <a href="#" class="mobile-brand-logo" id="mobileBrandLogo" aria-label="Piotr Piotrowski Portfolio Home">
+      <span class="logo-name">Piotr.owski</span>
+    </a>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenuDrawer">
+      <span class="hamburger-line line-1"></span>
+      <span class="hamburger-line line-2"></span>
+      <span class="hamburger-line line-3"></span>
+    </button>
+  </header>
+
+  <!-- Polestar-Inspired Mobile Fullscreen Menu Drawer -->
+  <div class="mobile-menu-drawer" id="mobileMenuDrawer" aria-hidden="true">
+    <div class="mobile-drawer-content">
+      <nav class="mobile-nav-list" id="mobileNavList" aria-label="Mobile Navigation">
+        <!-- Injected via JavaScript from data.js -->
+      </nav>
+
+      <div class="mobile-drawer-footer">
+        <div class="mobile-footer-controls">
+          <!-- White / Black Theme Switcher Button -->
+          <div class="theme-switcher" aria-label="Toggle Color Theme">
+            <button class="theme-btn" id="mobileThemeBtn" data-theme-toggle="true" aria-label="Switch between white and black themes">
+              <span class="theme-label-white" data-theme-choice="light">white</span>
+              <span class="theme-sep">/</span>
+              <span class="theme-label-black active" data-theme-choice="dark">black</span>
+            </button>
+          </div>
+
+          <!-- Language Switcher -->
+          <div class="lang-switcher" aria-label="Select Language">
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <span class="lang-sep">|</span>
+            <button class="lang-btn" data-lang="de">DE</button>
+            <span class="lang-sep">|</span>
+            <button class="lang-btn" data-lang="pl">PL</button>
+          </div>
+        </div>
+        <p class="mobile-copyright" data-i18n="copyright">Copyright © Piotr Piotrowski 2026</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Application Wrapper -->
+  <div class="app-layout">
+    
+    <!-- Left Sidebar (Desktop Navigation) -->
+    <aside class="sidebar" id="sidebar" aria-label="Desktop Navigation">
+      
+      <!-- Brand Logo Container with entrance slide-up reveal -->
+      <div class="brand-container">
+        <div class="brand-reveal-mask">
+          <a href="#" class="brand-logo" id="desktopBrandLogo" aria-label="Piotr Piotrowski Portfolio Home">
+            <span class="logo-name">Piotr.owski</span>
+          </a>
+        </div>
+        <!-- The animated master line directly below the name -->
+        <div class="brand-master-line" id="brandMasterLine"></div>
+      </div>
+
+      <!-- Main Navigation Menu -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <ul class="nav-list" id="desktopNavList">
+          <!-- Populated and managed by main.js with sequential entrance delays -->
+        </ul>
+      </nav>
+
+      <!-- Sidebar Footer with Theme Switcher, Language Switcher and Copyright -->
+      <footer class="sidebar-footer" id="sidebarFooter">
+        <div class="footer-controls">
+          <!-- White / Black Theme Switcher Button -->
+          <div class="theme-switcher" aria-label="Toggle Color Theme">
+            <button class="theme-btn" id="desktopThemeBtn" data-theme-toggle="true" aria-label="Switch between white and black themes">
+              <span class="theme-label-white" data-theme-choice="light">white</span>
+              <span class="theme-sep">/</span>
+              <span class="theme-label-black active" data-theme-choice="dark">black</span>
+            </button>
+          </div>
+
+          <!-- Language Switcher -->
+          <div class="lang-switcher" aria-label="Select Language">
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <span class="lang-sep">|</span>
+            <button class="lang-btn" data-lang="de">DE</button>
+            <span class="lang-sep">|</span>
+            <button class="lang-btn" data-lang="pl">PL</button>
+          </div>
+        </div>
+        <p class="sidebar-copyright" data-i18n="copyright">Copyright © Piotr Piotrowski 2026</p>
+      </footer>
+
+    </aside>
+
+    <!-- Right Main Stage (Video Player & Content Switcher) -->
+    <main class="viewport-stage" id="viewportStage" role="main">
+      
+      <!-- Ambient Background Video Container -->
+      <div class="video-container" id="videoContainer">
+        <video 
+          id="heroVideo" 
+          class="hero-video" 
+          autoplay 
+          muted 
+          loop 
+          playsinline 
+          preload="auto"
+          poster="assets/images/arch_loft.jpg"
+          aria-label="Piotr Piotrowski architectural installation reel">
+          <source src="assets/videos/PPwebVideo.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+        <div class="video-overlay" id="videoOverlay"></div>
+      </div>
+
+      <!-- Interactive Dynamic Content Container (Fades in when menu items are clicked) -->
+      <section class="content-stage" id="contentStage" aria-live="polite" aria-hidden="true">
+        
+        <!-- Dynamic Content Body (Injected by main.js) -->
+        <div class="stage-body" id="stageBody">
+          <!-- Injected dynamically based on user selection -->
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/world-map-data.js"></script>
+  <script src="js/world-map.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

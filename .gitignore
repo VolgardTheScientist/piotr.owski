@@ -1,0 +1,18 @@
+﻿# Media and graphics assets (code-only repository)
+assets/
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.gif
+*.mp4
+*.mov
+*.webm
+*.avi
+
+# Operating System & Editor Metadata
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
