@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Desktop Nav HTML
     desktopNavList.innerHTML = navKeys.map((key, index) => {
       const categoryData = siteData.categories[key];
-      const hasSubmenu = (categoryData && categoryData.items && categoryData.items.length > 0 && key !== 'digitalisation') || key === 'architecture';
+      const hasSubmenu = (categoryData && categoryData.items && categoryData.items.length > 0 && key !== 'digitalisation' && key !== 'research') || key === 'architecture';
       const isActive = state.activeCategory === key;
       const navLabel = siteData.nav[key] ? siteData.nav[key][state.lang] : key;
 
@@ -626,6 +626,83 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 160);
       digitalisationTypingTimers.push(startTimer);
     }
+  }
+
+
+  // --- 2.5. Research & Publications Alternating View ---
+  function renderResearchView() {
+    stageBody.classList.remove('has-fullscreen-map');
+    const research = siteData.researchPage;
+    if (!research) {
+      console.error("researchPage data not found in siteData");
+      return;
+    }
+
+    const entriesHtml = (research.items || []).map((item, idx) => {
+      const isReversed = idx % 2 === 1;
+      return `
+        <article class="research-entry-card ${isReversed ? 'is-reversed' : ''}">
+          
+          <!-- Media Side -->
+          <div class="research-entry-media">
+            <div class="research-media-frame">
+              <img src="${item.image}" alt="${item.title[state.lang]}" loading="lazy" class="research-media-img">
+              <span class="research-media-badge">${item.date[state.lang]}</span>
+            </div>
+          </div>
+
+          <!-- Content Side -->
+          <div class="research-entry-content">
+            <div class="research-meta-tags">
+              <span class="research-type-tag">${item.typeTag[state.lang]}</span>
+              <span class="research-date-tag">${item.date[state.lang]}</span>
+            </div>
+
+            <h2 class="research-entry-title">${item.title[state.lang]}</h2>
+            <div class="research-entry-venue">${item.venue[state.lang]}</div>
+
+            <p class="research-entry-desc">${item.description[state.lang]}</p>
+
+            <div class="research-entry-actions">
+              <a href="${item.linkUrl}" target="_blank" rel="noopener noreferrer" class="research-link-btn">
+                <span>${item.linkText[state.lang]}</span>
+              </a>
+            </div>
+          </div>
+
+        </article>
+      `;
+    }).join('');
+
+    stageBody.innerHTML = `
+      <div class="research-page-wrapper">
+        
+        <!-- Header Block -->
+        <div class="research-header-block">
+          <div class="research-header-text">
+            <h1 class="research-title">${research.title[state.lang]}</h1>
+            <p class="research-subtitle">${research.subtitle[state.lang]}</p>
+          </div>
+          <div class="research-orcid-action">
+            <a href="${research.orcidUrl}" target="_blank" rel="noopener noreferrer" class="orcid-badge-btn" title="View ORCID Record">
+              <svg class="orcid-icon" viewBox="0 0 256 256" width="16" height="16" fill="currentColor">
+                <path d="M128,0A128,128,0,1,0,256,128,128,128,0,0,0,128,0ZM86.35,186.29H66.6V78.89h19.75Zm-9.87-120a11.45,11.45,0,1,1,11.45-11.45A11.46,11.46,0,0,1,76.48,66.29Zm120.73,73.66c0,29.83-19.16,46.34-47.53,46.34H110.1V78.89h41.44C179.36,78.89,197.21,97.74,197.21,139.95Zm-19.92,0c0-23.2-10.74-33.72-27.91-33.72H130.64v67.45h18.74C166.55,173.67,177.29,163.15,177.29,139.95Z"/>
+              </svg>
+              <span>${research.orcidLabel[state.lang]}</span>
+              <span class="orcid-arrow">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Alternating Entries -->
+        <div class="research-entries-list">
+          ${entriesHtml}
+        </div>
+
+      </div>
+    `;
+
+    activateStage();
   }
 
   // --- 3. Category Overview ---
