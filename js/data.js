@@ -243,6 +243,41 @@ const siteData = {
     orcidUrl: "https://orcid.org/0009-0009-4058-5684",
     items: [
       {
+        id: "whitepaper-digital-epd",
+        date: {
+          en: "Mar 2026",
+          de: "Mär 2026",
+          pl: "Mar 2026"
+        },
+        typeTag: {
+          en: "Industry Whitepaper · buildingSMART Switzerland",
+          de: "Branchen-Whitepaper · buildingSMART Switzerland",
+          pl: "Biała Księga Branżowa · buildingSMART Switzerland"
+        },
+        title: {
+          en: "Environmental Product Declarations (EPD): Foundation for Integrated Building Assessment",
+          de: "Umweltproduktdeklarationen (EPD): Grundlage für eine ganzheitliche Gebäudebeurteilung",
+          pl: "Środowiskowe Deklaracje Produktowe (EPD): Podstawa Zintegrowanej Oceny Budynku"
+        },
+        venue: {
+          en: "Bauen digital Schweiz / buildingSMART Switzerland & University of Liechtenstein",
+          de: "Bauen digital Schweiz / buildingSMART Switzerland & Universität Liechtenstein",
+          pl: "Bauen digital Schweiz / buildingSMART Switzerland & Uniwersytet w Liechtensteinie"
+        },
+        description: {
+          en: "Co-authored industry whitepaper establishing the machine-readable integration of Environmental Product Declarations (EPDs) into BIM workflows and linking them to upcoming EU Digital Product Passports (DPP) for automated lifecycle sustainability assessment.",
+          de: "Mitverfasstes Branchen-Whitepaper über die maschinenlesbare Integration von Umweltproduktdeklarationen (EPD) in BIM-Prozesse und deren Verknüpfung mit dem EU-Produktpass (DPP) zur automatisierten Nachhaltigkeitsbeurteilung über den gesamten Lebenszyklus.",
+          pl: "Współautorstwo branżowej białej księgi definiującej maszynowo czytelną integrację Deklaracji Środowiskowych (EPD) z procedurami BIM oraz powiązanie z Cyfrowym Paszportem Produktu (DPP) dla zautomatyzowanej oceny cyklu życia budynków."
+        },
+        linkText: {
+          en: "Read University Announcement ↗",
+          de: "Universitätsmitteilung lesen ↗",
+          pl: "Przeczytaj komunikat uniwersytecki ↗"
+        },
+        linkUrl: "https://www.uni.li/en/news/2026/03/new-whitepaper-digital-environmental-product-declarations-published",
+        image: "assets/images/research_whitepaper_epd.png"
+      },
+      {
         id: "bim-material-banks",
         date: {
           en: "2026",
