@@ -1,4 +1,4 @@
-﻿# Piotr Piotrowski — Architectural Portfolio & Spatial Design Engine
+# Piotr Piotrowski - Architectural Portfolio & Spatial Design Engine
 
 Modern, monochrome architectural portfolio featuring:
 - **Interactive Vector World Map Explorer**: Custom mathematical Robinson projection engine with smooth cinematic zooming, constant-radius project pins, and dynamic spatial filtering.
@@ -7,14 +7,14 @@ Modern, monochrome architectural portfolio featuring:
 - **Inquiry & Monograph Systems**: Responsive contact form and project monograph layouts.
 
 ## Repository Setup
-To add high-resolution media (images and video reel) into this project, place your media files inside the ssets/ directory:
-- ssets/images/ — Architectural project photographs, spreads, and diagrams
-- ssets/images/letaguy/ — Alpine monograph residence photography
-- ssets/videos/ — Video reel (PPwebVideo.mp4)
+To add high-resolution media (images and video reel) into this project, place your media files inside the `assets/` directory:
+- `assets/images/` - Architectural project photographs, spreads, and diagrams
+- `assets/images/letaguy/` - Alpine monograph residence photography
+- `assets/videos/` - Video reel (`PPwebVideo.mp4`)
 
 ## Development
 Run a local static server:
-`ash
+```bash
 python -m http.server 3000
-`
-Open http://localhost:3000 in any modern web browser.
+```
+Open `http://localhost:3000` in any modern web browser.
