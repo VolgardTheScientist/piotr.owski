@@ -222,6 +222,204 @@ const siteData = {
     }
   },
 
+  
+  // Research & Publications (ORCID 0009-0009-4058-5684 & Academic Activities)
+  researchPage: {
+    title: {
+      en: "Research & Publications",
+      de: "Forschung & Publikationen",
+      pl: "Badania i Publikacje"
+    },
+    subtitle: {
+      en: "Academic inquiries, peer-reviewed journal papers, doctoral research blueprints, and international conference contributions focusing on digital tools for material reuse and circular architecture.",
+      de: "Wissenschaftliche Untersuchungen, Peer-Review-Journalbeiträge, Doktoratskonzepte und internationale Konferenzbeiträge zu digitalen Werkzeugen für Materialwiederverwendung und zirkuläre Architektur.",
+      pl: "Prace naukowe, recenzowane publikacje w czasopismach, ramy badań doktorskich oraz wystąpienia konferencyjne skupione wokół cyfrowych narzędzi dla ponownego użycia materiałów i architektury cyrkularnej."
+    },
+    orcidLabel: {
+      en: "ORCID: 0009-0009-4058-5684",
+      de: "ORCID: 0009-0009-4058-5684",
+      pl: "ORCID: 0009-0009-4058-5684"
+    },
+    orcidUrl: "https://orcid.org/0009-0009-4058-5684",
+    items: [
+      {
+        id: "bim-material-banks",
+        date: {
+          en: "2026",
+          de: "2026",
+          pl: "2026"
+        },
+        typeTag: {
+          en: "Doctoral Research Blueprint",
+          de: "Doktorats-Forschungsrahmen",
+          pl: "Ramy Badań Doktorskich"
+        },
+        title: {
+          en: "BIM-assisted digital material banks: A design-science research blueprint for low-threshold BIM workflows enabling reuse at scale",
+          de: "BIM-assisted digital material banks: A design-science research blueprint for low-threshold BIM workflows enabling reuse at scale",
+          pl: "BIM-assisted digital material banks: A design-science research blueprint for low-threshold BIM workflows enabling reuse at scale"
+        },
+        venue: {
+          en: "Doctoral Research · University of Liechtenstein",
+          de: "Doktoratsforschung · Universität Liechtenstein",
+          pl: "Badania Doktorskie · Uniwersytet w Liechtensteinie"
+        },
+        description: {
+          en: "A design-science research framework developing accessible, low-threshold Building Information Modelling (BIM) workflows to populate digital material banks and unlock circular component reuse across building lifecycles.",
+          de: "Ein Design-Science-Forschungsrahmen für niederschwellige BIM-Workflows zur Befüllung digitaler Materialbanken und zur Skalierung der Bauteilwiederverwendung über den gesamten Gebäudelebenszyklus.",
+          pl: "Ramy badawcze typu Design Science Research tworzące przystępne procedury BIM zasilające cyfrowe banki materiałowe i umożliwiające ponowne wykorzystanie komponentów budowlanych na dużą skalę."
+        },
+        linkText: {
+          en: "View on ORCID ↗",
+          de: "Auf ORCID ansehen ↗",
+          pl: "Zobacz w ORCID ↗"
+        },
+        linkUrl: "https://orcid.org/0009-0009-4058-5684",
+        image: "assets/images/research_circular.jpg"
+      },
+      {
+        id: "phase0-transdisziplinaritaet",
+        date: {
+          en: "Dec 2025",
+          de: "Dez 2025",
+          pl: "Gru 2025"
+        },
+        typeTag: {
+          en: "Peer-Reviewed Journal Article",
+          de: "Peer-Review-Journalbeitrag",
+          pl: "Recenzowany Artykuł Naukowy"
+        },
+        title: {
+          en: "Issue 3 – Transdisziplinarität",
+          de: "Ausgabe 3 – Transdisziplinarität",
+          pl: "Wydanie 3 – Transdyscyplinarność"
+        },
+        venue: {
+          en: "Phase0 – Journal für integriertes Planen, Bauen und Betreiben",
+          de: "Phase0 – Journal für integriertes Planen, Bauen und Betreiben",
+          pl: "Phase0 – Journal für integriertes Planen, Bauen und Betreiben"
+        },
+        description: {
+          en: "Peer-reviewed contribution examining transdisciplinary collaboration methodologies across architecture, engineering, and digital process management in sustainable building design.",
+          de: "Peer-Review-Beitrag über transdisziplinäre Kooperationsmethoden zwischen Architektur, Ingenieurwesen und digitalem Prozessmanagement beim nachhaltigen Bauen.",
+          pl: "Recenzowana publikacja analizująca metodykę współpracy transdyscyplinarnej między architekturą, inżynierią i zarządzaniem procesami cyfrowymi w zrównoważonym projektowaniu."
+        },
+        linkText: {
+          en: "Read Publication (DOI: 10.21428/71cd88bc.5d00b1e2) ↗",
+          de: "Publikation lesen (DOI: 10.21428/71cd88bc.5d00b1e2) ↗",
+          pl: "Przeczytaj publikację (DOI: 10.21428/71cd88bc.5d00b1e2) ↗"
+        },
+        linkUrl: "https://doi.org/10.21428/71cd88bc.5d00b1e2",
+        image: "assets/images/research_phase0.jpg"
+      },
+      {
+        id: "nature-reviews-architectural-beauty",
+        date: {
+          en: "Oct 2024",
+          de: "Okt 2024",
+          pl: "Paź 2024"
+        },
+        typeTag: {
+          en: "Peer-Reviewed Commentary · Nature Reviews",
+          de: "Peer-Review-Perspektive · Nature Reviews",
+          pl: "Recenzowany Artykuł Naukowy · Nature Reviews"
+        },
+        title: {
+          en: "Focusing on architectural beauty to reduce construction waste",
+          de: "Focusing on architectural beauty to reduce construction waste",
+          pl: "Focusing on architectural beauty to reduce construction waste"
+        },
+        venue: {
+          en: "Nature Reviews Earth & Environment · Nature Publishing Group",
+          de: "Nature Reviews Earth & Environment · Nature Publishing Group",
+          pl: "Nature Reviews Earth & Environment · Nature Publishing Group"
+        },
+        description: {
+          en: "Perspective published in Nature Reviews Earth & Environment investigating how architectural quality, timeless aesthetics, and emotional durability act as primary leverage points in mitigating demolition and building waste.",
+          de: "Publikation in Nature Reviews Earth & Environment über die Bedeutung von architektonischer Qualität, Ästhetik und langlebiger Wertschätzung zur drastischen Reduzierung von Bau- und Abbruchabfällen.",
+          pl: "Publikacja w Nature Reviews Earth & Environment badająca, jak jakość architektoniczna, ponadczasowa estetyka i trwałość emocjonalna stanowią kluczowe narzędzia redukcji odpadów budowlanych."
+        },
+        linkText: {
+          en: "Read in Nature (DOI: 10.1038/s43017-024-00609-y) ↗",
+          de: "Bei Nature lesen (DOI: 10.1038/s43017-024-00609-y) ↗",
+          pl: "Przeczytaj w Nature (DOI: 10.1038/s43017-024-00609-y) ↗"
+        },
+        linkUrl: "https://doi.org/10.1038/s43017-024-00609-y",
+        image: "assets/images/research_nature.jpg"
+      },
+      {
+        id: "sri-conference-2024",
+        date: {
+          en: "Jun 2024",
+          de: "Jun 2024",
+          pl: "Cze 2024"
+        },
+        typeTag: {
+          en: "International Congress Presentation",
+          de: "Internationaler Kongressvortrag",
+          pl: "Prezentacja na Kongresie Międzynarodowym"
+        },
+        title: {
+          en: "Sustainability Research & Innovation Congress (SRI2024 / SSD2024)",
+          de: "Sustainability Research & Innovation Congress (SRI2024 / SSD2024)",
+          pl: "Sustainability Research & Innovation Congress (SRI2024 / SSD2024)"
+        },
+        venue: {
+          en: "Helsinki & Espoo, Finland · Sustainability Science Days",
+          de: "Helsinki & Espoo, Finnland · Sustainability Science Days",
+          pl: "Helsinki i Espoo, Finlandia · Sustainability Science Days"
+        },
+        description: {
+          en: "Presented research on digital workflows for circular construction and material reuse at the world's leading transdisciplinary sustainability congress convening over 1,300 global experts to foster action-oriented dialogue between disciplines.",
+          de: "Präsentation von Forschungsergebnissen zu digitalen Workflows für zirkuläres Bauen und Materialwiederverwendung auf dem weltweit führenden Nachhaltigkeitskongress mit über 1'300 Experten in Helsinki & Espoo.",
+          pl: "Wystąpienie naukowe prezentujące cyfrowe procedury dla budownictwa cyrkularnego i ponownego wykorzystania materiałów podczas wiodącego światowego kongresu zrównoważonego rozwoju z udziałem ponad 1300 ekspertów."
+        },
+        linkText: {
+          en: "Congress Information & Program ↗",
+          de: "Kongressinformationen & Programm ↗",
+          pl: "Informacje o Kongresie i Program ↗"
+        },
+        linkUrl: "https://sricongress.org/",
+        image: "assets/images/research_sri.jpg"
+      },
+      {
+        id: "archivolta-lakhta-center",
+        date: {
+          en: "2013",
+          de: "2013",
+          pl: "2013"
+        },
+        typeTag: {
+          en: "Architectural Essay & Technical Monograph",
+          de: "Architekturmonografie & Fachtext",
+          pl: "Monografia Techniczna i Esej Architektoniczny"
+        },
+        title: {
+          en: "The Flame of the North. Lakhta Center, St. Petersburg",
+          de: "The Flame of the North. Lakhta Center, St. Petersburg",
+          pl: "Płomień Północy. Lakhta Center, Sankt Petersburg"
+        },
+        venue: {
+          en: "Archivolta Magazine · ISSN 1506-5928",
+          de: "Archivolta Magazin · ISSN 1506-5928",
+          pl: "Kwartalnik Archivolta · ISSN 1506-5928"
+        },
+        description: {
+          en: "Architectural and structural analysis of the Lakhta Center skyscraper, investigating complex parametric geometry, cold-climate building envelope engineering, and large-scale structural innovation.",
+          de: "Architektonische und strukturelle Analyse des Lakhta Center Hochhauses mit Fokus auf komplexe parametrische Geometrien und Kaltklima-Fassadentechnologien.",
+          pl: "Analiza architektoniczna i konstrukcyjna wieżowca Lakhta Center, badająca złożoną geometrię parametryczną, inżynierię powłok w klimacie chłodnym oraz innowacje wielkoskalowe."
+        },
+        linkText: {
+          en: "View on ORCID (ISSN: 1506-5928) ↗",
+          de: "Auf ORCID ansehen (ISSN: 1506-5928) ↗",
+          pl: "Zobacz w ORCID (ISSN: 1506-5928) ↗"
+        },
+        linkUrl: "https://orcid.org/0009-0009-4058-5684",
+        image: "assets/images/research_lakhta.jpg"
+      }
+    ]
+  },
+
   // Project Status Translations
   statusTypes: {
     realisation: {

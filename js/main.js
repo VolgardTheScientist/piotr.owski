@@ -121,6 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       } else if (state.activeCategory === 'digitalisation') {
         renderDigitalisationView();
+      } else if (state.activeCategory === 'research') {
+        renderResearchView();
       } else if (state.activeItemId) {
         renderProjectDetail(state.activeCategory, state.activeItemId);
       } else if (state.activeCategory === 'about') {
@@ -273,6 +275,8 @@ document.addEventListener('DOMContentLoaded', () => {
       renderArchitectureIntroView();
     } else if (categoryKey === 'digitalisation') {
       renderDigitalisationView();
+    } else if (categoryKey === 'research') {
+      renderResearchView();
     } else if (categoryKey === 'about') {
       renderAboutView();
     } else if (categoryKey === 'enquire') {
