@@ -72,7 +72,31 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. INITIALIZATION & ENTRANCE ANIMATIONS
   // ==========================================================================
   
+  function initHeroVideo() {
+    if (!heroVideo) return;
+    const posterUrl = getAssetUrl('assets/images/arch_loft.jpg');
+    const videoUrl = getAssetUrl('assets/videos/PPwebVideo.mp4');
+
+    heroVideo.poster = posterUrl;
+    heroVideo.src = videoUrl;
+    const sourceEl = heroVideo.querySelector('source');
+    if (sourceEl) {
+      sourceEl.src = videoUrl;
+    }
+
+    heroVideo.muted = true;
+    heroVideo.load();
+    const playPromise = heroVideo.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        heroVideo.muted = true;
+        heroVideo.play().catch(() => {});
+      });
+    }
+  }
+
   function init() {
+    initHeroVideo();
     applyTheme(state.theme);
     renderNavigation();
     updateStaticTranslations();
