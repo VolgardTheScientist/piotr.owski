@@ -404,9 +404,9 @@ document.addEventListener('DOMContentLoaded', () => {
           '        manage_model_data()',
           '        quality_control()',
           '',
-          '    def room_data():',
-          '        generate_data_sheets()',
-          '        create_door_schedules()'
+          '    def artificial_intelligence():',
+          '        check_regulatory_compliance()',
+          '        evaluate_feasibility()'
         ],
         col2: [
           'class ProcessManagement:',
@@ -438,9 +438,9 @@ document.addEventListener('DOMContentLoaded', () => {
           '        modelldaten_verwalten()',
           '        qualitaetskontrolle()',
           '',
-          '    def raumbuch():',
-          '        datenblaetter_generieren()',
-          '        tuerlisten_erstellen()'
+          '    def kuenstliche_intelligenz():',
+          '        bauvorschriften_pruefen()',
+          '        machbarkeit_bewerten()'
         ],
         col2: [
           'class Prozessmanagement:',
@@ -472,9 +472,9 @@ document.addEventListener('DOMContentLoaded', () => {
           '        zarzadzaj_danymi_modelu()',
           '        kontrola_jakosci()',
           '',
-          '    def ksiega_pomieszczen():',
-          '        generuj_karty_pomieszczen()',
-          '        tworz_zestawienia_drzwi()'
+          '    def sztuczna_inteligencja():',
+          '        weryfikuj_zgodnosc_z_przepisami()',
+          '        oceniaj_wykonalnosc()'
         ],
         col2: [
           'class ZarzadzanieProcesem:',
