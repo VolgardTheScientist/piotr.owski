@@ -124,6 +124,19 @@ document.addEventListener('DOMContentLoaded', () => {
       handleItemClick(categoryKey, itemId);
     };
 
+    // Global auto-recovery for CDN images if path format differs
+    document.addEventListener('error', (e) => {
+      if (e.target && e.target.tagName === 'IMG') {
+        const img = e.target;
+        if (!img.dataset.retried) {
+          img.dataset.retried = '1';
+          if (img.src.includes('/assets/images/')) {
+            img.src = img.src.replace('/assets/images/', '/images/');
+          }
+        }
+      }
+    }, true);
+
     // Trigger Desktop Entrance Animation after brief DOM paint
     requestAnimationFrame(() => {
       setTimeout(() => {

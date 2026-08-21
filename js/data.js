@@ -1153,7 +1153,7 @@ const siteData = {
             de: "Parametrisches Entwurfstool & CNC-Fertigung",
             pl: "Silnik algorytmiczny i cyfrowa produkcja CNC"
           },
-          image: "assets/images/kithomes/kit-homes-isometric.jpg",
+          image: "assets/images/front_diagram.jpg",
           description: {
             en: "A cutting-edge algorithmic housing configurator that generates personalized timber dwellings based on site topography, solar orientation, and family requirements with direct export to CNC fabrication lines.",
             de: "Ein hochentwickelter algorithmischer Konfigurator für nachhaltige Holzhäuser, der Entwürfe anhand von Topografie, Sonneneinstrahlung und Kundenwünschen direkt für die CNC-Fertigung generiert.",
@@ -1223,7 +1223,7 @@ const siteData = {
             de: "OpenBIM Koordination & Kollisionsprüfung",
             pl: "Zarządzanie OpenBIM i detekcja kolizji"
           },
-          image: "assets/images/architecture/baden-spital.jpg",
+          image: "assets/images/augusta_02_1200.jpg",
           description: {
             en: "Full-scale OpenBIM model management for one of Switzerland's largest medical infrastructure projects, unifying architectural, structural, and complex MEP installations across 76,000 m².",
             de: "Umfassendes OpenBIM-Modellmanagement für eines der größten Spitalprojekte der Schweiz mit 76.000 m² Nutzfläche und hochkomplexer Haustechnik.",
@@ -1258,7 +1258,7 @@ const siteData = {
             de: "Solar-optimierte Fassadengeometrie",
             pl: "Fasada optymalizowana solarnie"
           },
-          image: "assets/images/architecture/noga-tower.jpg",
+          image: "assets/images/research_lakhta.jpg",
           description: {
             en: "A computational high-rise envelope engineered to minimize extreme desert solar heat gain through algorithmic shading louvers and integrated environmental geometry.",
             de: "Eine digital optimierte Hochhausfassade mit algorithmisch gesteuerten Verschattungslamellen zur Minimierung der Kühllasten im Wüstenklima.",
