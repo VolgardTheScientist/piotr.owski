@@ -14,6 +14,37 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // --- State Initialization ---
+  // ==========================================================================
+  // 0. ASSET URL RESOLVER (Local Development vs. Cloudflare R2 Production CDN)
+  // ==========================================================================
+  const MEDIA_CDN_CONFIG = {
+    // Configurable CDN domain for Cloudflare R2:
+    r2PublicUrl: 'https://media.piotr.owski.ch'
+  };
+
+  function getAssetUrl(path) {
+    if (!path) return '';
+    if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('//') || path.startsWith('data:')) {
+      return path;
+    }
+
+    const isLocal = window.location.hostname === 'localhost' ||
+                    window.location.hostname === '127.0.0.1' ||
+                    window.location.hostname === '' ||
+                    window.location.protocol === 'file:';
+
+    const cleanPath = path.replace(/^\.?\//, '');
+
+    if (isLocal) {
+      return cleanPath;
+    }
+
+    const cdnBase = (window.SITE_MEDIA_CDN || MEDIA_CDN_CONFIG.r2PublicUrl).replace(/\/$/, '');
+    return `${cdnBase}/${cleanPath}`;
+  }
+
+  window.getAssetUrl = getAssetUrl;
+
   const state = {
     theme: localStorage.getItem('piotrowski_theme') || 'dark',
     lang: localStorage.getItem('piotrowski_lang') || 'en',
@@ -646,7 +677,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <!-- Media Side -->
           <div class="research-entry-media">
             <div class="research-media-frame">
-              <img src="${item.image}" alt="${item.title[state.lang]}" loading="lazy" class="research-media-img">
+              <img src="${getAssetUrl(item.image)}" alt="${item.title[state.lang]}" loading="lazy" class="research-media-img">
               <span class="research-media-badge">${item.date[state.lang]}</span>
             </div>
           </div>
@@ -714,7 +745,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cardsHtml = category.items.map(item => `
       <div class="project-card" data-category="${categoryKey}" data-item-id="${item.id}" role="button" tabindex="0" aria-label="${item.title[state.lang]}">
         <div class="card-img-wrap">
-          <img src="${item.image}" alt="${item.title[state.lang]}" loading="lazy">
+          <img src="${getAssetUrl(item.image)}" alt="${item.title[state.lang]}" loading="lazy">
         </div>
         <div class="card-meta">${item.year} · ${item.location[state.lang]}</div>
         <h3 class="card-title">${item.title[state.lang]}</h3>
@@ -754,7 +785,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return `
               <section class="editorial-hero-spread">
                 <div class="editorial-img-box landscape-box">
-                  <img src="${sec.image}" alt="${item.title[state.lang]}" loading="lazy">
+                  <img src="${getAssetUrl(sec.image)}" alt="${item.title[state.lang]}" loading="lazy">
                 </div>
                 ${sec.caption ? `<p class="media-caption">${sec.caption[state.lang]}</p>` : ''}
               </section>
@@ -776,7 +807,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="editorial-media-col">
                   <div class="editorial-img-box portrait-box">
-                    <img src="${sec.image}" alt="${sec.title ? sec.title[state.lang] : ''}" loading="lazy">
+                    <img src="${getAssetUrl(sec.image)}" alt="${sec.title ? sec.title[state.lang] : ''}" loading="lazy">
                   </div>
                   ${sec.imageCaption ? `<p class="media-caption">${sec.imageCaption[state.lang]}</p>` : ''}
                 </div>
@@ -789,13 +820,13 @@ document.addEventListener('DOMContentLoaded', () => {
               <section class="editorial-mixed-format-row">
                 <div class="editorial-mixed-left">
                   <div class="editorial-img-box landscape-box">
-                    <img src="${sec.imageLeft}" alt="" loading="lazy">
+                    <img src="${getAssetUrl(sec.imageLeft)}" alt="" loading="lazy">
                   </div>
                   ${sec.captionLeft ? `<p class="media-caption">${sec.captionLeft[state.lang]}</p>` : ''}
                 </div>
                 <div class="editorial-mixed-right">
                   <div class="editorial-img-box portrait-box">
-                    <img src="${sec.imageRight}" alt="" loading="lazy">
+                    <img src="${getAssetUrl(sec.imageRight)}" alt="" loading="lazy">
                   </div>
                   ${sec.captionRight ? `<p class="media-caption">${sec.captionRight[state.lang]}</p>` : ''}
                 </div>
@@ -808,13 +839,13 @@ document.addEventListener('DOMContentLoaded', () => {
               <section class="editorial-duo-portraits">
                 <div class="editorial-duo-item">
                   <div class="editorial-img-box portrait-box">
-                    <img src="${sec.imageLeft}" alt="" loading="lazy">
+                    <img src="${getAssetUrl(sec.imageLeft)}" alt="" loading="lazy">
                   </div>
                   ${sec.captionLeft ? `<p class="media-caption">${sec.captionLeft[state.lang]}</p>` : ''}
                 </div>
                 <div class="editorial-duo-item">
                   <div class="editorial-img-box portrait-box">
-                    <img src="${sec.imageRight}" alt="" loading="lazy">
+                    <img src="${getAssetUrl(sec.imageRight)}" alt="" loading="lazy">
                   </div>
                   ${sec.captionRight ? `<p class="media-caption">${sec.captionRight[state.lang]}</p>` : ''}
                 </div>
@@ -913,7 +944,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </header>
 
         <div class="project-media-container">
-          <img src="${item.image}" alt="${item.title[state.lang]}" class="project-image">
+          <img src="${getAssetUrl(item.image)}" alt="${item.title[state.lang]}" class="project-image">
         </div>
 
         <div class="project-details-grid">
