@@ -74,8 +74,13 @@ document.addEventListener('DOMContentLoaded', () => {
   
   function initHeroVideo() {
     if (!heroVideo) return;
-    const posterUrl = getAssetUrl('assets/images/arch_loft.jpg');
-    const videoUrl = getAssetUrl('assets/videos/PPwebVideo.mp4');
+    const isLocal = window.location.hostname === 'localhost' ||
+                    window.location.hostname === '127.0.0.1' ||
+                    window.location.hostname === '' ||
+                    window.location.protocol === 'file:';
+
+    const posterUrl = isLocal ? 'assets/images/arch_loft.jpg' : getAssetUrl('assets/images/arch_loft.jpg');
+    const videoUrl = isLocal ? 'assets/videos/PPwebVideo.mp4' : getAssetUrl('assets/videos/PPwebVideo.mp4');
 
     heroVideo.poster = posterUrl;
     heroVideo.src = videoUrl;
@@ -85,12 +90,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     heroVideo.muted = true;
+    heroVideo.defaultMuted = true;
+    heroVideo.setAttribute('muted', '');
+    heroVideo.setAttribute('playsinline', '');
+    heroVideo.setAttribute('webkit-playsinline', '');
     heroVideo.load();
+
     const playPromise = heroVideo.play();
     if (playPromise !== undefined) {
       playPromise.catch(() => {
         heroVideo.muted = true;
         heroVideo.play().catch(() => {});
+        const unlockPlay = () => {
+          heroVideo.play().catch(() => {});
+          document.removeEventListener('touchstart', unlockPlay);
+          document.removeEventListener('click', unlockPlay);
+        };
+        document.addEventListener('touchstart', unlockPlay, { once: true, passive: true });
+        document.addEventListener('click', unlockPlay, { once: true, passive: true });
       });
     }
   }
