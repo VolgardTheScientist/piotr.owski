@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   const MEDIA_CDN_CONFIG = {
     // Configurable CDN domain for Cloudflare R2:
-    r2PublicUrl: 'https://media.piotr.owski.ch'
+    r2PublicUrl: 'https://assets.piotr.owski.ch'
   };
 
   function getAssetUrl(path) {
