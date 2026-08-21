@@ -1,3 +1,15 @@
+# Media and graphics assets (stored in Cloudflare R2 / local only)
+assets/
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.gif
+*.mp4
+*.mov
+*.webm
+*.avi
+
 # Operating System & Editor Metadata
 .DS_Store
 Thumbs.db
