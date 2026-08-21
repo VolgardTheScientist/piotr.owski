@@ -1597,7 +1597,15 @@ body.theme-light .code-column {
   color: var(--color-text);
   white-space: pre-wrap;
   word-break: normal;
-  overflow-x: auto;
+  overflow: visible;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.code-pre::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 @media (min-width: 1200px) {
