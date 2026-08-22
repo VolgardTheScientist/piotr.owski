@@ -726,6 +726,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const imagesList = item.images && item.images.length > 0 ? item.images : (item.image ? [item.image] : []);
       const isMultiImage = imagesList.length > 1;
 
+      // Extract 4-digit year for corner badge (e.g. 'Aug 2026' -> '2026')
+      const yearOnly = (item.year || item.date[state.lang] || '').match(/\b(19|20)\d{2}\b/)?.[0] || item.date[state.lang];
+
       const mediaHtml = isMultiImage ? `
         <div class="research-media-frame research-media-multi" data-count="${imagesList.length}">
           <div class="research-multi-grid">
@@ -735,12 +738,12 @@ document.addEventListener('DOMContentLoaded', () => {
               </div>
             `).join('')}
           </div>
-          <span class="research-media-badge">${item.date[state.lang]}</span>
+          <span class="research-media-badge">${yearOnly}</span>
         </div>
       ` : `
         <div class="research-media-frame">
           <img src="${getAssetUrl(item.image)}" alt="${item.title[state.lang]}" loading="lazy" class="research-media-img">
-          <span class="research-media-badge">${item.date[state.lang]}</span>
+          <span class="research-media-badge">${yearOnly}</span>
         </div>
       `;
 

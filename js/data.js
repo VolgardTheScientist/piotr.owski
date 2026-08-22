@@ -243,6 +243,45 @@ const siteData = {
     orcidUrl: "https://orcid.org/0009-0009-4058-5684",
     items: [
       {
+        id: "bim-material-banks",
+        date: {
+          en: "Aug 2026",
+          de: "Aug 2026",
+          pl: "Sie 2026"
+        },
+        typeTag: {
+          en: "Doctoral Research Blueprint",
+          de: "Doktorats-Forschungsrahmen",
+          pl: "Ramy Badań Doktorskich"
+        },
+        title: {
+          en: "BIM-assisted digital material banks: A design-science research blueprint for low-threshold BIM workflows enabling reuse at scale",
+          de: "BIM-assisted digital material banks: A design-science research blueprint for low-threshold BIM workflows enabling reuse at scale",
+          pl: "BIM-assisted digital material banks: A design-science research blueprint for low-threshold BIM workflows enabling reuse at scale"
+        },
+        venue: {
+          en: "Doctoral Research · University of Liechtenstein",
+          de: "Doktoratsforschung · Universität Liechtenstein",
+          pl: "Badania Doktorskie · Uniwersytet w Liechtensteinie"
+        },
+        description: {
+          en: "A design-science research framework developing accessible, low-threshold Building Information Modelling (BIM) workflows to populate digital material banks and unlock circular component reuse across building lifecycles.",
+          de: "Ein Design-Science-Forschungsrahmen für niederschwellige BIM-Workflows zur Befüllung digitaler Materialbanken und zur Skalierung der Bauteilwiederverwendung über den gesamten Gebäudelebenszyklus.",
+          pl: "Ramy badawcze typu Design Science Research tworzące przystępne procedury BIM zasilające cyfrowe banki materiałowe i umożliwiające ponowne wykorzystanie komponentów budowlanych na dużą skalę."
+        },
+        linkText: {
+          en: "View on ORCID ↗",
+          de: "Auf ORCID ansehen ↗",
+          pl: "Zobacz w ORCID ↗"
+        },
+        linkUrl: "https://orcid.org/0009-0009-4058-5684",
+        images: [
+          "assets/images/research_circular_cover.webp",
+          "assets/images/research_circular.webp"
+        ],
+        image: "assets/images/research_circular_cover.webp"
+      },
+      {
         id: "whitepaper-digital-epd",
         date: {
           en: "Mar 2026",
@@ -276,45 +315,6 @@ const siteData = {
         },
         linkUrl: "https://www.uni.li/en/news/2026/03/new-whitepaper-digital-environmental-product-declarations-published",
         image: "assets/images/research_whitepaper_epd.png"
-      },
-      {
-        id: "bim-material-banks",
-        date: {
-          en: "2026",
-          de: "2026",
-          pl: "2026"
-        },
-        typeTag: {
-          en: "Doctoral Research Blueprint",
-          de: "Doktorats-Forschungsrahmen",
-          pl: "Ramy Badań Doktorskich"
-        },
-        title: {
-          en: "BIM-assisted digital material banks: A design-science research blueprint for low-threshold BIM workflows enabling reuse at scale",
-          de: "BIM-assisted digital material banks: A design-science research blueprint for low-threshold BIM workflows enabling reuse at scale",
-          pl: "BIM-assisted digital material banks: A design-science research blueprint for low-threshold BIM workflows enabling reuse at scale"
-        },
-        venue: {
-          en: "Doctoral Research · University of Liechtenstein",
-          de: "Doktoratsforschung · Universität Liechtenstein",
-          pl: "Badania Doktorskie · Uniwersytet w Liechtensteinie"
-        },
-        description: {
-          en: "A design-science research framework developing accessible, low-threshold Building Information Modelling (BIM) workflows to populate digital material banks and unlock circular component reuse across building lifecycles.",
-          de: "Ein Design-Science-Forschungsrahmen für niederschwellige BIM-Workflows zur Befüllung digitaler Materialbanken und zur Skalierung der Bauteilwiederverwendung über den gesamten Gebäudelebenszyklus.",
-          pl: "Ramy badawcze typu Design Science Research tworzące przystępne procedury BIM zasilające cyfrowe banki materiałowe i umożliwiające ponowne wykorzystanie komponentów budowlanych na dużą skalę."
-        },
-        linkText: {
-          en: "View on ORCID ↗",
-          de: "Auf ORCID ansehen ↗",
-          pl: "Zobacz w ORCID ↗"
-        },
-        linkUrl: "https://orcid.org/0009-0009-4058-5684",
-        images: [
-          "assets/images/research_circular_cover.webp",
-          "assets/images/research_circular.webp"
-        ],
-        image: "assets/images/research_circular_cover.webp"
       },
       {
         id: "phase0-transdisziplinaritaet",
