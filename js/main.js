@@ -325,35 +325,40 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
 
   // ==========================================================================
-  // ROUTER & DEEP-LINKING ENGINE (Hash Routing with Auto-Scroll & URL Sync)
+  // ROUTER & DEEP-LINKING ENGINE (Clean Path URLs without '#' & Auto-Scroll)
   // ==========================================================================
 
   function updateUrlRoute(routeStr, push = true) {
-    const cleanRoute = (routeStr || '').replace(/^#\/?/, '').trim();
-    const targetHash = cleanRoute ? `#${cleanRoute}` : '';
+    const cleanRoute = (routeStr || '').replace(/^[\/#]+/, '').trim();
+    const targetPath = cleanRoute ? `/${cleanRoute}` : '/';
     
-    if (window.location.hash !== targetHash) {
+    if (window.location.pathname !== targetPath || window.location.hash) {
       if (push && window.history && window.history.pushState) {
-        window.history.pushState(null, '', targetHash || window.location.pathname + window.location.search);
+        window.history.pushState(null, '', targetPath + window.location.search);
       } else if (window.history && window.history.replaceState) {
-        window.history.replaceState(null, '', targetHash || window.location.pathname + window.location.search);
-      } else {
-        window.location.hash = targetHash;
+        window.history.replaceState(null, '', targetPath + window.location.search);
       }
     }
   }
 
   function handleUrlRouting() {
-    const hash = window.location.hash.replace(/^#\/?/, '').trim();
+    // Check pathname first (e.g. /research/nature-reviews-architectural-beauty), fallback to hash if visited via #
+    let raw = window.location.pathname.replace(/^\/+/, '').trim();
+    if (!raw && window.location.hash) {
+      raw = window.location.hash.replace(/^[\/#]+/, '').trim();
+    }
+    if (raw.endsWith('index.html')) {
+      raw = raw.replace(/index\.html$/, '').replace(/^\/+/, '').trim();
+    }
     
-    if (!hash || hash === 'home' || hash === 'video') {
+    if (!raw || raw === 'home' || raw === 'video') {
       if (state.isContentOpen) {
         showVideoReel(false);
       }
       return;
     }
 
-    const segments = hash.split('/').map(s => decodeURIComponent(s.trim())).filter(Boolean);
+    const segments = raw.split('/').map(s => decodeURIComponent(s.trim())).filter(Boolean);
     const primary = segments[0]?.toLowerCase();
     const secondary = segments[1];
 
@@ -384,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
         handleCategoryClick(primary, false);
       }
     } else {
-      // Check if primary is directly a research article ID (e.g. #nature-reviews-architectural-beauty)
+      // Check if primary matches any research article ID directly
       const isResearchId = siteData.researchPage?.items?.some(i => i.id === primary);
       if (isResearchId) {
         renderResearchView();
@@ -424,32 +429,30 @@ document.addEventListener('DOMContentLoaded', () => {
       if (copyBtn) {
         e.preventDefault();
         const route = copyBtn.dataset.copyRoute;
-        const fullUrl = `${window.location.origin}${window.location.pathname}#${route}`;
+        const cleanRoute = (route || '').replace(/^[\/#]+/, '');
+        const fullUrl = `${window.location.origin}/${cleanRoute}`;
         
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(fullUrl).then(() => {
             const label = copyBtn.querySelector('.copy-label');
             const originalText = label ? label.textContent : '';
             if (label) {
-              label.textContent = state.lang === 'de' ? 'Kopiert!' : (state.lang === 'pl' ? 'Skopiowano!' : 'Copied!');
+              label.textContent = state.lang === 'de' ? 'Link kopiert!' : (state.lang === 'pl' ? 'Skopiowano link!' : 'Link copied!');
             }
             copyBtn.classList.add('copied');
             setTimeout(() => {
               if (label) label.textContent = originalText;
               copyBtn.classList.remove('copied');
-            }, 2000);
+            }, 2200);
           }).catch(() => {});
         }
-        updateUrlRoute(route, true);
+        updateUrlRoute(cleanRoute, true);
       }
     });
 
-    // Execute initial route if present
-    if (window.location.hash) {
-      handleUrlRouting();
-    }
+    // Process initial route
+    handleUrlRouting();
   }
-
 
   function showVideoReel(updateUrl = true) {
     state.isContentOpen = false;

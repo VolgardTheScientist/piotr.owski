@@ -2783,9 +2783,7 @@ body.theme-light .research-media-badge {
   margin: 0;
 }
 
-.research-entry-actions {
-  padding-top: 10px;
-}
+
 
 .research-link-btn {
   display: inline-flex;
@@ -2807,44 +2805,7 @@ body.theme-light .research-media-badge {
   transform: translateX(4px);
 }
 
-/* Direct Link Share Button & Highlight */
-.research-entry-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px;
-}
 
-.research-copy-link-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: transparent;
-  border: 1px solid var(--border-subtle);
-  color: var(--color-text-muted);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  padding: 8px 14px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  font-family: inherit;
-}
-
-.research-copy-link-btn:hover {
-  border-color: var(--color-text-main);
-  color: var(--color-text-main);
-  background: rgba(255, 255, 255, 0.04);
-}
-
-body.theme-light .research-copy-link-btn:hover {
-  background: rgba(0, 0, 0, 0.04);
-}
-
-.research-copy-link-btn.copied {
-  border-color: #22c55e !important;
-  color: #22c55e !important;
-}
 
 @keyframes targetArticlePulse {
   0% {
@@ -2868,4 +2829,53 @@ body.theme-light .research-entry-card.is-target-highlight {
 .research-entry-card.is-target-highlight {
   animation: targetArticlePulse 3s ease-out;
   border-radius: 4px;
+}
+
+/* Research Entry Actions & Direct Link Share */
+.research-entry-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding-top: 14px;
+}
+
+.research-copy-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  padding: 2px 0;
+  color: var(--color-text-muted);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: color 0.2s ease, opacity 0.2s ease;
+  font-family: inherit;
+  opacity: 0.7;
+}
+
+.research-copy-link-btn:hover {
+  color: var(--color-text-main);
+  opacity: 1;
+  background: transparent;
+}
+
+body.theme-light .research-copy-link-btn:hover {
+  color: #000000;
+}
+
+.research-copy-link-btn.copied {
+  color: #22c55e !important;
+  opacity: 1 !important;
+}
+
+.research-copy-link-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.research-copy-link-btn:hover svg {
+  transform: translateX(2px);
 }
