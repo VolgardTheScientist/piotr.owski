@@ -325,33 +325,31 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
 
   // ==========================================================================
-  // ROUTER & DEEP-LINKING ENGINE (Clean Path URLs without '#' & Auto-Scroll)
+  // ROUTER & DEEP-LINKING ENGINE (Hash '#' Routing with Auto-Scroll & URL Sync)
   // ==========================================================================
 
   function updateUrlRoute(routeStr, push = true) {
     const cleanRoute = (routeStr || '').replace(/^[\/#]+/, '').trim();
-    const targetPath = cleanRoute ? `/${cleanRoute}` : '/';
+    const targetHash = cleanRoute ? `#${cleanRoute}` : '';
     
-    if (window.location.pathname !== targetPath || window.location.hash) {
+    if (window.location.hash !== targetHash) {
       if (push && window.history && window.history.pushState) {
-        window.history.pushState(null, '', targetPath + window.location.search);
+        window.history.pushState(null, '', targetHash || window.location.pathname + window.location.search);
       } else if (window.history && window.history.replaceState) {
-        window.history.replaceState(null, '', targetPath + window.location.search);
+        window.history.replaceState(null, '', targetHash || window.location.pathname + window.location.search);
+      } else {
+        window.location.hash = targetHash;
       }
     }
   }
 
   function handleUrlRouting() {
-    let raw = window.location.pathname.replace(/^\/+/, '').trim();
-    if (!raw && window.location.hash) {
-      raw = window.location.hash.replace(/^[\/#]+/, '').trim();
-    }
-    if (raw.endsWith('index.html')) {
-      raw = raw.replace(/index\.html$/, '').replace(/^\/+/, '').trim();
-    }
+    const raw = window.location.hash.replace(/^[\/#]+/, '').trim();
     
     if (!raw || raw === 'home' || raw === 'video') {
-      showVideoReel(false);
+      if (state.isContentOpen) {
+        showVideoReel(false);
+      }
       return;
     }
 
@@ -488,7 +486,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.stopPropagation();
         const route = copyBtn.dataset.copyRoute;
         const cleanRoute = (route || '').replace(/^[\/#]+/, '');
-        const fullUrl = `${window.location.origin}/${cleanRoute}`;
+        const fullUrl = `${window.location.origin}${window.location.pathname}#${cleanRoute}`;
         
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(fullUrl).then(() => {
@@ -509,7 +507,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Process route on initial load
-    handleUrlRouting();
+    if (window.location.hash) {
+      handleUrlRouting();
+    }
   }
 
   function showVideoReel(updateUrl = true) {
