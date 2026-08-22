@@ -384,7 +384,7 @@ const siteData = {
           pl: "Przeczytaj w Nature (DOI: 10.1038/s43017-024-00609-y) ↗"
         },
         linkUrl: "https://doi.org/10.1038/s43017-024-00609-y",
-        image: "assets/images/research_nature.jpg"
+        image: "assets/images/research_nature.webp"
       },
       {
         id: "sri-conference-2024",
