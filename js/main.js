@@ -197,7 +197,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Re-render current stage content if active
     if (state.isContentOpen) {
-      if (state.activeCategory === 'architecture') {
+      if (state.activeItemId) {
+        renderProjectDetail(state.activeCategory, state.activeItemId);
+      } else if (state.activeCategory === 'architecture') {
         if (stageBody.classList.contains('has-fullscreen-map')) {
           renderWorldMapView();
         } else {
@@ -207,8 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
         renderDigitalisationView();
       } else if (state.activeCategory === 'research') {
         renderResearchView();
-      } else if (state.activeItemId) {
-        renderProjectDetail(state.activeCategory, state.activeItemId);
       } else if (state.activeCategory === 'about') {
         renderAboutView();
       } else if (state.activeCategory === 'enquire') {
@@ -342,7 +342,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function handleUrlRouting() {
-    // Check pathname first (e.g. /research/nature-reviews-architectural-beauty), fallback to hash if visited via #
     let raw = window.location.pathname.replace(/^\/+/, '').trim();
     if (!raw && window.location.hash) {
       raw = window.location.hash.replace(/^[\/#]+/, '').trim();
@@ -352,9 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     if (!raw || raw === 'home' || raw === 'video') {
-      if (state.isContentOpen) {
-        showVideoReel(false);
-      }
+      showVideoReel(false);
       return;
     }
 
@@ -363,37 +360,85 @@ document.addEventListener('DOMContentLoaded', () => {
     const secondary = segments[1];
 
     if (primary === 'research') {
+      state.activeCategory = 'research';
+      state.activeItemId = null;
       renderResearchView();
       if (secondary) {
         scrollToResearchArticle(secondary);
       }
     } else if (primary === 'architecture') {
-      if (secondary && !['all', 'realisation', 'competition'].includes(secondary)) {
-        handleItemClick('architecture', secondary, false);
+      state.activeCategory = 'architecture';
+      if (secondary && ['map', 'all', 'realisation', 'in_progress', 'competition'].includes(secondary)) {
+        state.activeItemId = null;
+        renderWorldMapView(secondary === 'map' ? 'all' : secondary);
+      } else if (secondary) {
+        state.activeItemId = secondary;
+        renderProjectDetail('architecture', secondary);
       } else {
-        handleCategoryClick('architecture', false);
-        if (secondary && window.WorldMapController) {
-          window.WorldMapController.filterProjects(secondary);
-        }
+        state.activeItemId = null;
+        renderArchitectureIntroView();
       }
     } else if (primary === 'digitalisation') {
-      handleCategoryClick('digitalisation', false);
-    } else if (primary === 'about') {
-      handleCategoryClick('about', false);
-    } else if (primary === 'enquire') {
-      handleCategoryClick('enquire', false);
-    } else if (siteData.categories && siteData.categories[primary]) {
+      state.activeCategory = 'digitalisation';
       if (secondary) {
-        handleItemClick(primary, secondary, false);
+        state.activeItemId = secondary;
+        renderProjectDetail('digitalisation', secondary);
       } else {
-        handleCategoryClick(primary, false);
+        state.activeItemId = null;
+        renderDigitalisationView();
       }
+    } else if (primary === 'about') {
+      state.activeCategory = 'about';
+      state.activeItemId = null;
+      renderAboutView();
+    } else if (primary === 'enquire' || primary === 'contact') {
+      state.activeCategory = 'enquire';
+      state.activeItemId = null;
+      renderEnquireView();
     } else {
-      // Check if primary matches any research article ID directly
-      const isResearchId = siteData.researchPage?.items?.some(i => i.id === primary);
-      if (isResearchId) {
+      // 1. Check if primary matches any research article ID directly
+      const researchItem = siteData.researchPage?.items?.find(i => i.id === primary || (secondary && i.id === secondary));
+      if (researchItem) {
+        state.activeCategory = 'research';
+        state.activeItemId = null;
         renderResearchView();
-        scrollToResearchArticle(primary);
+        scrollToResearchArticle(researchItem.id);
+        return;
+      }
+
+      // 2. Check if primary matches an item inside categories
+      let foundCategory = null;
+      let foundItem = null;
+
+      if (siteData.categories) {
+        for (const [catKey, catData] of Object.entries(siteData.categories)) {
+          if (catKey.toLowerCase() === primary) {
+            foundCategory = catKey;
+            if (secondary && catData.items) {
+              foundItem = catData.items.find(it => it.id.toLowerCase() === secondary.toLowerCase());
+            }
+            break;
+          }
+          if (catData.items) {
+            const match = catData.items.find(it => it.id.toLowerCase() === primary.toLowerCase());
+            if (match) {
+              foundCategory = catKey;
+              foundItem = match;
+              break;
+            }
+          }
+        }
+      }
+
+      if (foundCategory) {
+        state.activeCategory = foundCategory;
+        if (foundItem) {
+          state.activeItemId = foundItem.id;
+          renderProjectDetail(foundCategory, foundItem.id);
+        } else {
+          state.activeItemId = null;
+          renderCategoryOverview(foundCategory);
+        }
       } else {
         showVideoReel(false);
       }
@@ -401,18 +446,30 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function scrollToResearchArticle(articleId) {
-    requestAnimationFrame(() => {
-      setTimeout(() => {
-        const targetArticle = document.getElementById(articleId) || document.querySelector(`[data-research-id="${articleId}"]`);
-        if (targetArticle) {
-          targetArticle.classList.add('is-target-highlight');
-          targetArticle.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          setTimeout(() => {
-            targetArticle.classList.remove('is-target-highlight');
-          }, 3200);
+    if (!articleId) return;
+
+    const attemptScroll = (retries = 6) => {
+      const targetEl = document.getElementById(articleId) || document.querySelector(`[data-research-id="${articleId}"]`);
+      if (targetEl) {
+        targetEl.classList.add('is-target-highlight');
+        if (contentStage) {
+          const topOffset = targetEl.offsetTop - 24;
+          contentStage.scrollTo({
+            top: Math.max(0, topOffset),
+            behavior: 'smooth'
+          });
+        } else {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      }, 200);
-    });
+        setTimeout(() => {
+          targetEl.classList.remove('is-target-highlight');
+        }, 3200);
+      } else if (retries > 0) {
+        setTimeout(() => attemptScroll(retries - 1), 100);
+      }
+    };
+
+    setTimeout(() => attemptScroll(6), 120);
   }
 
   function initRouter() {
@@ -428,6 +485,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const copyBtn = e.target.closest('.research-copy-link-btn');
       if (copyBtn) {
         e.preventDefault();
+        e.stopPropagation();
         const route = copyBtn.dataset.copyRoute;
         const cleanRoute = (route || '').replace(/^[\/#]+/, '');
         const fullUrl = `${window.location.origin}/${cleanRoute}`;
@@ -450,7 +508,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Process initial route
+    // Process route on initial load
     handleUrlRouting();
   }
 
