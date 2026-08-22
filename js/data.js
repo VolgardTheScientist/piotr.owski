@@ -450,7 +450,7 @@ const siteData = {
           pl: "Zobacz w ORCID (ISSN: 1506-5928) ↗"
         },
         linkUrl: "https://orcid.org/0009-0009-4058-5684",
-        image: "assets/images/research_lakhta.jpg"
+        image: "assets/images/research_lakhta.webp"
       }
     ]
   },
@@ -1258,7 +1258,7 @@ const siteData = {
             de: "Solar-optimierte Fassadengeometrie",
             pl: "Fasada optymalizowana solarnie"
           },
-          image: "assets/images/research_lakhta.jpg",
+          image: "assets/images/research_lakhta.webp",
           description: {
             en: "A computational high-rise envelope engineered to minimize extreme desert solar heat gain through algorithmic shading louvers and integrated environmental geometry.",
             de: "Eine digital optimierte Hochhausfassade mit algorithmisch gesteuerten Verschattungslamellen zur Minimierung der Kühllasten im Wüstenklima.",
