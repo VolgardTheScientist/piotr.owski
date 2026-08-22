@@ -2677,6 +2677,41 @@ body.theme-light .research-media-frame {
   filter: grayscale(0%) contrast(105%);
 }
 
+.research-media-frame.research-media-multi {
+  padding: 10px;
+}
+
+.research-multi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  width: 100%;
+  align-items: center;
+}
+
+.research-multi-item {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.research-multi-item .research-media-img {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: contain;
+}
+
+@media (max-width: 600px) {
+  .research-multi-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
 .research-media-badge {
   position: absolute;
   top: 14px;

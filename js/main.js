@@ -723,15 +723,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const entriesHtml = (research.items || []).map((item, idx) => {
       const isReversed = idx % 2 === 1;
+      const imagesList = item.images && item.images.length > 0 ? item.images : (item.image ? [item.image] : []);
+      const isMultiImage = imagesList.length > 1;
+
+      const mediaHtml = isMultiImage ? `
+        <div class="research-media-frame research-media-multi" data-count="${imagesList.length}">
+          <div class="research-multi-grid">
+            ${imagesList.map((imgSrc, imgIdx) => `
+              <div class="research-multi-item">
+                <img src="${getAssetUrl(imgSrc)}" alt="${item.title[state.lang]} - ${imgIdx + 1}" loading="lazy" class="research-media-img">
+              </div>
+            `).join('')}
+          </div>
+          <span class="research-media-badge">${item.date[state.lang]}</span>
+        </div>
+      ` : `
+        <div class="research-media-frame">
+          <img src="${getAssetUrl(item.image)}" alt="${item.title[state.lang]}" loading="lazy" class="research-media-img">
+          <span class="research-media-badge">${item.date[state.lang]}</span>
+        </div>
+      `;
+
       return `
         <article class="research-entry-card ${isReversed ? 'is-reversed' : ''}">
           
           <!-- Media Side -->
           <div class="research-entry-media">
-            <div class="research-media-frame">
-              <img src="${getAssetUrl(item.image)}" alt="${item.title[state.lang]}" loading="lazy" class="research-media-img">
-              <span class="research-media-badge">${item.date[state.lang]}</span>
-            </div>
+            ${mediaHtml}
           </div>
 
           <!-- Content Side -->

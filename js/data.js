@@ -450,6 +450,10 @@ const siteData = {
           pl: "Zobacz w ORCID (ISSN: 1506-5928) ↗"
         },
         linkUrl: "https://orcid.org/0009-0009-4058-5684",
+        images: [
+          "assets/images/research_lakhta.webp",
+          "assets/images/research_lakhta_2.webp"
+        ],
         image: "assets/images/research_lakhta.webp"
       }
     ]
