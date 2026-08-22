@@ -116,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderNavigation();
     updateStaticTranslations();
     bindEvents();
+    initRouter();
 
     // Global navigation handler for inter-component linking
     window.handleDirectItemNavigation = (categoryKey, itemId) => {
@@ -323,17 +324,152 @@ document.addEventListener('DOMContentLoaded', () => {
   // 5. STAGE CONTENT CONTROLLERS (Video <-> Content)
   // ==========================================================================
 
-  function showVideoReel() {
+  // ==========================================================================
+  // ROUTER & DEEP-LINKING ENGINE (Hash Routing with Auto-Scroll & URL Sync)
+  // ==========================================================================
+
+  function updateUrlRoute(routeStr, push = true) {
+    const cleanRoute = (routeStr || '').replace(/^#\/?/, '').trim();
+    const targetHash = cleanRoute ? `#${cleanRoute}` : '';
+    
+    if (window.location.hash !== targetHash) {
+      if (push && window.history && window.history.pushState) {
+        window.history.pushState(null, '', targetHash || window.location.pathname + window.location.search);
+      } else if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, '', targetHash || window.location.pathname + window.location.search);
+      } else {
+        window.location.hash = targetHash;
+      }
+    }
+  }
+
+  function handleUrlRouting() {
+    const hash = window.location.hash.replace(/^#\/?/, '').trim();
+    
+    if (!hash || hash === 'home' || hash === 'video') {
+      if (state.isContentOpen) {
+        showVideoReel(false);
+      }
+      return;
+    }
+
+    const segments = hash.split('/').map(s => decodeURIComponent(s.trim())).filter(Boolean);
+    const primary = segments[0]?.toLowerCase();
+    const secondary = segments[1];
+
+    if (primary === 'research') {
+      renderResearchView();
+      if (secondary) {
+        scrollToResearchArticle(secondary);
+      }
+    } else if (primary === 'architecture') {
+      if (secondary && !['all', 'realisation', 'competition'].includes(secondary)) {
+        handleItemClick('architecture', secondary, false);
+      } else {
+        handleCategoryClick('architecture', false);
+        if (secondary && window.WorldMapController) {
+          window.WorldMapController.filterProjects(secondary);
+        }
+      }
+    } else if (primary === 'digitalisation') {
+      handleCategoryClick('digitalisation', false);
+    } else if (primary === 'about') {
+      handleCategoryClick('about', false);
+    } else if (primary === 'enquire') {
+      handleCategoryClick('enquire', false);
+    } else if (siteData.categories && siteData.categories[primary]) {
+      if (secondary) {
+        handleItemClick(primary, secondary, false);
+      } else {
+        handleCategoryClick(primary, false);
+      }
+    } else {
+      // Check if primary is directly a research article ID (e.g. #nature-reviews-architectural-beauty)
+      const isResearchId = siteData.researchPage?.items?.some(i => i.id === primary);
+      if (isResearchId) {
+        renderResearchView();
+        scrollToResearchArticle(primary);
+      } else {
+        showVideoReel(false);
+      }
+    }
+  }
+
+  function scrollToResearchArticle(articleId) {
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        const targetArticle = document.getElementById(articleId) || document.querySelector(`[data-research-id="${articleId}"]`);
+        if (targetArticle) {
+          targetArticle.classList.add('is-target-highlight');
+          targetArticle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          setTimeout(() => {
+            targetArticle.classList.remove('is-target-highlight');
+          }, 3200);
+        }
+      }, 200);
+    });
+  }
+
+  function initRouter() {
+    window.addEventListener('popstate', () => {
+      handleUrlRouting();
+    });
+    window.addEventListener('hashchange', () => {
+      handleUrlRouting();
+    });
+
+    // Delegate copy-link clicks on research articles
+    document.addEventListener('click', (e) => {
+      const copyBtn = e.target.closest('.research-copy-link-btn');
+      if (copyBtn) {
+        e.preventDefault();
+        const route = copyBtn.dataset.copyRoute;
+        const fullUrl = `${window.location.origin}${window.location.pathname}#${route}`;
+        
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(fullUrl).then(() => {
+            const label = copyBtn.querySelector('.copy-label');
+            const originalText = label ? label.textContent : '';
+            if (label) {
+              label.textContent = state.lang === 'de' ? 'Kopiert!' : (state.lang === 'pl' ? 'Skopiowano!' : 'Copied!');
+            }
+            copyBtn.classList.add('copied');
+            setTimeout(() => {
+              if (label) label.textContent = originalText;
+              copyBtn.classList.remove('copied');
+            }, 2000);
+          }).catch(() => {});
+        }
+        updateUrlRoute(route, true);
+      }
+    });
+
+    // Execute initial route if present
+    if (window.location.hash) {
+      handleUrlRouting();
+    }
+  }
+
+
+  function showVideoReel(updateUrl = true) {
     state.isContentOpen = false;
     state.activeCategory = null;
     state.activeItemId = null;
+
+    if (updateUrl) {
+      updateUrlRoute('');
+    }
 
     viewportStage.classList.remove('content-active');
     contentStage.setAttribute('aria-hidden', 'true');
     renderNavigation();
 
-    if (heroVideo.paused) {
-      heroVideo.play().catch(() => {});
+    if (heroVideo) {
+      if (!heroVideo.src || heroVideo.src === window.location.href) {
+        initHeroVideo();
+      } else if (heroVideo.paused) {
+        heroVideo.play().catch(() => {});
+      }
     }
   }
 
@@ -345,7 +481,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderNavigation();
   }
 
-  function handleCategoryClick(categoryKey) {
+  function handleCategoryClick(categoryKey, updateUrl = true) {
     if (state.activeCategory === categoryKey && state.isContentOpen && !state.activeItemId) {
       showVideoReel();
       return;
@@ -353,6 +489,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     state.activeCategory = categoryKey;
     state.activeItemId = null;
+
+    if (updateUrl) {
+      updateUrlRoute(categoryKey);
+    }
 
     if (categoryKey === 'architecture') {
       renderArchitectureIntroView();
@@ -364,14 +504,19 @@ document.addEventListener('DOMContentLoaded', () => {
       renderAboutView();
     } else if (categoryKey === 'enquire') {
       renderEnquireView();
-    } else if (siteData.categories[categoryKey]) {
+    } else if (siteData.categories && siteData.categories[categoryKey]) {
       renderCategoryOverview(categoryKey);
     }
   }
 
-  function handleItemClick(categoryKey, itemId) {
+  function handleItemClick(categoryKey, itemId, updateUrl = true) {
     state.activeCategory = categoryKey;
     state.activeItemId = itemId;
+
+    if (updateUrl) {
+      updateUrlRoute(`${categoryKey}/${itemId}`);
+    }
+
     renderProjectDetail(categoryKey, itemId);
   }
 
@@ -748,7 +893,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
 
       return `
-        <article class="research-entry-card ${isReversed ? 'is-reversed' : ''}">
+        <article id="${item.id}" data-research-id="${item.id}" class="research-entry-card ${isReversed ? 'is-reversed' : ''}">
           
           <!-- Media Side -->
           <div class="research-entry-media">
@@ -771,6 +916,13 @@ document.addEventListener('DOMContentLoaded', () => {
               <a href="${item.linkUrl}" target="_blank" rel="noopener noreferrer" class="research-link-btn">
                 <span>${item.linkText[state.lang]}</span>
               </a>
+              <button type="button" class="research-copy-link-btn" data-copy-route="research/${item.id}" title="Copy direct link to this publication">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+                <span class="copy-label">${state.lang === 'de' ? 'Direktlink' : (state.lang === 'pl' ? 'Kopiuj link' : 'Copy link')}</span>
+              </button>
             </div>
           </div>
 
