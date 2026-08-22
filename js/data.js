@@ -349,7 +349,7 @@ const siteData = {
           pl: "Przeczytaj publikację (DOI: 10.21428/71cd88bc.5d00b1e2) ↗"
         },
         linkUrl: "https://doi.org/10.21428/71cd88bc.5d00b1e2",
-        image: "assets/images/research_phase0.jpg"
+        image: "assets/images/research_phase0.webp"
       },
       {
         id: "nature-reviews-architectural-beauty",
