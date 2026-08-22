@@ -79,10 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     window.location.hostname === '' ||
                     window.location.protocol === 'file:';
 
-    const posterUrl = isLocal ? 'assets/images/arch_loft.jpg' : getAssetUrl('assets/images/arch_loft.jpg');
     const videoUrl = isLocal ? 'assets/videos/PPwebVideo.mp4' : getAssetUrl('assets/videos/PPwebVideo.mp4');
 
-    heroVideo.poster = posterUrl;
     heroVideo.src = videoUrl;
     const sourceEl = heroVideo.querySelector('source');
     if (sourceEl) {
