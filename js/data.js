@@ -310,7 +310,11 @@ const siteData = {
           pl: "Zobacz w ORCID ↗"
         },
         linkUrl: "https://orcid.org/0009-0009-4058-5684",
-        image: "assets/images/research_circular.webp"
+        images: [
+          "assets/images/research_circular_cover.webp",
+          "assets/images/research_circular.webp"
+        ],
+        image: "assets/images/research_circular_cover.webp"
       },
       {
         id: "phase0-transdisziplinaritaet",
