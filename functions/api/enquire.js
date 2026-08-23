@@ -8,7 +8,7 @@
 export async function onRequestPost(context) {
   const { request, env } = context;
 
-  // 1. CORS headers (for safety & development)
+  // 1. CORS headers
   const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
@@ -83,15 +83,15 @@ export async function onRequestPost(context) {
     const RESEND_API_KEY = env.RESEND_API_KEY;
     const NOTIFICATION_RECIPIENT = env.NOTIFICATION_EMAIL || 'piotr@owski.ch';
     
-    // Sender address: If domain is verified in Resend use enquiry@owski.ch, otherwise onboarding@resend.dev
-    const SENDER_EMAIL = env.SENDER_EMAIL || 'Piotr Piotrowski Studio <enquiry@owski.ch>';
+    // Sender address: Default to custom domain sender, with fallback if not yet verified
+    let senderEmail = env.SENDER_EMAIL || 'Piotr Piotrowski Studio <enquiry@owski.ch>';
 
     if (!RESEND_API_KEY) {
       console.warn('RESEND_API_KEY not configured in Cloudflare environment. Simulation mode.');
       return new Response(JSON.stringify({ 
         success: true, 
         simulated: true,
-        message: 'Inquiry received in simulation mode (set RESEND_API_KEY in Cloudflare Pages settings to activate live email dispatch).' 
+        message: 'Inquiry received in simulation mode.' 
       }), {
         status: 200,
         headers: corsHeaders
@@ -229,40 +229,47 @@ export async function onRequestPost(context) {
       </html>
     `;
 
-    // 7. Dispatch Email 1: Notification to Piotr
-    const adminMailPromise = fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${RESEND_API_KEY}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        from: SENDER_EMAIL,
-        to: [NOTIFICATION_RECIPIENT],
-        reply_to: `${name} <${email}>`,
-        subject: `Enquiry [${adminServiceName}]: ${name}`,
-        html: adminHtml
-      })
-    });
+    // Helper to send via Resend
+    async function sendResendMail(from, to, replyTo, subject, html) {
+      return fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${RESEND_API_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          from: from,
+          to: Array.isArray(to) ? to : [to],
+          reply_to: replyTo,
+          subject: subject,
+          html: html
+        })
+      });
+    }
 
-    // 8. Dispatch Email 2: Confirmation Copy to Client
-    const clientMailPromise = fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${RESEND_API_KEY}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        from: SENDER_EMAIL,
-        to: [email],
-        reply_to: NOTIFICATION_RECIPIENT,
-        subject: confirmationSubject,
-        html: clientHtml
-      })
-    });
+    // Attempt 1: Send with custom sender
+    let adminRes = await sendResendMail(
+      senderEmail,
+      NOTIFICATION_RECIPIENT,
+      `${name} <${email}>`,
+      `Enquiry [${adminServiceName}]: ${name}`,
+      adminHtml
+    );
 
-    // Execute both sends in parallel
-    const [adminRes, clientRes] = await Promise.all([adminMailPromise, clientMailPromise]);
+    // If custom domain is not yet verified in Resend, automatically fallback to onboarding@resend.dev
+    if (!adminRes.ok) {
+      const errJson = await adminRes.json().catch(() => ({}));
+      console.warn('Resend send failed with custom domain, retrying with onboarding sender:', errJson);
+      
+      senderEmail = 'Piotr Piotrowski Studio <onboarding@resend.dev>';
+      adminRes = await sendResendMail(
+        senderEmail,
+        NOTIFICATION_RECIPIENT,
+        `${name} <${email}>`,
+        `Enquiry [${adminServiceName}]: ${name}`,
+        adminHtml
+      );
+    }
 
     if (!adminRes.ok) {
       const errText = await adminRes.text();
@@ -271,6 +278,19 @@ export async function onRequestPost(context) {
         status: 500,
         headers: corsHeaders
       });
+    }
+
+    // Dispatch Confirmation Copy to Client (fire & ignore client delivery errors if on unverified test domain)
+    try {
+      await sendResendMail(
+        senderEmail,
+        email,
+        NOTIFICATION_RECIPIENT,
+        confirmationSubject,
+        clientHtml
+      );
+    } catch (clientErr) {
+      console.warn('Client confirmation copy failed (normal if domain unverified):', clientErr);
     }
 
     return new Response(JSON.stringify({ success: true }), {
