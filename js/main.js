@@ -1549,6 +1549,33 @@ document.addEventListener('DOMContentLoaded', () => {
         handleItemClick(category, itemId);
         return;
       }
+
+      // LinkedIn Mobile App Intent Handler
+      const linkedinBtn = e.target.closest('.about-linkedin-btn');
+      if (linkedinBtn) {
+        const isAndroid = /Android/i.test(navigator.userAgent);
+        const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+        if (isAndroid) {
+          e.preventDefault();
+          // Android Intent directly launches LinkedIn native app with browser fallback
+          window.location.href = "intent://www.linkedin.com/in/piotr-piotrowski-a2913815/#Intent;scheme=https;package=com.linkedin.android;S.browser_fallback_url=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fpiotr-piotrowski-a2913815%2F;end";
+          return;
+        } else if (isIOS) {
+          e.preventDefault();
+          // iOS custom scheme attempts native app launch with web fallback
+          const appUrl = "linkedin://in/piotr-piotrowski-a2913815";
+          const webUrl = "https://www.linkedin.com/in/piotr-piotrowski-a2913815/";
+          const start = Date.now();
+          window.location.href = appUrl;
+          setTimeout(() => {
+            if (Date.now() - start < 1500) {
+              window.location.href = webUrl;
+            }
+          }, 600);
+          return;
+        }
+      }
     });
 
     // Brand Logo clicks -> return to video reel
