@@ -2273,14 +2273,30 @@ body.theme-light .code-column {
 }
 
 .about-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 24px;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.about-header-main {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 880px;
+}
+
+.about-linkedin-action {
+  flex-shrink: 0;
 }
 
 .about-title {
   font-size: clamp(32px, 4.5vw, 48px);
   font-weight: 400;
-  margin-bottom: 6px;
+  margin-bottom: 0;
 }
 
 .about-role {

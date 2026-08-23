@@ -340,11 +340,17 @@ window.WorldMapController = {
 
     let monographBtnHtml = '';
     if (project.hasInternalDetail && project.internalId) {
-      monographBtnHtml = `
-        <button class="hover-monograph-btn" data-category="${project.internalCategory || 'architecture'}" data-item-id="${project.internalId}">
-          ${ui.viewProjectDetail[lang]}
-        </button>
-      `;
+      const targetCategory = project.internalCategory || 'architecture';
+      const categoryData = siteData.categories && siteData.categories[targetCategory];
+      const spreadExists = categoryData && Array.isArray(categoryData.items) && categoryData.items.some(i => i.id === project.internalId);
+
+      if (spreadExists) {
+        monographBtnHtml = `
+          <button class="hover-monograph-btn" data-category="${targetCategory}" data-item-id="${project.internalId}">
+            ${ui.viewProjectDetail[lang]}
+          </button>
+        `;
+      }
     }
 
     const backLabel = lang === 'pl' ? 'Wróć' : (lang === 'de' ? 'Zurück' : 'Back');

@@ -2660,6 +2660,12 @@ const siteData = {
       de: "Dr. sc., Architekt & Ingenieur",
       pl: "dr inż. arch."
     },
+    linkedinLabel: {
+      en: "LinkedIn Profile",
+      de: "LinkedIn Profil",
+      pl: "Profil LinkedIn"
+    },
+    linkedinUrl: "https://www.linkedin.com/in/piotr-piotrowski-a2913815/",
     paragraphs: [
       {
         en: "Piotr Piotrowski is an architect, BIM manager and researcher with more than two decades of professional experience across architecture, design technology and the built environment. His work combines architectural design with digital methods, process development and research into more sustainable ways of designing, constructing and transforming buildings.",
