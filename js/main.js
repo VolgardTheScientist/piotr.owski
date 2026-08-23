@@ -113,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function init() {
     initHeroVideo();
     applyTheme(state.theme);
+    updateLanguageButtons(state.lang);
     renderNavigation();
     updateStaticTranslations();
     bindEvents();
@@ -181,15 +182,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // 3. MULTILINGUAL ENGINE
   // ==========================================================================
 
+  function updateLanguageButtons(lang) {
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+  }
+
   function setLanguage(newLang) {
     if (!['en', 'de', 'pl'].includes(newLang)) return;
     state.lang = newLang;
     localStorage.setItem('piotrowski_lang', newLang);
 
-    // Update active state on all language switcher buttons
-    langButtons.forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.lang === newLang);
-    });
+    // Update active state on all language switcher buttons across desktop & mobile
+    updateLanguageButtons(newLang);
 
     // Re-render navigation with new translations
     renderNavigation();
