@@ -1556,7 +1556,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
         if (isMobile) {
           e.preventDefault();
-          const appUrl = "linkedin://in/piotr-piotrowski-a2913815";
+          const appUrl = "linkedin://profile/piotr-piotrowski-a2913815";
           const webUrl = "https://www.linkedin.com/in/piotr-piotrowski-a2913815/";
 
           let appOpened = false;
