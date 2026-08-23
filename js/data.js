@@ -275,11 +275,11 @@ const siteData = {
           pl: "Ramy badawcze typu Design Science Research tworzące przystępne procedury BIM zasilające cyfrowe banki materiałowe i umożliwiające ponowne wykorzystanie komponentów budowlanych na dużą skalę."
         },
         linkText: {
-          en: "View on ORCID ↗",
-          de: "Auf ORCID ansehen ↗",
-          pl: "Zobacz w ORCID ↗"
+          en: "Borrow from Library (swisscovery) ↗",
+          de: "In Bibliothek ausleihen (swisscovery) ↗",
+          pl: "Wypożycz w bibliotece (swisscovery) ↗"
         },
-        linkUrl: "https://orcid.org/0009-0009-4058-5684",
+        linkUrl: "https://swisscovery.ch/permalink/41SLSP_NETWORK/ck7c0t/alma991173082312305501",
         images: [
           "assets/images/research_circular_cover.webp",
           "assets/images/research_circular.webp"
