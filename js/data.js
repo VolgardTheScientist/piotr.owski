@@ -231,9 +231,9 @@ const siteData = {
       pl: "Badania i Publikacje"
     },
     subtitle: {
-      en: "Academic inquiries, peer-reviewed journal papers, doctoral research blueprints, and international conference contributions focusing on digital tools for material reuse and circular architecture.",
-      de: "Wissenschaftliche Untersuchungen, Peer-Review-Journalbeiträge, Doktoratskonzepte und internationale Konferenzbeiträge zu digitalen Werkzeugen für Materialwiederverwendung und zirkuläre Architektur.",
-      pl: "Prace naukowe, recenzowane publikacje w czasopismach, ramy badań doktorskich oraz wystąpienia konferencyjne skupione wokół cyfrowych narzędzi dla ponownego użycia materiałów i architektury cyrkularnej."
+      en: "Research spanning digital methods for material reuse, circular construction, computational approaches to complex architectural form, and questions of beauty, longevity and durability in architecture.",
+      de: "Forschung zu digitalen Methoden für Bauteilwiederverwendung, zirkuläres Bauen, computergestützten Ansätzen für komplexe architektonische Formen sowie Fragen zu Schönheit, Langlebigkeit und Beständigkeit in der Architektur.",
+      pl: "Badania obejmujące cyfrowe metody ponownego wykorzystania materiałów, budownictwo cyrkularne, obliczeniowe podejścia do złożonych form architektonicznych oraz zagadnienia piękna, trwałości i ponadczasowości w architekturze."
     },
     orcidLabel: {
       en: "ORCID: 0009-0009-4058-5684",
