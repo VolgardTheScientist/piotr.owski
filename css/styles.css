@@ -2479,17 +2479,6 @@ body.theme-light .form-select {
   cursor: not-allowed;
 }
 
-.direct-contact {
-  font-size: 13px;
-  color: var(--color-text-dim);
-  letter-spacing: 0.04em;
-}
-
-.direct-contact a {
-  color: var(--color-text);
-  border-bottom: 1px solid var(--border-color);
-}
-
 .form-feedback {
   padding: 20px;
   border: 1px solid var(--border-color);

@@ -1370,9 +1370,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <button type="submit" class="submit-btn" id="submitBtn">
               ${siteData.ui.sendMessage[state.lang]}
             </button>
-            <div class="direct-contact">
-              ${enquire.labels.studioEmail[state.lang]}
-            </div>
           </div>
 
         </form>

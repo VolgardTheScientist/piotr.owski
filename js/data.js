@@ -2675,11 +2675,6 @@ const siteData = {
         en: "Project Brief & Objectives",
         de: "Projektbeschreibung & Ziele",
         pl: "Opis projektu i cele"
-      },
-      studioEmail: {
-        en: "Direct Contact: studio@piotrowski.arch | info@cropka.com",
-        de: "Direktkontakt: studio@piotrowski.arch | info@cropka.com",
-        pl: "Kontakt bezpośredni: studio@piotrowski.arch | info@cropka.com"
       }
     }
   }
