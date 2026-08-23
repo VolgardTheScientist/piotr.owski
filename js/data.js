@@ -458,11 +458,11 @@ const siteData = {
           pl: "Techniczny artykuł architektoniczny analizujący logikę geometryczną rzeźbiarskiej formy Lakhta Center oraz złożoność inżynieryjną jego podwójnej fasady, ze szczególnym uwzględnieniem optymalizacji krzywizn, panelizacji i geometrii powłoki."
         },
         linkText: {
-          en: "View on ORCID (ISSN: 1506-5928) ↗",
-          de: "Auf ORCID ansehen (ISSN: 1506-5928) ↗",
-          pl: "Zobacz w ORCID (ISSN: 1506-5928) ↗"
+          en: "Borrow from Library (NUKAT) ↗",
+          de: "In Bibliothek ausleihen (NUKAT) ↗",
+          pl: "Wypożycz w bibliotece (NUKAT) ↗"
         },
-        linkUrl: "https://orcid.org/0009-0009-4058-5684",
+        linkUrl: "https://katalog.nukat.edu.pl/cgi-bin/koha/opac-detail.pl?biblionumber=30430",
         images: [
           "assets/images/research_lakhta.webp",
           "assets/images/research_lakhta_2.webp"
