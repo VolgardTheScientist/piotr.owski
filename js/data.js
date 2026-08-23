@@ -92,9 +92,9 @@ const siteData = {
       pl: "Wysyłanie..."
     },
     sentSuccess: {
-      en: "Thank you. Your inquiry has been received. Studio Piotrowski will review and respond shortly.",
-      de: "Vielen Dank. Ihre Anfrage ist eingegangen. Studio Piotrowski wird sich zeitnah bei Ihnen melden.",
-      pl: "Dziękujemy. Twoje zapytanie zostało przesłane. Studio Piotrowski odpowie wkrótce."
+      en: "Thank you. Your inquiry has been received and will be reviewed shortly.",
+      de: "Vielen Dank. Ihre Anfrage ist eingegangen und wird in Kürze geprüft.",
+      pl: "Dziękujemy. Twoje zapytanie zostało otrzymane i zostanie wkrótce rozpatrzone."
     },
     allProjects: {
       en: "Overview",
