@@ -150,6 +150,7 @@ window.WorldMapController = {
           <div class="map-topbar-right-controls">
             <!-- Project Type Selection Menu (Clean Minimalist Typography) -->
             <div class="map-floating-filters" role="group" aria-label="Filter projects by type">
+              <span class="region-bar-label">${ui.filterStatus ? ui.filterStatus[lang] : 'Status:'}</span>
               <button class="map-filter-pill ${this.currentFilter === 'all' ? 'active' : ''}" data-filter="all">
                 ${ui.filterAll[lang]}
               </button>

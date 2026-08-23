@@ -848,23 +848,31 @@ body.theme-light .map-floating-topbar {
 }
 
 .map-floating-filters {
+  pointer-events: auto;
   display: flex;
   align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px 6px;
+  background: var(--color-surface);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-sizing: border-box;
 }
 
 .map-filter-pill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  background: rgba(128, 128, 128, 0.1);
-  border: 1px solid var(--border-subtle);
-  font-size: 12px;
+  justify-content: center;
+  padding: 4px 8px;
+  font-size: 11px;
   color: var(--color-text-dim);
-  backdrop-filter: blur(8px);
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  background: rgba(128, 128, 128, 0.08);
+  border: 1px solid transparent;
+  border-radius: 0;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .map-filter-pill:hover {
@@ -875,20 +883,9 @@ body.theme-light .map-floating-topbar {
 .map-filter-pill.active {
   background: var(--color-accent);
   color: var(--color-bg);
-  border-color: var(--color-accent);
   font-weight: 700;
+  border-color: transparent;
 }
-
-.status-pip {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.pip-realisation { background-color: var(--color-status-realisation); }
-.pip-inprogress { background-color: var(--color-status-inprogress); }
-.pip-competition { background-color: var(--color-status-competition); }
 
 .map-studio-dropdown-wrap {
   pointer-events: auto;
@@ -899,9 +896,13 @@ body.theme-light .map-floating-topbar {
   color: var(--color-text);
   border: 1px solid var(--border-color);
   font-family: inherit;
-  font-size: 12px;
-  padding: 6px 10px;
+  font-size: 11px;
+  padding: 4px 8px;
+  height: 27px;
   outline: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-sizing: border-box;
   transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 

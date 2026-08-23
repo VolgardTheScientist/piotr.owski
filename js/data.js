@@ -141,6 +141,11 @@ const siteData = {
       de: "Alle Büros / Partner",
       pl: "Wszystkie pracownie"
     },
+    filterStatus: {
+      en: "Status:",
+      de: "Status:",
+      pl: "Status:"
+    },
     regionFocus: {
       en: "Region Focus:",
       de: "Regionsansicht:",
