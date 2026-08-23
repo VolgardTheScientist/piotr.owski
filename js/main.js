@@ -1293,6 +1293,23 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `).join('');
 
+    const isAndroid = /Android/i.test(navigator.userAgent);
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    let linkedinHref = about.linkedinUrl || 'https://www.linkedin.com/in/piotr-piotrowski-a2913815/';
+    let linkedinTarget = '_blank';
+    let linkedinRel = 'noopener noreferrer';
+
+    if (isAndroid) {
+      linkedinHref = "intent://www.linkedin.com/in/piotr-piotrowski-a2913815#Intent;scheme=https;package=com.linkedin.android;S.browser_fallback_url=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fpiotr-piotrowski-a2913815%2F;end";
+      linkedinTarget = '_self';
+      linkedinRel = '';
+    } else if (isIOS) {
+      linkedinHref = "linkedin://in/piotr-piotrowski-a2913815";
+      linkedinTarget = '_self';
+      linkedinRel = '';
+    }
+
     stageBody.innerHTML = `
       <div class="about-view">
         <header class="about-header">
@@ -1302,7 +1319,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           ${about.linkedinUrl ? `
             <div class="about-linkedin-action">
-              <a href="${about.linkedinUrl}" target="_blank" rel="noopener noreferrer" class="orcid-badge-btn" title="View LinkedIn Profile">
+              <a href="${linkedinHref}" target="${linkedinTarget}" ${linkedinRel ? `rel="${linkedinRel}"` : ''} class="orcid-badge-btn about-linkedin-btn" title="View LinkedIn Profile">
                 <svg class="orcid-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                 </svg>
@@ -1550,30 +1567,17 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // LinkedIn Mobile App Intent Handler
+      // LinkedIn iOS app scheme fallback
       const linkedinBtn = e.target.closest('.about-linkedin-btn');
       if (linkedinBtn) {
-        const isAndroid = /Android/i.test(navigator.userAgent);
         const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-        if (isAndroid) {
-          e.preventDefault();
-          // Android Intent directly launches LinkedIn native app with browser fallback
-          window.location.href = "intent://www.linkedin.com/in/piotr-piotrowski-a2913815/#Intent;scheme=https;package=com.linkedin.android;S.browser_fallback_url=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fpiotr-piotrowski-a2913815%2F;end";
-          return;
-        } else if (isIOS) {
-          e.preventDefault();
-          // iOS custom scheme attempts native app launch with web fallback
-          const appUrl = "linkedin://in/piotr-piotrowski-a2913815";
-          const webUrl = "https://www.linkedin.com/in/piotr-piotrowski-a2913815/";
+        if (isIOS) {
           const start = Date.now();
-          window.location.href = appUrl;
           setTimeout(() => {
-            if (Date.now() - start < 1500) {
-              window.location.href = webUrl;
+            if (Date.now() - start < 1500 && document.visibilityState === 'visible') {
+              window.location.href = "https://www.linkedin.com/in/piotr-piotrowski-a2913815/";
             }
-          }, 600);
-          return;
+          }, 700);
         }
       }
     });
