@@ -439,7 +439,7 @@ const siteData = {
         },
         typeTag: {
           en: "Architectural Essay",
-          de: "Architektur & Kritik",
+          de: "Architekturbeitrag",
           pl: "Esej o architekturze"
         },
         title: {
