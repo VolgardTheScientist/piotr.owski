@@ -1399,7 +1399,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitBtn = document.getElementById('submitBtn');
     if (!form) return;
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const honeypot = document.getElementById('studio_sec_fax');
@@ -1408,34 +1408,64 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      const elapsedMs = Date.now() - state.formOpenedAt;
-      if (elapsedMs < 1500) {
+      const elapsedMs = Date.now() - (state.formOpenedAt || Date.now());
+      if (elapsedMs < 1200) {
         console.warn('Spam bot speed threshold triggered.');
         return;
       }
 
       const name = document.getElementById('clientName').value.trim();
       const email = document.getElementById('clientEmail').value.trim();
+      const serviceType = document.getElementById('serviceType')?.value || 'architecture';
+      const projectLocation = document.getElementById('projectLocation')?.value.trim() || '';
       const message = document.getElementById('projectMessage').value.trim();
 
       if (!name || !email || !message) {
         feedback.textContent = state.lang === 'de' 
           ? 'Bitte füllen Sie alle erforderlichen Felder aus.'
           : (state.lang === 'pl' ? 'Proszę wypełnić wszystkie wymagane pola.' : 'Please fill in all required fields.');
-        feedback.classList.add('show');
+        feedback.className = 'form-feedback show is-error';
         return;
       }
 
       submitBtn.disabled = true;
       submitBtn.textContent = siteData.ui.sending[state.lang];
+      feedback.className = 'form-feedback';
+      feedback.textContent = '';
 
-      setTimeout(() => {
-        form.reset();
+      try {
+        const payload = {
+          clientName: name,
+          clientEmail: email,
+          serviceType: serviceType,
+          projectLocation: projectLocation,
+          projectMessage: message,
+          lang: state.lang,
+          studio_sec_fax: honeypot ? honeypot.value : ''
+        };
+
+        const res = await fetch('/api/enquire', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          form.reset();
+          feedback.textContent = siteData.ui.sentSuccess[state.lang];
+          feedback.className = 'form-feedback show is-success';
+        } else {
+          feedback.textContent = siteData.ui.sendError[state.lang];
+          feedback.className = 'form-feedback show is-error';
+        }
+      } catch (err) {
+        console.error('Error submitting enquiry form:', err);
+        feedback.textContent = siteData.ui.sendError[state.lang];
+        feedback.className = 'form-feedback show is-error';
+      } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = siteData.ui.sendMessage[state.lang];
-        feedback.textContent = siteData.ui.sentSuccess[state.lang];
-        feedback.classList.add('show');
-      }, 750);
+      }
     });
   }
 

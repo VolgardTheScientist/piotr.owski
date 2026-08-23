@@ -96,6 +96,11 @@ const siteData = {
       de: "Vielen Dank. Ihre Anfrage ist eingegangen und wird in Kürze geprüft.",
       pl: "Dziękujemy. Twoje zapytanie zostało otrzymane i zostanie wkrótce rozpatrzone."
     },
+    sendError: {
+      en: "Unable to send inquiry right now. Please try again or email directly to piotr@owski.ch.",
+      de: "Ihre Anfrage konnte derzeit nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie direkt an piotr@owski.ch.",
+      pl: "Nie udało się wysłać zapytania w tym momencie. Spróbuj ponownie lub napisz bezpośrednio na piotr@owski.ch."
+    },
     allProjects: {
       en: "Overview",
       de: "Übersicht",

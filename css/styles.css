@@ -2543,6 +2543,16 @@ body.theme-light .form-select {
   display: block;
 }
 
+.form-feedback.is-error {
+  border-color: rgba(220, 53, 69, 0.5);
+  background: rgba(220, 53, 69, 0.06);
+}
+
+.form-feedback.is-success {
+  border-color: var(--border-color);
+  background: rgba(128, 128, 128, 0.08);
+}
+
 /* ==========================================================================
    7. KEYFRAME ANIMATIONS
    ========================================================================== */
