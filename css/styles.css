@@ -764,6 +764,9 @@ body.theme-light .viewport-stage.content-active .hero-video {
   border: none;
   background-color: #080808;
   overflow: hidden;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
   animation: fadeInContent 0.7s var(--ease-out-expo) forwards;
   transition: background-color 0.35s ease;
 }
@@ -969,6 +972,8 @@ body.theme-light .map-floating-topbar {
   background-color: #080808;
   cursor: grab;
   user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
 }
 
 body.theme-light .map-canvas-container {

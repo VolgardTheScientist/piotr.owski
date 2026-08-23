@@ -399,7 +399,7 @@ window.WorldMapController = {
       this.updateHoverCardPosition(hoverCard, canvasContainer);
     }, { passive: false });
 
-    // 6. Click and Drag Panning with Strict Inhabited World Bounding
+    // 6. Mouse Drag Panning
     canvasContainer.addEventListener('mousedown', (e) => {
       if (e.target.closest('#projectHoverCard') || e.target.closest('button') || e.target.closest('select')) {
         return;
@@ -438,6 +438,112 @@ window.WorldMapController = {
         canvasContainer.classList.remove('is-panning');
       }
     });
+
+    // 7. Multi-Touch Gestures: Pinch-to-Zoom & Touch Panning
+    let touchMode = 'none'; // 'none' | 'pan' | 'pinch'
+    let touchStartPoints = [];
+    let initialPinchDist = 0;
+    let initialPinchMidpoint = { x: 0, y: 0 };
+    let touchStartViewBox = { x: 0, y: 0, w: 1000, h: 415 };
+
+    const getTouchDistance = (t1, t2) => {
+      return Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+    };
+
+    const getTouchMidpoint = (t1, t2) => {
+      return {
+        x: (t1.clientX + t2.clientX) * 0.5,
+        y: (t1.clientY + t2.clientY) * 0.5
+      };
+    };
+
+    canvasContainer.addEventListener('touchstart', (e) => {
+      if (e.target.closest('#projectHoverCard') || e.target.closest('button') || e.target.closest('select')) {
+        return;
+      }
+
+      if (e.touches.length === 1) {
+        touchMode = 'pan';
+        touchStartPoints = [{ x: e.touches[0].clientX, y: e.touches[0].clientY }];
+        touchStartViewBox = { x: this.viewBox.x, y: this.viewBox.y, w: this.viewBox.w, h: this.viewBox.h };
+      } else if (e.touches.length === 2) {
+        e.preventDefault();
+        touchMode = 'pinch';
+        initialPinchDist = getTouchDistance(e.touches[0], e.touches[1]);
+        initialPinchMidpoint = getTouchMidpoint(e.touches[0], e.touches[1]);
+        touchStartViewBox = { x: this.viewBox.x, y: this.viewBox.y, w: this.viewBox.w, h: this.viewBox.h };
+      }
+    }, { passive: false });
+
+    canvasContainer.addEventListener('touchmove', (e) => {
+      if (touchMode === 'none') return;
+      e.preventDefault(); // Prevent native browser viewport pinch-zoom & page scrolling
+
+      const rect = canvasContainer.getBoundingClientRect();
+      const containerAspect = Math.max(0.2, rect.width / rect.height);
+      const maxH = 415;
+      const maxW = Math.min(1000, maxH * containerAspect);
+
+      if (touchMode === 'pan' && e.touches.length === 1) {
+        const dx = e.touches[0].clientX - touchStartPoints[0].x;
+        const dy = e.touches[0].clientY - touchStartPoints[0].y;
+
+        const scaleX = this.viewBox.w / rect.width;
+        const scaleY = this.viewBox.h / rect.height;
+
+        const newX = touchStartViewBox.x - dx * scaleX;
+        const newY = touchStartViewBox.y - dy * scaleY;
+
+        this.viewBox.x = Math.max(0, Math.min(1000 - this.viewBox.w, newX));
+        this.viewBox.y = Math.max(8, Math.min(425 - this.viewBox.h, newY));
+
+        this.updateViewBox(svgEl, containerEl);
+        this.updateHoverCardPosition(hoverCard, canvasContainer);
+      } else if (touchMode === 'pinch' && e.touches.length === 2) {
+        const currentDist = getTouchDistance(e.touches[0], e.touches[1]);
+        if (initialPinchDist <= 0 || currentDist <= 0) return;
+
+        const pinchRatio = initialPinchDist / currentDist;
+        const currentMidpoint = getTouchMidpoint(e.touches[0], e.touches[1]);
+
+        const newW = Math.max(0.4, Math.min(maxW, touchStartViewBox.w * pinchRatio));
+        const newH = newW / containerAspect;
+
+        // Focal point relative to canvas container
+        const relX = Math.max(0, Math.min(1, (initialPinchMidpoint.x - rect.left) / rect.width));
+        const relY = Math.max(0, Math.min(1, (initialPinchMidpoint.y - rect.top) / rect.height));
+
+        // Translation offset from dragging the midpoint
+        const midDx = currentMidpoint.x - initialPinchMidpoint.x;
+        const midDy = currentMidpoint.y - initialPinchMidpoint.y;
+        const scaleX = newW / rect.width;
+        const scaleY = newH / rect.height;
+
+        let newX = touchStartViewBox.x + (touchStartViewBox.w - newW) * relX - (midDx * scaleX);
+        let newY = touchStartViewBox.y + (touchStartViewBox.h - newH) * relY - (midDy * scaleY);
+
+        this.viewBox.w = newW;
+        this.viewBox.h = newH;
+        this.viewBox.x = Math.max(0, Math.min(1000 - newW, newX));
+        this.viewBox.y = Math.max(8, Math.min(425 - newH, newY));
+
+        this.updateViewBox(svgEl, containerEl);
+        this.updateHoverCardPosition(hoverCard, canvasContainer);
+      }
+    }, { passive: false });
+
+    const handleTouchEnd = (e) => {
+      if (e.touches.length === 1) {
+        touchMode = 'pan';
+        touchStartPoints = [{ x: e.touches[0].clientX, y: e.touches[0].clientY }];
+        touchStartViewBox = { x: this.viewBox.x, y: this.viewBox.y, w: this.viewBox.w, h: this.viewBox.h };
+      } else if (e.touches.length === 0) {
+        touchMode = 'none';
+      }
+    };
+
+    canvasContainer.addEventListener('touchend', handleTouchEnd);
+    canvasContainer.addEventListener('touchcancel', handleTouchEnd);
 
     // 7. Robust Project Pin Hover Card Handler
     const pinNodes = containerEl.querySelectorAll('.map-pin-node');
