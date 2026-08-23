@@ -1550,38 +1550,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // LinkedIn Mobile App launcher with smart web fallback
-      const linkedinBtn = e.target.closest('.about-linkedin-btn');
-      if (linkedinBtn) {
-        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-        if (isMobile) {
-          e.preventDefault();
-          const appUrl = "linkedin://profile/piotr-piotrowski-a2913815";
-          const webUrl = "https://www.linkedin.com/in/piotr-piotrowski-a2913815/";
 
-          let appOpened = false;
-          const markOpened = () => { appOpened = true; };
-
-          document.addEventListener('visibilitychange', () => {
-            if (document.hidden || document.visibilityState === 'hidden') {
-              appOpened = true;
-            }
-          }, { once: true });
-          window.addEventListener('blur', markOpened, { once: true });
-          window.addEventListener('pagehide', markOpened, { once: true });
-
-          // Try custom scheme first
-          window.location.href = appUrl;
-
-          // Fallback to web URL after 750ms if native app did not open
-          setTimeout(() => {
-            if (!appOpened && !document.hidden && document.visibilityState === 'visible') {
-              window.location.href = webUrl;
-            }
-          }, 750);
-          return;
-        }
-      }
     });
 
     // Brand Logo clicks -> return to video reel
