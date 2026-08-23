@@ -439,8 +439,8 @@ const siteData = {
         },
         typeTag: {
           en: "Architectural Essay",
-          de: "Architektur-Essay",
-          pl: "Esej Architektoniczny"
+          de: "Architektur & Kritik",
+          pl: "Esej o architekturze"
         },
         title: {
           en: "The Flame of the North. Lakhta Center, St. Petersburg",
