@@ -1868,8 +1868,8 @@ const siteData = {
         de: "Bahrain",
         pl: "Bahrain"
       },
-      lat: 26.2285,
-      lng: 50.586,
+      lat: 26.25,
+      lng: 49.75,
       scale: ""
 
     },
@@ -2481,8 +2481,8 @@ const siteData = {
         de: "East Linton, Scotland",
         pl: "East Linton, Scotland"
       },
-      lat: 55.986,
-      lng: -2.668,
+      lat: 55.93,
+      lng: -2.95,
       scale: "9'720 m2"
 
     },

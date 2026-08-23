@@ -849,10 +849,11 @@ body.theme-light .map-floating-topbar {
 
 .map-floating-filters {
   pointer-events: auto;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 4px;
   padding: 4px 6px;
+  height: 34px;
   background: var(--color-surface);
   border: 1px solid var(--border-color);
   backdrop-filter: blur(10px);
@@ -864,7 +865,8 @@ body.theme-light .map-floating-topbar {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 4px 8px;
+  height: 24px;
+  padding: 0 8px;
   font-size: 11px;
   color: var(--color-text-dim);
   background: rgba(128, 128, 128, 0.08);
@@ -872,6 +874,7 @@ body.theme-light .map-floating-topbar {
   border-radius: 0;
   cursor: pointer;
   white-space: nowrap;
+  box-sizing: border-box;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
@@ -889,6 +892,9 @@ body.theme-light .map-floating-topbar {
 
 .map-studio-dropdown-wrap {
   pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  height: 34px;
 }
 
 .map-studio-select {
@@ -897,12 +903,15 @@ body.theme-light .map-floating-topbar {
   border: 1px solid var(--border-color);
   font-family: inherit;
   font-size: 11px;
-  padding: 4px 8px;
-  height: 27px;
+  padding: 0 10px;
+  height: 34px;
+  line-height: 32px;
   outline: none;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
   transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -1287,13 +1296,16 @@ body.theme-light .project-hover-card {
 
 .region-shortcuts-bar {
   pointer-events: auto;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 4px;
   padding: 4px 6px;
+  height: 34px;
   background: var(--color-surface);
   border: 1px solid var(--border-color);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-sizing: border-box;
 }
 
 .region-bar-label {
@@ -1305,11 +1317,19 @@ body.theme-light .project-hover-card {
 }
 
 .region-shortcut-btn {
-  padding: 4px 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  padding: 0 8px;
   font-size: 11px;
   color: var(--color-text-dim);
   background: rgba(128, 128, 128, 0.08);
   border: 1px solid transparent;
+  border-radius: 0;
+  cursor: pointer;
+  white-space: nowrap;
+  box-sizing: border-box;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
