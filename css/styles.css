@@ -3149,19 +3149,32 @@ body.theme-light .hover-cluster-entry:hover {
   color: var(--color-text-dim);
 }
 
+.hover-cluster-entry .hover-status-tag {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-text);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+body.theme-light .hover-cluster-entry .hover-status-tag {
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--color-text);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
 .hover-cluster-entry-scale {
   font-size: 10.5px;
   color: var(--color-text-dim);
 }
 
 .hover-cluster-awards-preview {
-  font-size: 10.5px;
-  color: #ffd700;
-  line-height: 1.2;
+  font-size: 11px;
+  color: #ffffff;
+  line-height: 1.35;
+  margin-top: 1px;
 }
 
 body.theme-light .hover-cluster-awards-preview {
-  color: #b8860b;
+  color: #111111;
 }
 
 /* Back to cluster button */

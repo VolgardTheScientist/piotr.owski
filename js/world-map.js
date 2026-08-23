@@ -303,7 +303,7 @@ window.WorldMapController = {
                     <div class="hover-cluster-entry-scale">${project.scale}</div>
                   ` : ''}
                   ${project.awards ? `
-                    <div class="hover-cluster-awards-preview">🏆 ${project.awards}</div>
+                    <div class="hover-cluster-awards-preview">${project.awards}</div>
                   ` : ''}
                 </div>
               `;
