@@ -271,13 +271,19 @@ window.WorldMapController = {
     const ui = siteData.ui;
 
     // Multi-project Cluster Card
-    if (target && target.count > 1) {
+    const isMultiProject = !isFromCluster && target && (
+      (target.count && target.count > 1) ||
+      (target.projects && target.projects.length > 1)
+    );
+
+    if (isMultiProject) {
       const projectsList = target.projects || [];
+      const totalCount = target.count || projectsList.length;
       return `
         <div class="hover-card-inner hover-cluster-inner">
           <div class="hover-card-top">
             <div class="hover-card-top-left">
-              <span class="hover-status-tag hover-cluster-tag">${target.count} ${lang === 'pl' ? 'Projekty' : (lang === 'de' ? 'Projekte' : 'Projects')}</span>
+              <span class="hover-status-tag hover-cluster-tag">${totalCount} ${lang === 'pl' ? 'Projektów' : (lang === 'de' ? 'Projekte' : 'Projects')}</span>
             </div>
             <button class="hover-card-close-btn" aria-label="Close project info">✕</button>
           </div>
@@ -315,7 +321,8 @@ window.WorldMapController = {
     }
 
     // Single Project Card
-    const project = target.project || target;
+    const project = (target && target.project) ? target.project : (target && target.projects && target.projects.length === 1 ? target.projects[0] : target);
+    if (!project) return '';
     const statusText = siteData.statusTypes[project.type] ? siteData.statusTypes[project.type][lang] : project.type;
     const statusClass = `badge-${project.type}`;
 
@@ -808,8 +815,8 @@ window.WorldMapController = {
     const clusters = this.getClusters(projects, svgRect);
     const lang = this.lang || 'en';
 
-    pinsLayer.innerHTML = clusters.map(cl => {
-      const isCluster = cl.count > 1;
+    pinsLayer.innerHTML = clusters.map((cl, idx) => {
+      const isCluster = (cl.count && cl.count > 1) || (cl.projects && cl.projects.length > 1);
       const isSelected = cl.ids.includes(this.activeProjectId);
 
       const rDotSvg = (isCluster ? 3.8 : 3.2) / pixelsPerSvgUnit;
@@ -823,11 +830,7 @@ window.WorldMapController = {
 
       return `
         <g class="map-pin-node ${isCluster ? 'map-pin-cluster' : ''} ${isSelected ? 'is-active' : ''}" 
-           data-cluster-ids="${cl.ids.join(',')}"
-           data-project-id="${cl.projects[0].id}"
-           data-is-cluster="${isCluster ? 'true' : 'false'}"
-           data-svg-x="${cl.x.toFixed(4)}"
-           data-svg-y="${cl.y.toFixed(4)}"
+           data-cluster-idx="${idx}"
            transform="translate(${cl.x.toFixed(4)}, ${cl.y.toFixed(4)})"
            tabindex="0"
            role="button">
@@ -855,21 +858,16 @@ window.WorldMapController = {
     // Bind event listeners on pins
     const pinNodes = pinsLayer.querySelectorAll('.map-pin-node');
     pinNodes.forEach(pin => {
-      const clusterIds = (pin.dataset.clusterIds || pin.dataset.projectId || '').split(',');
-      const isCluster = pin.dataset.isCluster === 'true';
-      const cluster = clusters.find(cl => cl.ids.join(',') === clusterIds.join(',')) || {
-        projects: (siteData.cvProjects || []).filter(p => clusterIds.includes(p.id)),
-        x: parseFloat(pin.dataset.svgX || 0),
-        y: parseFloat(pin.dataset.svgY || 0),
-        count: clusterIds.length
-      };
+      const clusterIdx = parseInt(pin.dataset.clusterIdx, 10);
+      const cluster = clusters[clusterIdx];
+      if (!cluster || !cluster.projects || !cluster.projects.length) return;
 
-      if (!cluster.projects || !cluster.projects.length) return;
+      const hasMultiple = (cluster.count && cluster.count > 1) || (cluster.projects && cluster.projects.length > 1);
 
       pin.addEventListener('mouseenter', () => {
         clearTimeout(this.tooltipTimeout);
         this.activeProjectId = cluster.projects[0].id;
-        this.showHoverCard(hoverCard, canvasContainer, pin, isCluster ? cluster : cluster.projects[0], lang, false);
+        this.showHoverCard(hoverCard, canvasContainer, pin, hasMultiple ? cluster : cluster.projects[0], lang, false);
       });
 
       pin.addEventListener('mouseleave', () => {
@@ -885,7 +883,7 @@ window.WorldMapController = {
         clearTimeout(this.tooltipTimeout);
         this.activeProjectId = cluster.projects[0].id;
         // Always display the combined box with all projects in the first place
-        this.showHoverCard(hoverCard, canvasContainer, pin, isCluster ? cluster : cluster.projects[0], lang, false);
+        this.showHoverCard(hoverCard, canvasContainer, pin, hasMultiple ? cluster : cluster.projects[0], lang, false);
       });
     });
   },
@@ -947,7 +945,12 @@ window.WorldMapController = {
   },
 
   showHoverCard(hoverCard, canvasContainer, pinEl, target, lang, isFromCluster = false) {
-    if (target && target.count > 1) {
+    const hasMultiple = target && (
+      (target.count && target.count > 1) ||
+      (target.projects && target.projects.length > 1)
+    );
+
+    if (hasMultiple) {
       this.currentCluster = target;
       this.lastActiveCluster = target;
     } else if (!isFromCluster) {
