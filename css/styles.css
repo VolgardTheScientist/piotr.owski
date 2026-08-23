@@ -2650,16 +2650,24 @@ body.theme-light .form-select {
 .research-media-frame {
   position: relative;
   width: 100%;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--border-subtle);
+  border: none;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 body.theme-light .research-media-frame {
-  background: rgba(0, 0, 0, 0.02);
+  background: transparent;
+}
+
+.research-image-wrap {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  width: fit-content;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 .research-media-img {
@@ -2678,13 +2686,13 @@ body.theme-light .research-media-frame {
 }
 
 .research-media-frame.research-media-multi {
-  padding: 10px;
+  padding: 0;
 }
 
 .research-multi-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  gap: 16px;
   width: 100%;
   align-items: center;
 }
@@ -2695,7 +2703,8 @@ body.theme-light .research-media-frame {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.01);
+  border: none;
+  background: transparent;
 }
 
 .research-multi-item .research-media-img {
@@ -2708,26 +2717,28 @@ body.theme-light .research-media-frame {
 @media (max-width: 600px) {
   .research-multi-grid {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 12px;
   }
 }
 
 .research-media-badge {
   position: absolute;
-  top: 14px;
-  left: 14px;
-  background: rgba(0, 0, 0, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.28);
   color: #ffffff;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
-  padding: 4px 10px;
+  padding: 4px 9px;
   text-transform: uppercase;
+  z-index: 4;
+  pointer-events: none;
 }
 
 body.theme-light .research-media-badge {
-  background: rgba(255, 255, 255, 0.90);
+  background: rgba(255, 255, 255, 0.92);
   border-color: rgba(0, 0, 0, 0.25);
   color: #000000;
 }

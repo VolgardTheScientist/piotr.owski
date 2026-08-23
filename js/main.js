@@ -947,17 +947,19 @@ document.addEventListener('DOMContentLoaded', () => {
             ${imagesList.map((imgSrc, imgIdx) => `
               <div class="research-multi-item">
                 <img src="${getAssetUrl(imgSrc)}" alt="${item.title[state.lang]} - ${imgIdx + 1}" loading="lazy" class="research-media-img">
+                ${imgIdx === 0 ? `<span class="research-media-badge">${yearOnly}</span>` : ''}
+                ${imgIdx === imagesList.length - 1 ? creditHtml : ''}
               </div>
             `).join('')}
           </div>
-          <span class="research-media-badge">${yearOnly}</span>
-          ${creditHtml}
         </div>
       ` : `
         <div class="research-media-frame">
-          <img src="${getAssetUrl(item.image)}" alt="${item.title[state.lang]}" loading="lazy" class="research-media-img">
-          <span class="research-media-badge">${yearOnly}</span>
-          ${creditHtml}
+          <div class="research-image-wrap">
+            <img src="${getAssetUrl(item.image)}" alt="${item.title[state.lang]}" loading="lazy" class="research-media-img">
+            <span class="research-media-badge">${yearOnly}</span>
+            ${creditHtml}
+          </div>
         </div>
       `;
 
