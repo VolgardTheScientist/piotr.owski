@@ -419,7 +419,11 @@ const siteData = {
           pl: "Informacje o Kongresie i Program ↗"
         },
         linkUrl: "https://sricongress.org/",
-        image: "assets/images/research_sri.jpg"
+        image: "assets/images/research_sri.webp",
+        imageCredit: {
+          text: "© Marty B",
+          url: "https://commons.wikimedia.org/wiki/File:University_of_Helsinki,_Main_Building_(52890135967).jpg"
+        }
       },
       {
         id: "archivolta-lakhta-center",
