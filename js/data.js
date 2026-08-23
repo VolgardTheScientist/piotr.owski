@@ -1868,8 +1868,8 @@ const siteData = {
         de: "Bahrain",
         pl: "Bahrain"
       },
-      lat: 26.25,
-      lng: 49.75,
+      lat: 26.2285,
+      lng: 50.586,
       scale: ""
 
     },
