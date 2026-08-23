@@ -646,6 +646,12 @@ window.WorldMapController = {
 
       const clusterEntry = e.target.closest('.hover-cluster-entry');
       if (clusterEntry && !e.target.closest('.hover-monograph-btn') && !e.target.closest('a')) {
+        // Prevent mobile ghost-click/tap-through from initial pin tap
+        if (this.clusterOpenedTime && (Date.now() - this.clusterOpenedTime < 450)) {
+          e.stopPropagation();
+          e.preventDefault();
+          return;
+        }
         e.stopPropagation();
         const projId = clusterEntry.dataset.projectId;
         const project = (siteData.cvProjects || []).find(p => p.id === projId);
@@ -953,8 +959,10 @@ window.WorldMapController = {
     if (hasMultiple) {
       this.currentCluster = target;
       this.lastActiveCluster = target;
+      this.clusterOpenedTime = Date.now();
     } else if (!isFromCluster) {
       this.currentCluster = null;
+      this.clusterOpenedTime = 0;
     }
 
     hoverCard.innerHTML = this.renderHoverCardContent(target, lang, isFromCluster);
