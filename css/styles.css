@@ -2259,9 +2259,16 @@ body.theme-light .code-column {
   color: var(--color-text);
 }
 
+.stage-body:has(.about-view) {
+  padding: 40px 32px 90px !important;
+  max-width: 1550px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+}
+
 @media (max-width: 991px) {
   .stage-body:has(.about-view) {
-    padding-top: calc(var(--header-height-mobile) + 28px) !important;
+    padding: 75px 18px 60px !important;
   }
 }
 
@@ -2296,7 +2303,7 @@ body.theme-light .code-column {
 .about-title {
   font-size: clamp(32px, 4.5vw, 48px);
   font-weight: 400;
-  margin-bottom: 0;
+  margin: 0;
 }
 
 .about-role {
