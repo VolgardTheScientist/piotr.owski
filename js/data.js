@@ -334,9 +334,9 @@ const siteData = {
           pl: "Recenzowany Artykuł Naukowy"
         },
         title: {
-          en: "Issue 3 – Transdisziplinarität",
-          de: "Ausgabe 3 – Transdisziplinarität",
-          pl: "Wydanie 3 – Transdyscyplinarność"
+          en: "BIM-enabled material reuse: Needs and barriers from a Swiss–Liechtenstein perspective",
+          de: "BIM-enabled material reuse: Needs and barriers from a Swiss–Liechtenstein perspective",
+          pl: "BIM-enabled material reuse: Needs and barriers from a Swiss–Liechtenstein perspective"
         },
         venue: {
           en: "Phase0 – Journal für integriertes Planen, Bauen und Betreiben",
@@ -344,9 +344,9 @@ const siteData = {
           pl: "Phase0 – Journal für integriertes Planen, Bauen und Betreiben"
         },
         description: {
-          en: "Peer-reviewed contribution examining transdisciplinary collaboration methodologies across architecture, engineering, and digital process management in sustainable building design.",
-          de: "Peer-Review-Beitrag über transdisziplinäre Kooperationsmethoden zwischen Architektur, Ingenieurwesen und digitalem Prozessmanagement beim nachhaltigen Bauen.",
-          pl: "Recenzowana publikacja analizująca metodykę współpracy transdyscyplinarnej między architekturą, inżynierią i zarządzaniem procesami cyfrowymi w zrównoważonym projektowaniu."
+          en: "Peer-reviewed study examining the practical needs and barriers to BIM-enabled material reuse in Switzerland and Liechtenstein. Based on interviews with industry professionals and a prototype Digital Material Bank, it identifies requirements for lean, automated digital workflows capable of supporting material reuse at scale.",
+          de: "Peer-Review-Studie zu den praktischen Bedürfnissen und Barrieren der BIM-gestützten Materialwiederverwendung in der Schweiz und in Liechtenstein. Auf der Grundlage von Experteninterviews und einem Prototyp einer Digitalen Materialbank definiert sie Anforderungen an schlanke, automatisierte digitale Workflows für die zirkuläre Bauteilwiederverwendung.",
+          pl: "Recenzowane badanie naukowe analizujące praktyczne potrzeby i bariery w ponownym wykorzystaniu materiałów z wykorzystaniem BIM w Szwajcarii i Liechtensteinie. Na podstawie wywiadów z ekspertami branżowymi i prototypu Cyfrowego Banku Materiałowego określa wymagania dla zautomatyzowanych procesów cyfrowych wspierających obieg zamknięty na dużą skalę."
         },
         linkText: {
           en: "Read Publication (DOI: 10.21428/71cd88bc.5d00b1e2) ↗",
