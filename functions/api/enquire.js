@@ -274,7 +274,7 @@ export async function onRequestPost(context) {
     if (!adminRes.ok) {
       const errText = await adminRes.text();
       console.error('Resend API Error (Admin Notification):', errText);
-      return new Response(JSON.stringify({ error: 'Failed to send inquiry notification email.' }), {
+      return new Response(JSON.stringify({ error: 'Failed to send inquiry notification email.', details: errText }), {
         status: 500,
         headers: corsHeaders
       });
