@@ -2685,19 +2685,35 @@ const siteData = {
     disciplines: [
       {
         title: { en: "Architectural Services", de: "Architekturdienstleistungen", pl: "Usługi Architektoniczne" },
-        desc: { en: "From major hospital infrastructure and high-speed rail landmarks to luxury Passivhaus chalets and urban bridges.", de: "Von Spitälern und Hochgeschwindigkeitsbahnhöfen bis zu Passivhaus-Residenzen und Brücken.", pl: "Od infrastruktury szpitalnej i dworców po luksusowe rezydencje pasywne i mosty." }
+        desc: {
+          en: "From concept and competition design to complex buildings and infrastructure — architecture shaped by clarity, constructability and lasting quality.",
+          de: "Vom Entwurfs- und Wettbewerbskonzept bis zu komplexen Gebäuden und Infrastrukturen – Architektur geprägt von Klarheit, Konstruierbarkeit und dauerhafter Qualität.",
+          pl: "Od koncepcji i projektów konkursowych po złożone budynki i infrastrukturę — architektura kształtowana przez klarowność, wykonalność i trwałą jakość."
+        }
       },
       {
         title: { en: "Circularity Consulting", de: "Zirkularitätsberatung", pl: "Doradztwo w zakresie cyrkularności" },
-        desc: { en: "Digital material passports, life-cycle decarbonization (LCA), and Design for Deconstruction (DfD).", de: "Digitale Materialpässe, Ökobilanzierung (LCA) und rückbaubare Konstruktionsprinzipien.", pl: "Paszporty materiałowe budynków, dekarbonizacja cyklu życia (LCA) i zasady DfD." }
+        desc: {
+          en: "From reuse strategies and material inventories to digital material banks — turning existing buildings into resources for future construction.",
+          de: "Von Wiederverwendungsstrategien und Materialinventaren bis zu digitalen Materialbanken – bestehende Gebäude als Ressourcen für das künftige Bauen nutzbar machen.",
+          pl: "Od strategii ponownego użycia i inwentaryzacji materiałowych po cyfrowe banki materiałów — przekształcanie istniejących budynków w zasoby dla przyszłego budownictwa."
+        }
       },
       {
         title: { en: "BIM & VDC Consulting", de: "BIM & VDC Beratung", pl: "Doradztwo BIM & VDC" },
-        desc: { en: "High-level information modeling, complex multidisciplinary coordination, and 4D/5D computational workflows.", de: "Hochkomplexe Fachkoordination, Modellierungsstandards und 4D/5D-Prozessoptimierung.", pl: "Zaawansowane modelowanie informacji o budynku, koordynacja międzybranżowa i procesy 4D/5D." }
+        desc: {
+          en: "From BIM strategy and coordination to automation, data workflows and quality control — making complex projects easier to manage.",
+          de: "Von der BIM-Strategie und -Koordination bis hin zu Automatisierung, Datenprozessen und Qualitätssicherung – komplexe Projekte einfacher steuerbar machen.",
+          pl: "Od strategii BIM i koordynacji po automatyzację, procedury danych i kontrolę jakości — ułatwiając zarządzanie złożonymi projektami."
+        }
       },
       {
         title: { en: "Research Cooperation", de: "Forschungskooperation", pl: "Współpraca Badawcza" },
-        desc: { en: "Academic collaborations on digital material banks, sustainable timber systems, and kinetic prototypes.", de: "Akademische Forschungsprojekte zu Materialbanken, modularem Holzbau und nachhaltigen Fassaden.", pl: "Projekty badawczo-naukowe w zakresie banków materiałów, prefabrykacji drewnianej i fasad." }
+        desc: {
+          en: "From applied research and industry pilots to interdisciplinary partnerships — translating research into practical tools, standards and real-world implementation.",
+          de: "Von angewandter Forschung und Industriepiloten bis zu interdisziplinären Partnerschaften – Forschung in praxistaugliche Werkzeuge, Standards und reale Anwendungen übersetzen.",
+          pl: "Od badań stosowanych i pilotaży branżowych po partnerstwa interdyscyplinarne — przekładając badania naukowe na praktyczne narzędzia, standardy i wdrożenia."
+        }
       }
     ]
   },
