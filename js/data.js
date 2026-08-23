@@ -438,9 +438,9 @@ const siteData = {
           pl: "2013"
         },
         typeTag: {
-          en: "Architectural Essay & Technical Monograph",
-          de: "Architekturmonografie & Fachtext",
-          pl: "Monografia Techniczna i Esej Architektoniczny"
+          en: "Architectural Essay",
+          de: "Architektur-Essay",
+          pl: "Esej Architektoniczny"
         },
         title: {
           en: "The Flame of the North. Lakhta Center, St. Petersburg",
@@ -453,9 +453,9 @@ const siteData = {
           pl: "Kwartalnik Archivolta · ISSN 1506-5928"
         },
         description: {
-          en: "Architectural and structural analysis of the Lakhta Center skyscraper, investigating complex parametric geometry, cold-climate building envelope engineering, and large-scale structural innovation.",
-          de: "Architektonische und strukturelle Analyse des Lakhta Center Hochhauses mit Fokus auf komplexe parametrische Geometrien und Kaltklima-Fassadentechnologien.",
-          pl: "Analiza architektoniczna i konstrukcyjna wieżowca Lakhta Center, badająca złożoną geometrię parametryczną, inżynierię powłok w klimacie chłodnym oraz innowacje wielkoskalowe."
+          en: "Technical architectural article examining the geometric logic of the Lakhta Center’s sculptural form and the engineering complexity of its double-skin façade, with particular focus on the optimisation of curvature, panelisation and façade geometry.",
+          de: "Technischer Architekturbeitrag über die geometrische Logik der skulpturalen Form des Lakhta Centers und die ingenieurtechnische Komplexität seiner Doppelfassade mit Fokus auf Krümmungsoptimierung, Paneelisierung und Fassadengeometrie.",
+          pl: "Techniczny artykuł architektoniczny analizujący logikę geometryczną rzeźbiarskiej formy Lakhta Center oraz złożoność inżynieryjną jego podwójnej fasady, ze szczególnym uwzględnieniem optymalizacji krzywizn, panelizacji i geometrii powłoki."
         },
         linkText: {
           en: "View on ORCID (ISSN: 1506-5928) ↗",
