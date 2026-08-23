@@ -91,11 +91,11 @@ window.WorldMapController = {
     // Filter projects
     this.lang = lang;
     const filteredProjects = projects.filter(p => {
-    this.filteredProjects = filteredProjects;
       const matchStatus = this.currentFilter === 'all' || p.type === this.currentFilter;
       const matchStudio = this.currentStudio === 'all' || p.studio === this.currentStudio;
       return matchStatus && matchStudio;
     });
+    this.filteredProjects = filteredProjects;
 
     // Studios List
     const studiosSet = new Set(projects.map(p => p.studio).filter(Boolean));
