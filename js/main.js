@@ -543,11 +543,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function handleCategoryClick(categoryKey, updateUrl = true) {
-    if (state.activeCategory === categoryKey && state.isContentOpen && !state.activeItemId) {
-      showVideoReel();
-      return;
-    }
-
     state.activeCategory = categoryKey;
     state.activeItemId = null;
 
