@@ -2607,9 +2607,9 @@ const siteData = {
   // Enquire Section
   enquire: {
     title: {
-      en: "Studio Inquiry",
-      de: "Studio-Anfrage",
-      pl: "Zapytanie Ofertowe"
+      en: "Collaboration Enquiry",
+      de: "Anfrage zur Zusammenarbeit",
+      pl: "Zapytanie o współpracę"
     },
     subtitle: {
       en: "Direct consultation for architectural commissions, circularity audits, and computational VDC strategy.",
