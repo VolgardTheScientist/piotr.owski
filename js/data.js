@@ -5,16 +5,6 @@
  */
 
 const siteData = {
-  // Brand Header Info
-  brand: {
-    name: "Piotr Piotrowski",
-    subtitle: {
-      en: "PhD, Architect & Engineer",
-      de: "Dr. sc., Architekt & Ingenieur",
-      pl: "dr inż. arch."
-    }
-  },
-
   // Navigation Labels
   nav: {
     architecture: {
@@ -2574,14 +2564,24 @@ const siteData = {
     },
     paragraphs: [
       {
-        en: "Piotr Piotrowski is an international architect, researcher, and founding director of CROPKA architects with offices in Edinburgh, Zürich, and St. Moritz. Having worked alongside globally renowned practices including Santiago Calatrava, RMJM, Schneider & Schneider, and Nickl & Partner, his practice unites Swiss precision with British spatial innovation.",
-        de: "Piotr Piotrowski ist international tätiger Architekt, Forscher und Gründer von CROPKA architects mit Standorten in Edinburgh, Zürich und St. Moritz. Nach leitenden Stationen bei Santiago Calatrava, RMJM, Schneider & Schneider und Nickl & Partner verbindet er Schweizer Präzision mit britischer Innovationskraft.",
-        pl: "Piotr Piotrowski to międzynarodowy architekt, naukowiec i współzałożyciel pracowni CROPKA architects z biurami w Edynburgu, Zurychu i St. Moritz. Doświadczenie zdobywał m.in. u Santiago Calatravy, RMJM, Schneider & Schneider oraz Nickl & Partner, łącząc szwajcarską precyzję z brytyjskim podejściem do innowacji przestrzennych."
+        en: "Piotr Piotrowski is an architect, BIM manager and researcher with more than two decades of professional experience across architecture, design technology and the built environment. His work combines architectural design with digital methods, process development and research into more sustainable ways of designing, constructing and transforming buildings.",
+        de: "Piotr Piotrowski ist Architekt, BIM-Manager und Forscher mit über zwei Jahrzehnten Berufserfahrung in Architektur, Planungstechnologie und der gebauten Umwelt. Seine Arbeit verbindet architektonischen Entwurf mit digitalen Methoden, Prozessentwicklung und Forschung zu nachhaltigeren Ansätzen des Entwerfens, Bauens und Transformierens von Gebäuden.",
+        pl: "Piotr Piotrowski jest architektem, BIM managerem i naukowcem z ponad dwudziestoletnim doświadczeniem zawodowym w architekturze, technologii projektowania oraz środowisku budowlanym. Jego praca łączy projektowanie architektoniczne z metodami cyfrowymi, rozwojem procesów oraz badaniami nad bardziej zrównoważonymi sposobami projektowania, wznoszenia i transformacji budynków."
       },
       {
-        en: "He completed his doctoral thesis at the University of Liechtenstein on 'BIM-Assisted Digital Material Banks', establishing pioneering frameworks for circular building passports, automated life-cycle decarbonization (LCA), and Design for Deconstruction (DfD).",
-        de: "Seine Promotion an der Universität Liechtenstein widmete sich dem Thema 'BIM-Assisted Digital Material Banks' zur Entwicklung zirkulärer Materialpässe, automatisierter Lebenszyklusanalysen (LCA) und dekonstruktionsgerechter Fügemethoden.",
-        pl: "Obronił doktorat na Uniwersytecie w Liechtensteinie w dziedzinie 'Cyfrowych Banków Materiałów w środowisku BIM', tworząc pionierskie modele paszportów materiałowych, analiz LCA i projektowania obiektów do demontażu (DfD)."
+        en: "His architectural experience spans projects in Switzerland, the United Kingdom, Poland and internationally, ranging from design-led architecture to large and technically complex projects. Alongside architectural practice, he has developed particular expertise in Building Information Modelling (BIM), Virtual Design and Construction (VDC), information management and the development of digital workflows that improve coordination, quality and decision-making throughout the design process.",
+        de: "Seine architektonische Erfahrung umfasst Projekte in der Schweiz, Grossbritannien, Polen und international – von designorientierter Architektur bis hin zu grossen und technisch komplexen Bauvorhaben. Neben der Architekturpraxis verfügt er über ausgewiesene Expertise in Building Information Modelling (BIM), Virtual Design and Construction (VDC), Informationsmanagement und der Entwicklung digitaler Workflows zur Optimierung von Koordination, Qualität und Entscheidungsfindung im gesamten Planungsprozess.",
+        pl: "Jego doświadczenie architektoniczne obejmuje projekty w Szwajcarii, Wielkiej Brytanii, Polsce oraz na arenie międzynarodowej – od autorskiej architektury po wielkoskalowe i technicznie złożone przedsięwzięcia. Równolegle z praktyką projektową rozwinął szczególną wiedzę w zakresie Building Information Modelling (BIM), Virtual Design and Construction (VDC), zarządzania informacją oraz tworzenia cyfrowych procedur podnoszących jakość koordynacji i procesów decyzyjnych."
+      },
+      {
+        en: "A central focus of his current work is circular construction and the reuse of building materials and components. His doctoral research at the University of Liechtenstein investigated how BIM-assisted Digital Material Banks can make information about existing buildings more accessible and support material reuse at scale. This research brings together architecture, digital technology and practical implementation, with a particular interest in low-threshold tools that can be integrated into everyday professional workflows.",
+        de: "Ein zentraler Schwerpunkt seiner aktuellen Arbeit liegt auf dem zirkulären Bauen und der Wiederverwendung von Baumaterialien und Bauteilen. Seine Doktoratsforschung an der Universität Liechtenstein untersuchte, wie BIM-gestützte digitale Materialbanken Informationen über bestehende Gebäude zugänglicher machen und die Bauteilwiederverwendung im grossen Massstab unterstützen können. Diese Forschung verbindet Architektur, digitale Technologie und praktische Umsetzung mit besonderem Fokus auf niederschwellige Werkzeuge für den beruflichen Alltag.",
+        pl: "Kluczowym obszarem jego obecnej działalności jest budownictwo cyrkularne oraz ponowne wykorzystanie materiałów i komponentów budowlanych. Jego badania doktorskie na Uniwersytecie w Liechtensteinie analizowały, jak cyfrowe banki materiałów wspierane przez BIM mogą ułatwić dostęp do informacji o istniejących budynkach i umożliwić ponowne wykorzystanie materiałów na dużą skalę. Badania te łączą architekturę, technologie cyfrowe i praktyczne wdrożenie, ze szczególnym uwzględnieniem przystępnych narzędzi integrowanych z codzienną praktyką zawodową."
+      },
+      {
+        en: "Across practice and research, his interests centre on architectural quality, digitalisation, automation, circular design and the long-term value of buildings and materials.",
+        de: "Über Praxis und Forschung hinweg konzentrieren sich seine Interessen auf architektonische Qualität, Digitalisierung, Automatisierung, zirkuläres Entwerfen und den langfristigen Wert von Gebäuden und Materialien.",
+        pl: "Zarówno w praktyce, jak i w działalności naukowej, jego zainteresowania koncentrują się na jakości architektonicznej, cyfryzacji, automatyzacji, projektowaniu cyrkularnym oraz długoterminowej wartości budynków i materiałów."
       }
     ],
     disciplines: [

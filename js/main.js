@@ -220,12 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updateStaticTranslations() {
-    const brandSub = siteData.brand?.subtitle?.[state.lang] || "PhD, Architect & Engineer";
-    const desktopSub = document.getElementById('desktopLogoSubtitle');
-    const mobileSub = document.getElementById('mobileLogoSubtitle');
-    if (desktopSub) desktopSub.textContent = brandSub;
-    if (mobileSub) mobileSub.textContent = brandSub;
-
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.dataset.i18n;
       if (siteData.ui[key] && siteData.ui[key][state.lang]) {
