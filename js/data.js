@@ -5,6 +5,16 @@
  */
 
 const siteData = {
+  // Brand Header Info
+  brand: {
+    name: "Piotr Piotrowski",
+    subtitle: {
+      en: "PhD, Architect & Engineer",
+      de: "Dr. sc., Architekt & Ingenieur",
+      pl: "dr inż. arch."
+    }
+  },
+
   // Navigation Labels
   nav: {
     architecture: {
@@ -2548,19 +2558,19 @@ const siteData = {
   // About Piotr Piotrowski - Verified credentials
   about: {
     title: {
-      en: "Piotr Piotrowski, PhD, Architect & Engineer",
-      de: "Dr. sc. Piotr Piotrowski, Architekt & Ingenieur",
-      pl: "dr inż. arch. Piotr Piotrowski"
+      en: "Piotr Piotrowski",
+      de: "Piotr Piotrowski",
+      pl: "Piotr Piotrowski"
     },
     subtitle: {
-      en: "Founder, CROPKA architects · Circularity & BIM Strategist",
-      de: "Gründer, CROPKA architects · Zirkularitäts- & BIM-Stratege",
-      pl: "Założyciel CROPKA architects · Strateg Cyrkularności i BIM"
+      en: "PhD, Architect & Engineer",
+      de: "Dr. sc., Architekt & Ingenieur",
+      pl: "dr inż. arch."
     },
     role: {
-      en: "Founder, CROPKA architects · Circularity & BIM Strategist",
-      de: "Gründer, CROPKA architects · Zirkularitäts- & BIM-Stratege",
-      pl: "Założyciel CROPKA architects · Strateg Cyrkularności i BIM"
+      en: "PhD, Architect & Engineer",
+      de: "Dr. sc., Architekt & Ingenieur",
+      pl: "dr inż. arch."
     },
     paragraphs: [
       {
