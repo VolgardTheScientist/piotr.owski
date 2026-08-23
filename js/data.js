@@ -255,9 +255,9 @@ const siteData = {
           pl: "Sie 2026"
         },
         typeTag: {
-          en: "Doctoral Research Blueprint",
-          de: "Doktorats-Forschungsrahmen",
-          pl: "Ramy Badań Doktorskich"
+          en: "doctoral thesis",
+          de: "Doktorarbeit",
+          pl: "praca doktorska"
         },
         title: {
           en: "BIM-assisted digital material banks: A design-science research blueprint for low-threshold BIM workflows enabling reuse at scale",
