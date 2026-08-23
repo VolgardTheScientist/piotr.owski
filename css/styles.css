@@ -406,7 +406,7 @@ body.theme-light .viewport-stage.content-active .hero-video {
 }
 
 .stage-body {
-  padding: 40px 16px 40px;
+  padding: calc(var(--header-height-mobile) + 24px) 20px 48px;
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
@@ -2231,6 +2231,12 @@ body.theme-light .code-column {
   font-size: 18px;
   font-weight: 400;
   color: var(--color-text);
+}
+
+@media (max-width: 991px) {
+  .stage-body:has(.about-view) {
+    padding-top: calc(var(--header-height-mobile) + 28px) !important;
+  }
 }
 
 .about-view {
