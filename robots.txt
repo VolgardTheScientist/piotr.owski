@@ -1,0 +1,5 @@
+# robots.txt for https://piotr.owski.ch/
+User-agent: *
+Allow: /
+
+Sitemap: https://piotr.owski.ch/sitemap.xml
