@@ -309,9 +309,9 @@ const siteData = {
           pl: "Bauen digital Schweiz / buildingSMART Switzerland & Uniwersytet w Liechtensteinie"
         },
         description: {
-          en: "Co-authored industry whitepaper establishing the machine-readable integration of Environmental Product Declarations (EPDs) into BIM workflows and linking them to upcoming EU Digital Product Passports (DPP) for automated lifecycle sustainability assessment.",
-          de: "Mitverfasstes Branchen-Whitepaper über die maschinenlesbare Integration von Umweltproduktdeklarationen (EPD) in BIM-Prozesse und deren Verknüpfung mit dem EU-Produktpass (DPP) zur automatisierten Nachhaltigkeitsbeurteilung über den gesamten Lebenszyklus.",
-          pl: "Współautorstwo branżowej białej księgi definiującej maszynowo czytelną integrację Deklaracji Środowiskowych (EPD) z procedurami BIM oraz powiązanie z Cyfrowym Paszportem Produktu (DPP) dla zautomatyzowanej oceny cyklu życia budynków."
+          en: "Co-authored industry whitepaper examining the Digital Product Passport (DPP) for construction products, its regulatory framework, data structure and integration with openBIM, and its role in supporting transparent, interoperable and circular construction practices.",
+          de: "Mitverfasstes Branchen-Whitepaper über den Digitalen Produktpass (DPP) für Bauprodukte, dessen regulatorischen Rahmen, Datenstruktur und Integration mit openBIM sowie seine Rolle bei der Förderung transparenter, interoperabler und zirkulärer Bauweisen.",
+          pl: "Współautorstwo branżowej białej księgi analizującej Cyfrowy Paszport Produktu (DPP) dla wyrobów budowlanych, jego ramy regulacyjne, strukturę danych i integrację z openBIM oraz jego rolę we wspieraniu przejrzystych, interoperacyjnych i cyrkularnych praktyk budowlanych."
         },
         linkText: {
           en: "Read University Announcement ↗",
