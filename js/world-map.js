@@ -89,7 +89,9 @@ window.WorldMapController = {
     const ui = siteData.ui;
 
     // Filter projects
+    this.lang = lang;
     const filteredProjects = projects.filter(p => {
+    this.filteredProjects = filteredProjects;
       const matchStatus = this.currentFilter === 'all' || p.type === this.currentFilter;
       const matchStudio = this.currentStudio === 'all' || p.studio === this.currentStudio;
       return matchStatus && matchStudio;
@@ -264,8 +266,53 @@ window.WorldMapController = {
     }
   },
 
-  renderHoverCardContent(project, lang) {
+  renderHoverCardContent(target, lang) {
     const ui = siteData.ui;
+
+    // Multi-project Cluster Card
+    if (target && target.count > 1) {
+      const projectsList = target.projects || [];
+      return `
+        <div class="hover-card-inner hover-cluster-inner">
+          <div class="hover-card-top">
+            <div class="hover-card-top-left">
+              <span class="hover-status-tag hover-cluster-tag">${target.count} ${lang === 'pl' ? 'Projekty' : (lang === 'de' ? 'Projekte' : 'Projects')}</span>
+            </div>
+            <button class="hover-card-close-btn" aria-label="Close project info">✕</button>
+          </div>
+          
+          <div class="hover-cluster-zoom-tip">
+            <span>${lang === 'pl' ? 'Kliknij punkt lub przybliż, aby rozdzielić' : (lang === 'de' ? 'Klicken oder heranzoomen zum Trennen' : 'Click pin or zoom in to separate')}</span>
+          </div>
+
+          <div class="hover-cluster-items-list">
+            ${projectsList.map(project => {
+              const statusText = siteData.statusTypes[project.type] ? siteData.statusTypes[project.type][lang] : project.type;
+              const statusClass = `badge-${project.type}`;
+              return `
+                <div class="hover-cluster-entry">
+                  <div class="hover-cluster-entry-header">
+                    <span class="hover-cluster-entry-title">${project.title[lang]}</span>
+                    <span class="hover-status-tag ${statusClass}">${statusText}</span>
+                  </div>
+                  <div class="hover-cluster-entry-meta">
+                    <span>${project.studio}</span> · <span>${project.year}</span> · <span>${project.location[lang]}</span>
+                  </div>
+                  ${project.hasInternalDetail && project.internalId ? `
+                    <button class="hover-monograph-btn hover-monograph-mini" data-category="${project.internalCategory || 'architecture'}" data-item-id="${project.internalId}">
+                      ${ui.viewProjectDetail[lang]}
+                    </button>
+                  ` : ''}
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    // Single Project Card
+    const project = target.project || target;
     const statusText = siteData.statusTypes[project.type] ? siteData.statusTypes[project.type][lang] : project.type;
     const statusClass = `badge-${project.type}`;
 
@@ -641,37 +688,203 @@ window.WorldMapController = {
   /**
    * Updates viewBox and dynamically calculates exact constant physical screen radius for all project dots
    */
+  /**
+   * Computes dynamic clusters based on physical screen distance between projects.
+   * Merges dots when screen distance < thresholdPixels (default 20px).
+   */
+  getClusters(filteredProjects, svgRect) {
+    if (!filteredProjects || filteredProjects.length === 0) return [];
+    if (!svgRect || svgRect.width <= 0) {
+      return filteredProjects.map(p => {
+        const pt = this.projectPoint(p.lng, p.lat);
+        return {
+          id: p.id,
+          x: pt.x,
+          y: pt.y,
+          count: 1,
+          projects: [p],
+          ids: [p.id]
+        };
+      });
+    }
+
+    const scaleX = svgRect.width / this.viewBox.w;
+    const scaleY = svgRect.height / this.viewBox.h;
+
+    // Physical screen distance threshold in pixels: dots within 18px merge
+    const thresholdPixels = 18;
+
+    const projected = filteredProjects.map(p => {
+      const pt = this.projectPoint(p.lng, p.lat);
+      const screenX = (pt.x - this.viewBox.x) * scaleX;
+      const screenY = (pt.y - this.viewBox.y) * scaleY;
+      return {
+        project: p,
+        svgX: pt.x,
+        svgY: pt.y,
+        screenX,
+        screenY
+      };
+    });
+
+    const clusters = [];
+    projected.forEach(item => {
+      let bestCluster = null;
+      let minDistance = Infinity;
+
+      for (const cl of clusters) {
+        const dist = Math.hypot(cl.screenX - item.screenX, cl.screenY - item.screenY);
+        if (dist < thresholdPixels && dist < minDistance) {
+          minDistance = dist;
+          bestCluster = cl;
+        }
+      }
+
+      if (bestCluster) {
+        bestCluster.projects.push(item.project);
+        bestCluster.ids.push(item.project.id);
+        bestCluster.count++;
+        // Update center of cluster
+        bestCluster.screenX = bestCluster.projects.reduce((acc, p) => {
+          const pt = this.projectPoint(p.lng, p.lat);
+          return acc + (pt.x - this.viewBox.x) * scaleX;
+        }, 0) / bestCluster.count;
+        bestCluster.screenY = bestCluster.projects.reduce((acc, p) => {
+          const pt = this.projectPoint(p.lng, p.lat);
+          return acc + (pt.y - this.viewBox.y) * scaleY;
+        }, 0) / bestCluster.count;
+        bestCluster.x = this.viewBox.x + (bestCluster.screenX / scaleX);
+        bestCluster.y = this.viewBox.y + (bestCluster.screenY / scaleY);
+      } else {
+        clusters.push({
+          id: item.project.id,
+          x: item.svgX,
+          y: item.svgY,
+          screenX: item.screenX,
+          screenY: item.screenY,
+          count: 1,
+          projects: [item.project],
+          ids: [item.project.id]
+        });
+      }
+    });
+
+    return clusters;
+  },
+
+  /**
+   * Updates viewBox and dynamically renders merged/clustered pins with count badges
+   */
   updateViewBox(svgEl, containerEl) {
     if (!svgEl) return;
     svgEl.setAttribute('viewBox', `${this.viewBox.x.toFixed(4)} ${this.viewBox.y.toFixed(4)} ${this.viewBox.w.toFixed(4)} ${this.viewBox.h.toFixed(4)}`);
 
+    const pinsLayer = svgEl.querySelector('#mapPinsLayer');
+    const hoverCard = containerEl.querySelector('#projectHoverCard');
+    const canvasContainer = containerEl.querySelector('#mapCanvasContainer') || containerEl;
+    if (!pinsLayer) return;
+
     const svgRect = svgEl.getBoundingClientRect();
-    if (svgRect.width > 0 && svgRect.height > 0) {
-      // In SVG with preserveAspectRatio="xMidYMid slice", the effective rendering scale
-      // in screen pixels per 1 SVG coordinate unit is Math.max(scaleX, scaleY).
-      const scaleX = svgRect.width / this.viewBox.w;
-      const scaleY = svgRect.height / this.viewBox.h;
-      const pixelsPerSvgUnit = Math.max(scaleX, scaleY);
+    if (svgRect.width <= 0 || svgRect.height <= 0) return;
 
-      // Constant physical CSS pixel dimensions across ALL zoom levels & region presets:
-      // Core dot: radius = 3.2px (diameter 6.4px)
-      // Halo ring: radius = 6.0px (diameter 12px)
-      // Hitbox: radius = 14px (diameter 28px)
-      const rDotSvg = 3.2 / pixelsPerSvgUnit;
-      const rHaloSvg = 6.0 / pixelsPerSvgUnit;
-      const rHitboxSvg = 14.0 / pixelsPerSvgUnit;
+    const scaleX = svgRect.width / this.viewBox.w;
+    const scaleY = svgRect.height / this.viewBox.h;
+    const pixelsPerSvgUnit = Math.max(scaleX, scaleY);
 
-      const dots = svgEl.querySelectorAll('.pin-dot');
-      dots.forEach(d => d.setAttribute('r', rDotSvg.toFixed(5)));
+    const projects = this.filteredProjects || siteData.cvProjects || [];
+    const clusters = this.getClusters(projects, svgRect);
+    const lang = this.lang || 'en';
 
-      const halos = svgEl.querySelectorAll('.pin-halo-ring');
-      halos.forEach(h => {
-        h.setAttribute('r', rHaloSvg.toFixed(5));
+    pinsLayer.innerHTML = clusters.map(cl => {
+      const isCluster = cl.count > 1;
+      const isSelected = cl.ids.includes(this.activeProjectId);
+
+      const rDotSvg = (isCluster ? 3.8 : 3.2) / pixelsPerSvgUnit;
+      const rHaloSvg = (isCluster ? 7.5 : 6.0) / pixelsPerSvgUnit;
+      const rHitboxSvg = (isCluster ? 18.0 : 14.0) / pixelsPerSvgUnit;
+
+      const badgeOffsetX = 6.5 / pixelsPerSvgUnit;
+      const badgeOffsetY = -6.5 / pixelsPerSvgUnit;
+      const rBadgeBg = 5.2 / pixelsPerSvgUnit;
+      const badgeFontSize = 7.5 / pixelsPerSvgUnit;
+
+      return `
+        <g class="map-pin-node ${isCluster ? 'map-pin-cluster' : ''} ${isSelected ? 'is-active' : ''}" 
+           data-cluster-ids="${cl.ids.join(',')}"
+           data-project-id="${cl.projects[0].id}"
+           data-is-cluster="${isCluster ? 'true' : 'false'}"
+           data-svg-x="${cl.x.toFixed(4)}"
+           data-svg-y="${cl.y.toFixed(4)}"
+           transform="translate(${cl.x.toFixed(4)}, ${cl.y.toFixed(4)})"
+           tabindex="0"
+           role="button">
+          
+          <!-- Hitbox -->
+          <circle class="pin-hitbox" r="${rHitboxSvg.toFixed(5)}" />
+          
+          <!-- Outer Halo Ring -->
+          <circle class="pin-halo-ring ${isCluster ? 'pin-cluster-halo' : ''}" r="${rHaloSvg.toFixed(5)}" />
+          
+          <!-- Core Solid Dot -->
+          <circle class="pin-dot ${isCluster ? 'pin-cluster-dot' : ''}" r="${rDotSvg.toFixed(5)}" />
+
+          <!-- Tiny Count Badge (Top-Right of Dot) -->
+          ${isCluster ? `
+            <g class="cluster-badge-group" transform="translate(${badgeOffsetX.toFixed(5)}, ${badgeOffsetY.toFixed(5)})">
+              <circle class="cluster-badge-bg" r="${rBadgeBg.toFixed(5)}" />
+              <text class="cluster-badge-text" font-size="${badgeFontSize.toFixed(5)}" text-anchor="middle" dominant-baseline="central">${cl.count}</text>
+            </g>
+          ` : ''}
+        </g>
+      `;
+    }).join('');
+
+    // Bind event listeners on pins
+    const pinNodes = pinsLayer.querySelectorAll('.map-pin-node');
+    pinNodes.forEach(pin => {
+      const clusterIds = (pin.dataset.clusterIds || pin.dataset.projectId || '').split(',');
+      const isCluster = pin.dataset.isCluster === 'true';
+      const cluster = clusters.find(cl => cl.ids.join(',') === clusterIds.join(',')) || {
+        projects: (siteData.cvProjects || []).filter(p => clusterIds.includes(p.id)),
+        x: parseFloat(pin.dataset.svgX || 0),
+        y: parseFloat(pin.dataset.svgY || 0),
+        count: clusterIds.length
+      };
+
+      if (!cluster.projects || !cluster.projects.length) return;
+
+      pin.addEventListener('mouseenter', () => {
+        clearTimeout(this.tooltipTimeout);
+        this.activeProjectId = cluster.projects[0].id;
+        this.showHoverCard(hoverCard, canvasContainer, pin, isCluster ? cluster : cluster.projects[0], lang);
       });
 
-      const hitboxes = svgEl.querySelectorAll('.pin-hitbox');
-      hitboxes.forEach(hb => hb.setAttribute('r', rHitboxSvg.toFixed(5)));
-    }
+      pin.addEventListener('mouseleave', () => {
+        this.tooltipTimeout = setTimeout(() => {
+          if (!hoverCard.matches(':hover')) {
+            this.hideHoverCard(hoverCard);
+          }
+        }, 200);
+      });
+
+      pin.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (isCluster) {
+          // Smoothly zoom in centered on cluster to separate the dots
+          const canvasRect = canvasContainer.getBoundingClientRect();
+          const containerAspect = Math.max(0.2, canvasRect.width / canvasRect.height);
+          const zoomTargetW = Math.max(0.4, this.viewBox.w * 0.45);
+          const zoomTargetH = zoomTargetW / containerAspect;
+          const targetX = Math.max(0, Math.min(1000 - zoomTargetW, cluster.x - zoomTargetW / 2));
+          const targetY = Math.max(8, Math.min(425 - zoomTargetH, cluster.y - zoomTargetH / 2));
+
+          this.animateViewBoxTo(svgEl, containerEl, { x: targetX, y: targetY, w: zoomTargetW, h: zoomTargetH }, 600);
+        } else {
+          this.activeProjectId = cluster.projects[0].id;
+          this.showHoverCard(hoverCard, canvasContainer, pin, cluster.projects[0], lang);
+        }
+      });
+    });
   },
 
   stepZoom(svgEl, containerEl, factor) {
