@@ -266,7 +266,7 @@ window.WorldMapController = {
     }
   },
 
-  renderHoverCardContent(target, lang) {
+  renderHoverCardContent(target, lang, isFromCluster = false) {
     const ui = siteData.ui;
 
     // Multi-project Cluster Card
@@ -282,7 +282,7 @@ window.WorldMapController = {
           </div>
           
           <div class="hover-cluster-zoom-tip">
-            <span>${lang === 'pl' ? 'Kliknij punkt lub przybliż, aby rozdzielić' : (lang === 'de' ? 'Klicken oder heranzoomen zum Trennen' : 'Click pin or zoom in to separate')}</span>
+            <span>${lang === 'pl' ? 'Wybierz projekt poniżej lub przybliż mapę' : (lang === 'de' ? 'Projekt auswählen oder heranzoomen' : 'Select a project below or zoom into map')}</span>
           </div>
 
           <div class="hover-cluster-items-list">
@@ -290,18 +290,20 @@ window.WorldMapController = {
               const statusText = siteData.statusTypes[project.type] ? siteData.statusTypes[project.type][lang] : project.type;
               const statusClass = `badge-${project.type}`;
               return `
-                <div class="hover-cluster-entry">
+                <div class="hover-cluster-entry" data-project-id="${project.id}" role="button" tabindex="0" title="${project.title[lang]}">
                   <div class="hover-cluster-entry-header">
                     <span class="hover-cluster-entry-title">${project.title[lang]}</span>
-                    <span class="hover-status-tag ${statusClass}">${statusText}</span>
+                    <span class="hover-cluster-entry-arrow">›</span>
                   </div>
                   <div class="hover-cluster-entry-meta">
-                    <span>${project.studio}</span> · <span>${project.year}</span> · <span>${project.location[lang]}</span>
+                    <span class="hover-status-tag ${statusClass}">${statusText}</span>
+                    <span>${project.studio}</span> · <span>${project.year}</span>
                   </div>
-                  ${project.hasInternalDetail && project.internalId ? `
-                    <button class="hover-monograph-btn hover-monograph-mini" data-category="${project.internalCategory || 'architecture'}" data-item-id="${project.internalId}">
-                      ${ui.viewProjectDetail[lang]}
-                    </button>
+                  ${project.scale ? `
+                    <div class="hover-cluster-entry-scale">${project.scale}</div>
+                  ` : ''}
+                  ${project.awards ? `
+                    <div class="hover-cluster-awards-preview">🏆 ${project.awards}</div>
                   ` : ''}
                 </div>
               `;
@@ -337,10 +339,17 @@ window.WorldMapController = {
       `;
     }
 
+    const backLabel = lang === 'pl' ? 'Wróć' : (lang === 'de' ? 'Zurück' : 'Back');
+
     return `
       <div class="hover-card-inner">
         <div class="hover-card-top">
           <div class="hover-card-top-left">
+            ${isFromCluster ? `
+              <button class="hover-back-to-cluster-btn" aria-label="Back to combined projects list">
+                <span class="back-arrow">←</span> <span>${backLabel}</span>
+              </button>
+            ` : ''}
             <span class="hover-status-tag ${statusClass}">${statusText}</span>
             <span class="hover-year">${project.year}</span>
           </div>
@@ -640,6 +649,28 @@ window.WorldMapController = {
       if (closeBtn) {
         e.stopPropagation();
         this.hideHoverCard(hoverCard);
+        return;
+      }
+
+      const backBtn = e.target.closest('.hover-back-to-cluster-btn');
+      if (backBtn) {
+        e.stopPropagation();
+        const clusterToRestore = this.currentCluster || this.lastActiveCluster;
+        if (clusterToRestore) {
+          this.showHoverCard(hoverCard, canvasContainer, this.currentPinEl, clusterToRestore, lang, false);
+        }
+        return;
+      }
+
+      const clusterEntry = e.target.closest('.hover-cluster-entry');
+      if (clusterEntry && !e.target.closest('.hover-monograph-btn') && !e.target.closest('a')) {
+        e.stopPropagation();
+        const projId = clusterEntry.dataset.projectId;
+        const project = (siteData.cvProjects || []).find(p => p.id === projId);
+        if (project) {
+          this.currentCluster = this.currentCluster || this.lastActiveCluster;
+          this.showHoverCard(hoverCard, canvasContainer, this.currentPinEl, project, lang, true);
+        }
         return;
       }
 
@@ -950,9 +981,16 @@ window.WorldMapController = {
     this.animHandle = requestAnimationFrame(step);
   },
 
-  showHoverCard(hoverCard, canvasContainer, pinEl, project, lang) {
-    hoverCard.innerHTML = this.renderHoverCardContent(project, lang);
-    hoverCard.dataset.activePin = project.id;
+  showHoverCard(hoverCard, canvasContainer, pinEl, target, lang, isFromCluster = false) {
+    if (target && target.count > 1) {
+      this.currentCluster = target;
+      this.lastActiveCluster = target;
+    } else if (!isFromCluster) {
+      this.currentCluster = null;
+    }
+
+    hoverCard.innerHTML = this.renderHoverCardContent(target, lang, isFromCluster);
+    hoverCard.dataset.activePin = target.id || (target.projects && target.projects[0].id) || '';
     this.currentPinEl = pinEl;
 
     this.positionHoverCard(hoverCard, canvasContainer, pinEl);
