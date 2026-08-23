@@ -2548,19 +2548,19 @@ const siteData = {
   // About Piotr Piotrowski - Verified credentials
   about: {
     title: {
-      en: "Piotr Piotrowski",
-      de: "Piotr Piotrowski",
-      pl: "Piotr Piotrowski"
+      en: "Piotr Piotrowski, PhD, Architect & Engineer",
+      de: "Dr. sc. Piotr Piotrowski, Architekt & Ingenieur",
+      pl: "dr inż. arch. Piotr Piotrowski"
     },
     subtitle: {
-      en: "Architect | Circularity & BIM Strategist | Founder, CROPKA architects",
-      de: "Architekt | Zirkularitäts- & BIM-Stratege | Gründer, CROPKA architects",
-      pl: "Architekt IARP | Strateg Cyrkularności i BIM | Założyciel CROPKA architects"
+      en: "Founder, CROPKA architects · Circularity & BIM Strategist",
+      de: "Gründer, CROPKA architects · Zirkularitäts- & BIM-Stratege",
+      pl: "Założyciel CROPKA architects · Strateg Cyrkularności i BIM"
     },
     role: {
-      en: "PhD (Uni.li) | M.Arch | Member of SIA (CH), ARB (UK), IARP (PL)",
-      de: "Dr. sc. (Uni.li) | M.Arch | Mitglied SIA (CH), ARB (UK), IARP (PL)",
-      pl: "Dr inż. arch. (Uni.li) | Członek SIA (CH), ARB (UK), IARP (PL)"
+      en: "Founder, CROPKA architects · Circularity & BIM Strategist",
+      de: "Gründer, CROPKA architects · Zirkularitäts- & BIM-Stratege",
+      pl: "Założyciel CROPKA architects · Strateg Cyrkularności i BIM"
     },
     paragraphs: [
       {
