@@ -100,7 +100,18 @@ export async function onRequestPost(context) {
 
     // 4. Client Metadata from Cloudflare Headers
     const clientCountry = request.headers.get('cf-ipcountry') || 'Unknown';
-    const submissionTime = new Date().toUTCString();
+    const submissionTime = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Europe/Zurich',
+      weekday: 'short',
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+      timeZoneName: 'short'
+    }).format(new Date()) + ' (Swiss Time)';
 
     // 5. HTML Template: Notification to Piotr
     const adminHtml = `
