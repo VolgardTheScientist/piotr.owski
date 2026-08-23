@@ -1282,139 +1282,122 @@ const siteData = {
   },
 
   // ==========================================================================
-  // COMPREHENSIVE CV & CROPKA GEOLOCATED PROJECTS DATABASE
-  // Exact Site Geocodes for Sub-City Level Resolution
+  // COMPREHENSIVE CV & CROPKA GEOLOCATED PROJECTS DATABASE (61 Projects from Official Register)
   // ==========================================================================
   cvProjects: [
-    // --- Schneider & Schneider (Aarau, Switzerland) ---
     {
-      id: "schneider-theodor-kocher",
+      id: "p01-schneider-schneider-theodor-kocher-",
       title: {
-        en: "Theodor Kocher Haus, Inselspital Bern",
-        de: "Theodor Kocher Haus, Inselspital Bern",
-        pl: "Theodor Kocher Haus, Inselspital Bern"
+        en: "Theodor Kocher Haus, Inselspital",
+        de: "Theodor Kocher Haus, Inselspital",
+        pl: "Theodor Kocher Haus, Inselspital"
       },
-      year: "2015–...",
-      type: "in_progress",
+      year: "2015",
+      type: "realisation",
       studio: "Schneider & Schneider",
-      studioUrl: "https://schneiderschneider.ch/projects/organzentrum-inselspital-bern/",
+      studioUrl: "https://schneiderschneider.ch/projects/organzentrum-inselspital-bern-2/",
       location: {
         en: "Bern, Switzerland",
         de: "Bern, Schweiz",
-        pl: "Berno, Szwajcaria"
+        pl: "Bern, Szwajcaria"
       },
-      lat: 46.9472,
-      lng: 7.4230,
-      scale: "CHF 270.0M · 30,600 m²",
-      typology: {
-        en: "New Women’s Clinic & Organ Center (Minergie P-Eco)",
-        de: "Frauenklinik und Organzentrum (Minergie P-Eco)",
-        pl: "Klinika Kobiet i Centrum Organów (Minergie P-Eco)"
-      },
-      role: {
-        en: "Project Lead, BIM Manager, Site Supervision & Tendering",
-        de: "Projektleitung, Ausschreibung & Realisierung, BIM-Management",
-        pl: "Kierownik Projektu, BIM Manager, Nadzór Budowlany"
-      }
+      lat: 46.948,
+      lng: 7.4474,
+      scale: "30.600m2"
+
     },
     {
-      id: "schneider-zwischenbau-insel",
+      id: "p02-schneider-schneider-zwischenbau-ins",
       title: {
-        en: "Zwischenbau UKRO, Inselspital Bern",
-        de: "Zwischenbau, Inselspital Bern",
-        pl: "Zwischenbau UKRO, Inselspital Bern"
+        en: "Zwischenbau, Inselspital",
+        de: "Zwischenbau, Inselspital",
+        pl: "Zwischenbau, Inselspital"
       },
-      year: "2018–2020",
+      year: "2018",
       type: "realisation",
       studio: "Schneider & Schneider",
-      studioUrl: "https://schneiderschneider.ch/projects/rechtsmedizin-und-klinische-forschung-bern/",
+      studioUrl: "https://schneiderschneider.ch/projects/organzentrum-inselspital-bern-2/",
       location: {
         en: "Bern, Switzerland",
         de: "Bern, Schweiz",
-        pl: "Berno, Szwajcaria"
+        pl: "Bern, Szwajcaria"
       },
-      lat: 46.9505,
-      lng: 7.4265,
-      scale: "CHF 80.0M · 3,250 m²",
-      typology: {
-        en: "Underground University Clinic for Radio-Oncology",
-        de: "Unterirdisches Gebäude für Radio-Onkologie (UKRO)",
-        pl: "Podziemny budynek Kliniki Radioonkologii (UKRO)"
-      },
-      role: {
-        en: "Project Lead, Tendering & Construction Supervision",
-        de: "Projektleitung — Ausschreibung und Realisierung, Bauaufsicht",
-        pl: "Kierownik Projektu — Przetargi, Realizacja i Nadzór"
-      }
+      lat: 46.948,
+      lng: 7.4474,
+      scale: "3.250m2"
+
     },
     {
-      id: "schneider-burger-holding",
+      id: "p03-schneider-schneider-corporate-headq",
       title: {
-        en: "Burger Holding AG Headquarters",
-        de: "Hauptsitz Burger Holding AG",
-        pl: "Siedziba Główna Burger Holding AG"
+        en: "Corporate Headquartes",
+        de: "Corporate Headquartes",
+        pl: "Corporate Headquartes"
       },
-      year: "2019–2020",
+      year: "2019",
       type: "realisation",
       studio: "Schneider & Schneider",
-      studioUrl: "https://schneiderschneider.ch/projects/verwaltungsgebaude-wagasa-zollikhofen/",
+      studioUrl: "https://schneiderschneider.ch/projects/ausbau-bueroetage/",
       location: {
         en: "Rotkreuz, Switzerland",
         de: "Rotkreuz, Schweiz",
         pl: "Rotkreuz, Szwajcaria"
       },
-      lat: 47.1417,
+      lat: 47.1415,
       lng: 8.4312,
-      scale: "Corporate Campus",
-      typology: {
-        en: "Corporate Headquarters & Administration",
-        de: "Unternehmenszentrale & Verwaltungsbau",
-        pl: "Centrala korporacyjna i biura"
-      },
-      role: {
-        en: "Project Leadership",
-        de: "Projektleitung",
-        pl: "Prowadzenie projektu"
-      }
+      scale: ""
+
     },
     {
-      id: "schneider-hirslanden-aarau",
+      id: "p04-schneider-schneider-neubau-schachen",
       title: {
-        en: "Hirslanden Klinik Aarau — Neubau Schachenallee",
-        de: "Neubau Schachenallee, Hirslanden Klinik Aarau",
-        pl: "Hirslanden Klinik Aarau — Schachenallee"
+        en: "Neubau Schachenallee Hirslanden Klinik Aarau",
+        de: "Neubau Schachenallee Hirslanden Klinik Aarau",
+        pl: "Neubau Schachenallee Hirslanden Klinik Aarau"
       },
-      year: "2018–...",
+      year: "2018",
       type: "in_progress",
       studio: "Schneider & Schneider",
-      studioUrl: "https://schneiderschneider.ch/projects/hirslanden-klinik-aarau-neubau-schachenallee/",
+      studioUrl: "https://schneiderschneider.ch/projects/hirslanden-klinik-aarau-neubau-schachenallee-2/",
       location: {
         en: "Aarau, Switzerland",
         de: "Aarau, Schweiz",
         pl: "Aarau, Szwajcaria"
       },
-      lat: 47.3980,
-      lng: 8.0375,
-      scale: "Healthcare Facility",
-      typology: {
-        en: "Hospital Wing & Medical Extension",
-        de: "Klinikneubau & Medizintechnik",
-        pl: "Skrzydło szpitalne i medyczne"
-      },
-      role: {
-        en: "BIM Management & Coordination",
-        de: "BIM-Management",
-        pl: "Zarządzanie BIM i koordynacja"
-      }
+      lat: 47.3925,
+      lng: 8.0442,
+      scale: ""
+
     },
     {
-      id: "schneider-ksa-aarau",
+      id: "p05-schneider-schneider-ambulantes-vers",
       title: {
-        en: "Kantonsspital Aarau (KSA)",
-        de: "Kantonsspital Aarau (KSA)",
-        pl: "Szpital Kantonalny Aarau (KSA)"
+        en: "Ambulantes Versorgungszentrum Plus (AVZ+)",
+        de: "Ambulantes Versorgungszentrum Plus (AVZ+)",
+        pl: "Ambulantes Versorgungszentrum Plus (AVZ+)"
       },
-      year: "2018–2019",
+      year: "2018",
+      type: "competition",
+      studio: "Schneider & Schneider",
+      studioUrl: "https://schneiderschneider.ch/",
+      location: {
+        en: "Appenzell Innerrhoden, Switzerland",
+        de: "Appenzell Innerrhoden, Schweiz",
+        pl: "Appenzell Innerrhoden, Szwajcaria"
+      },
+      lat: 47.3314,
+      lng: 9.4093,
+      scale: ""
+
+    },
+    {
+      id: "p06-schneider-schneider-kantonsspital-a",
+      title: {
+        en: "Kantonsspital Aarau",
+        de: "Kantonsspital Aarau",
+        pl: "Kantonsspital Aarau"
+      },
+      year: "2018",
       type: "competition",
       studio: "Schneider & Schneider",
       studioUrl: "https://schneiderschneider.ch/projects/kantonsspital-aarau/",
@@ -1423,58 +1406,19 @@ const siteData = {
         de: "Aarau, Schweiz",
         pl: "Aarau, Szwajcaria"
       },
-      lat: 47.3870,
-      lng: 8.0510,
-      scale: "Masterplan Stage 2",
-      typology: {
-        en: "Hospital Logistics & Expansion Masterplan",
-        de: "Wettbewerb, 2. Etappe, Logistikplanung & BIM",
-        pl: "Konkurs, etap 2, logistyka szpitalna i BIM"
-      },
-      role: {
-        en: "Competition Team & Logistics BIM Planning",
-        de: "Wettbewerbsteam & Logistikkoordination",
-        pl: "Projekt konkursowy i koordynacja BIM"
-      }
+      lat: 47.3925,
+      lng: 8.0442,
+      scale: ""
+
     },
     {
-      id: "schneider-avz-appenzell",
+      id: "p07-schneider-schneider-kantonsspital-f",
       title: {
-        en: "Ambulantes Versorgungszentrum Plus (AVZ+)",
-        de: "Ambulantes Versorgungszentrum Plus (AVZ+)",
-        pl: "Centrum Opieki Ambulatoryjnej AVZ+ Appenzell"
+        en: "Kantonsspital Frauenfeld Projekt HORIZONT",
+        de: "Kantonsspital Frauenfeld Projekt HORIZONT",
+        pl: "Kantonsspital Frauenfeld Projekt HORIZONT"
       },
-      year: "2018–...",
-      type: "in_progress",
-      studio: "Schneider & Schneider",
-      studioUrl: "https://schneiderschneider.ch/projects/kantonales-spital-appenzell/",
-      location: {
-        en: "Appenzell Innerrhoden, Switzerland",
-        de: "Appenzell Innerrhoden, Schweiz",
-        pl: "Appenzell Innerrhoden, Szwajcaria"
-      },
-      lat: 47.3312,
-      lng: 9.4093,
-      scale: "Regional Healthcare Center",
-      typology: {
-        en: "Outpatient Medical & Healthcare Hub",
-        de: "Ambulatorium & Gesundheitszentrum",
-        pl: "Ośrodek leczenia ambulatoryjnego"
-      },
-      role: {
-        en: "BIM Management",
-        de: "BIM-Management",
-        pl: "Zarządzanie procesem BIM"
-      }
-    },
-    {
-      id: "schneider-frauenfeld",
-      title: {
-        en: "Kantonsspital Frauenfeld — Projekt HORIZONT",
-        de: "Kantonsspital Frauenfeld, Projekt HORIZONT",
-        pl: "Szpital Kantonalny Frauenfeld — Projekt HORIZONT"
-      },
-      year: "2018–2019",
+      year: "2018",
       type: "realisation",
       studio: "Schneider & Schneider",
       studioUrl: "https://schneiderschneider.ch/projects/kantonsspital-frauenfeld-projekt-horizont/",
@@ -1483,62 +1427,189 @@ const siteData = {
         de: "Frauenfeld, Schweiz",
         pl: "Frauenfeld, Szwajcaria"
       },
-      lat: 47.5583,
-      lng: 8.8988,
-      scale: "Hospital Infrastructure",
-      typology: {
-        en: "Major Hospital Modernization",
-        de: "Klinikerweiterung & Detaillierte Türplanung",
-        pl: "Modernizacja i infrastruktura szpitalna"
-      },
-      role: {
-        en: "Specialist Door & Access Planning",
-        de: "Spezialisierte Tür- und Schleusenplanung",
-        pl: "Projektowanie śluz i systemów drzwiowych"
-      }
-    },
+      lat: 47.5574,
+      lng: 8.8989,
+      scale: ""
 
-    // --- Nickl & Partner (Zürich, Switzerland) ---
+    },
     {
-      id: "nickl-baden-agnes",
+      id: "p08-schneider-schneider-future-liebegg",
       title: {
-        en: "Kantonsspital Baden — Projekt Agnes",
-        de: "Kantonsspital Baden, Projekt Agnes",
-        pl: "Szpital Kantonalny Baden — Projekt Agnes"
+        en: "Future Liebegg",
+        de: "Future Liebegg",
+        pl: "Future Liebegg"
       },
-      year: "2016–2023",
+      year: "2024",
+      type: "in_progress",
+      studio: "Schneider & Schneider",
+      studioUrl: "https://schneiderschneider.ch/projects/landwirtschaftliches-zentrum-future-liebegg-campus/",
+      location: {
+        en: "Gränichen, Switzerland",
+        de: "Gränichen, Schweiz",
+        pl: "Gränichen, Szwajcaria"
+      },
+      lat: 47.3597,
+      lng: 8.0997,
+      scale: ""
+
+    },
+    {
+      id: "p09-schneider-schneider-kantonsspital-s",
+      title: {
+        en: "Kantonsspital St. Gallen (Haus 08)",
+        de: "Kantonsspital St. Gallen (Haus 08)",
+        pl: "Kantonsspital St. Gallen (Haus 08)"
+      },
+      year: "2023",
+      type: "in_progress",
+      studio: "Schneider & Schneider",
+      studioUrl: "https://schneiderschneider.ch/projects/erweiterung-kantonsspital-st-gallen-haus-08p/",
+      location: {
+        en: "St. Gallen, Switzerland",
+        de: "St. Gallen, Schweiz",
+        pl: "St. Gallen, Szwajcaria"
+      },
+      lat: 47.4245,
+      lng: 9.3767,
+      scale: ""
+
+    },
+    {
+      id: "p10-schneider-schneider-interventionsze",
+      title: {
+        en: "Interventionszentrum Zoll St. Margrethen",
+        de: "Interventionszentrum Zoll St. Margrethen",
+        pl: "Interventionszentrum Zoll St. Margrethen"
+      },
+      year: "2020",
+      type: "in_progress",
+      studio: "Schneider & Schneider",
+      studioUrl: "https://schneiderschneider.ch/projects/zollgebaeude-st-margrethen/",
+      location: {
+        en: "St. Margrethen, Switzerland",
+        de: "St. Margrethen, Schweiz",
+        pl: "St. Margrethen, Szwajcaria"
+      },
+      lat: 47.4539,
+      lng: 9.6322,
+      scale: ""
+
+    },
+    {
+      id: "p11-schneider-schneider-nordbau-aeschba",
+      title: {
+        en: "Nordbau Aeschbachquartier",
+        de: "Nordbau Aeschbachquartier",
+        pl: "Nordbau Aeschbachquartier"
+      },
+      year: "2020",
+      type: "in_progress",
+      studio: "Schneider & Schneider",
+      studioUrl: "https://schneiderschneider.ch/projects/umbau-nordbau-aarau/",
+      location: {
+        en: "Aarau, Switzerland",
+        de: "Aarau, Schweiz",
+        pl: "Aarau, Szwajcaria"
+      },
+      lat: 47.3925,
+      lng: 8.0442,
+      scale: ""
+
+    },
+    {
+      id: "p12-schneider-schneider-bahnhofsareal-b",
+      title: {
+        en: "Bahnhofsareal Bremgarten",
+        de: "Bahnhofsareal Bremgarten",
+        pl: "Bahnhofsareal Bremgarten"
+      },
+      year: "2020",
+      type: "in_progress",
+      studio: "Schneider & Schneider",
+      studioUrl: "https://schneiderschneider.ch/projects/bahnhofsareal-bremgarten-2/",
+      location: {
+        en: "Bremgarten, Switzerland",
+        de: "Bremgarten, Schweiz",
+        pl: "Bremgarten, Szwajcaria"
+      },
+      lat: 47.3512,
+      lng: 8.3397,
+      scale: ""
+
+    },
+    {
+      id: "p13-schneider-schneider-aarreha-zofinge",
+      title: {
+        en: "aarReha Zofingen Überbauung",
+        de: "aarReha Zofingen Überbauung",
+        pl: "aarReha Zofingen Überbauung"
+      },
+      year: "2025",
+      type: "in_progress",
+      studio: "Schneider & Schneider",
+      studioUrl: "https://schneiderschneider.ch/",
+      location: {
+        en: "Zofingen, Switzerland",
+        de: "Zofingen, Schweiz",
+        pl: "Zofingen, Szwajcaria"
+      },
+      lat: 47.2882,
+      lng: 7.9452,
+      scale: ""
+
+    },
+    {
+      id: "p14-nickl-partner-kantonsspital-baden-p",
+      title: {
+        en: "Kantonsspital Baden Projekt Agnes",
+        de: "Kantonsspital Baden Projekt Agnes",
+        pl: "Kantonsspital Baden Projekt Agnes"
+      },
+      year: "2016",
       type: "realisation",
       studio: "Nickl & Partner",
-      studioUrl: "https://www.nickl-partner.com/projekte/kantonsspital-baden-agnes/",
+      studioUrl: "https://www.nickl-partner.com/projekte/kantonsspital-baden/",
       location: {
         en: "Baden, Switzerland",
         de: "Baden, Schweiz",
         pl: "Baden, Szwajcaria"
       },
-      lat: 47.4737,
+      lat: 47.4736,
       lng: 8.3087,
-      scale: "CHF 478.0M · 76,215 m²",
-      typology: {
-        en: "New Central Cantonal Hospital Complex",
-        de: "Zentraler Spitalneubau & Operationszentrum",
-        pl: "Nowy centralny kompleks szpitalny i sale operacyjne"
-      },
-      role: {
-        en: "Project Lead Architecture Team, Client Representation & Scheduling",
-        de: "Projektleitung Architektenteam, Vertretung ggü. Bauherrschaft, Terminplanung",
-        pl: "Kierownik Zespołu Architektów, Reprezentant Inwestora, Harmonogramowanie"
-      }
-    },
+      scale: "76.215m2 / CHF 478M"
+,
+      awards: "World Architecture Festival (WAF) Award 2025, \nHealing Architecture Award 2025, \nEuropean Healthcare Design Award 2025"
 
-    // --- ProjX (Champfèr / St. Moritz, Switzerland) ---
+    },
     {
-      id: "projx-badrutts-palace",
+      id: "p15-projx-luxury-private-apartment",
       title: {
-        en: "Badrutt's Palace Hotel Renovation",
-        de: "Umbau Badrutt's Palace Hotel",
-        pl: "Modernizacja Hotelu Badrutt's Palace"
+        en: "Luxury private apartment",
+        de: "Luxury private apartment",
+        pl: "Luxury private apartment"
       },
-      year: "2013–2015",
+      year: "2013",
+      type: "realisation",
+      studio: "ProjX",
+      studioUrl: "https://www.projx.ch/realizations/privatwohnung-im-luxussegment/",
+      location: {
+        en: "St. Moritz, Switzerland",
+        de: "St. Moritz, Schweiz",
+        pl: "St. Moritz, Szwajcaria"
+      },
+      lat: 46.4908,
+      lng: 9.8355,
+      scale: ""
+
+    },
+    {
+      id: "p16-projx-refurbishment-of-badrutt-s-pa",
+      title: {
+        en: "Refurbishment of Badrutt's Palace Hotel",
+        de: "Refurbishment of Badrutt's Palace Hotel",
+        pl: "Refurbishment of Badrutt's Palace Hotel"
+      },
+      year: "2014",
       type: "realisation",
       studio: "ProjX",
       studioUrl: "https://badruttspalace.com/",
@@ -1547,296 +1618,170 @@ const siteData = {
         de: "St. Moritz, Schweiz",
         pl: "St. Moritz, Szwajcaria"
       },
-      lat: 46.4983,
-      lng: 9.8394,
-      scale: "5-Star Luxury Heritage Hotel",
-      typology: {
-        en: "Historic Grand Hotel Luxury Reconfiguration",
-        de: "Umbau & Neugestaltung des Luxushotels",
-        pl: "Modernizacja historycznego hotelu 5-gwiazdkowego"
-      },
-      role: {
-        en: "Project Lead & Client Representative",
-        de: "Projektmanagement & Bauherrenvertreter",
-        pl: "Zarządzanie projektem i reprezentacja inwestora"
-      }
-    },
-    {
-      id: "projx-champfer-villas",
-      title: {
-        en: "Luxury Alpine Residences Engadin",
-        de: "Luxus-Wohnprojekte Engadin",
-        pl: "Luksusowe Rezydencje Alpejskie w Engadynie"
-      },
-      year: "2013–2015",
-      type: "realisation",
-      studio: "ProjX",
-      studioUrl: "https://badruttspalace.com/",
-      location: {
-        en: "Champfèr / St. Moritz, Switzerland",
-        de: "Champfèr / St. Moritz, Schweiz",
-        pl: "Champfèr / St. Moritz, Szwajcaria"
-      },
-      lat: 46.4789,
-      lng: 9.8136,
-      scale: "High-End Residential",
-      typology: {
-        en: "Exclusive Alpine Chalets & Private Villas",
-        de: "Exklusive Chalets & Luxusresidenzen",
-        pl: "Ekskluzywne rezydencje i wille alpejskie"
-      },
-      role: {
-        en: "Project Management, Lead & Site Supervision",
-        de: "Projektleitung und Bauleitung von Luxus-Wohnprojekten",
-        pl: "Prowadzenie projektu i nadzór budowlany"
-      }
-    },
+      lat: 46.4908,
+      lng: 9.8355,
+      scale: ""
 
-    // --- Santiago Calatrava (Zürich, Switzerland) ---
+    },
     {
-      id: "calatrava-mons-station",
+      id: "p17-santiago-calatrava-reggio-emilia-st",
       title: {
-        en: "Mons Central Railway Station (Gare de Mons)",
-        de: "Hauptbahnhof Mons, Belgien",
-        pl: "Dworzec Główny w Mons (Gare de Mons)"
+        en: "Reggio Emilia Stazione Mediopadana",
+        de: "Reggio Emilia Stazione Mediopadana",
+        pl: "Reggio Emilia Stazione Mediopadana"
       },
-      year: "2011–2013",
+      year: "2012",
       type: "realisation",
       studio: "Santiago Calatrava",
-      studioUrl: "https://calatrava.com/news/reader/gare-de-mons-by-santiago-calatrava.html",
+      studioUrl: "https://calatrava.com/projects/reggio-emilia-stazione-mediopadana-reggio-emilia.html",
+      location: {
+        en: "Reggio Emilia, Italy",
+        de: "Reggio Emilia, Italien",
+        pl: "Reggio Emilia, Włochy"
+      },
+      lat: 44.6983,
+      lng: 10.6306,
+      scale: "€80M"
+,
+      awards: "ECCS European Steel Design Award 2009"
+
+    },
+    {
+      id: "p18-santiago-calatrava-aerospace-museum",
+      title: {
+        en: "Aerospace Museum",
+        de: "Aerospace Museum",
+        pl: "Aerospace Museum"
+      },
+      year: "2012",
+      type: "competition",
+      studio: "Santiago Calatrava",
+      studioUrl: "",
+      location: {
+        en: "Doha, Qatar",
+        de: "Doha, Qatar",
+        pl: "Doha, Qatar"
+      },
+      lat: 25.2854,
+      lng: 51.531,
+      scale: "64,000 m²"
+
+    },
+    {
+      id: "p19-santiago-calatrava-margaret-hunt-hi",
+      title: {
+        en: "Margaret Hunt Hill Bridge",
+        de: "Margaret Hunt Hill Bridge",
+        pl: "Margaret Hunt Hill Bridge"
+      },
+      year: "2011",
+      type: "realisation",
+      studio: "Santiago Calatrava",
+      studioUrl: "https://calatrava.com/projects/margaret-hunt-hill-bridge.html",
+      location: {
+        en: "Dallas, United States",
+        de: "Dallas, USA",
+        pl: "Dallas, USA"
+      },
+      lat: 32.7767,
+      lng: -96.797,
+      scale: "Lenght: 358m Span: 184m"
+,
+      awards: "ECCS European Award for Steel Bridges 2012"
+
+    },
+    {
+      id: "p20-santiago-calatrava-train-station",
+      title: {
+        en: "Train station",
+        de: "Train station",
+        pl: "Train station"
+      },
+      year: "2011",
+      type: "realisation",
+      studio: "Santiago Calatrava",
+      studioUrl: "https://calatrava.ch/projects/gare-de-mons-mons.html",
       location: {
         en: "Mons, Belgium",
-        de: "Mons, Belgien",
-        pl: "Mons, Belgia"
+        de: "Mons, Belgium",
+        pl: "Mons, Belgium"
       },
       lat: 50.4542,
       lng: 3.9567,
-      scale: "€ 130.0 Million",
-      typology: {
-        en: "High-Speed Rail Hub & Landmark Footbridge for European Capital of Culture",
-        de: "Neuer Hauptbahnhof für Mons ‒ Europäische Kulturhauptstadt 2015",
-        pl: "Węzeł kolejowy dużej prędkości na Europejską Stolicę Kultury"
-      },
-      role: {
-        en: "Architect & Team Lead — Building Envelope, Glazing, Lifts & MEP Coordination",
-        de: "Teamleitung — Gebäudehülle, Verglasung, Aufzüge, Koordinierung HLKSE",
-        pl: "Architekt i Lider Zespołu — Fasady, Przeszklenia, Windy i Koordynacja MEP"
-      }
-    },
+      scale: "€130M"
+,
+      awards: "Prix Versailles 2025"
 
-    // --- RMJM (Edinburgh, Scotland / Global) ---
-    {
-      id: "rmjm-royal-museum",
-      title: {
-        en: "Royal Museum (National Museum of Scotland) Renovation",
-        de: "Royal Museum, Renovierung des Nationalmuseums",
-        pl: "Muzeum Królewskie (National Museum of Scotland) Rewitalizacja"
-      },
-      year: "2005",
-      type: "realisation",
-      studio: "RMJM",
-      studioUrl: "https://rmjm.com/",
-      location: {
-        en: "Chambers St, Old Town, Edinburgh, UK",
-        de: "Edinburgh Old Town, Grossbritannien",
-        pl: "Edynburg, Stare Miasto, Szkocja"
-      },
-      lat: 55.9469,
-      lng: -3.1892,
-      scale: "National Heritage Landmark",
-      typology: {
-        en: "Victorian Museum Hall & Circulation Transformation",
-        de: "Renovierung und Erschliessung des historischen Museums",
-        pl: "Rewitalizacja wiktoriańskiego gmachu muzealnego"
-      },
-      role: {
-        en: "Exhibition Space & Heritage Renovation Planning",
-        de: "Bestandsaufnahme & Detailplanung",
-        pl: "Projektowanie przestrzeni ekspozycyjnych"
-      }
     },
     {
-      id: "rmjm-tron-kirk",
+      id: "p21-rmjm-napier-university-sighthill-ca",
       title: {
-        en: "Tron Kirk Historic Church Tourism & Heritage Centre",
-        de: "Tron Kirk, Anpassung der historischen Kirche zum Infozentrum",
-        pl: "Kościół Tron Kirk — Centrum Informacji i Turystyki"
+        en: "Napier University Sighthill Campus",
+        de: "Napier University Sighthill Campus",
+        pl: "Napier University Sighthill Campus"
       },
-      year: "2006",
+      year: "2008",
       type: "realisation",
       studio: "RMJM",
-      studioUrl: "https://rmjm.com/",
+      studioUrl: "https://www.architectsjournal.co.uk/archive/rmjms-60-million-napier-uni-scheme-opens-doors",
       location: {
-        en: "Royal Mile / High St, Edinburgh, UK",
-        de: "Edinburgh Royal Mile, Grossbritannien",
-        pl: "Edynburg, Royal Mile, Szkocja"
-      },
-      lat: 55.9500,
-      lng: -3.1878,
-      scale: "Royal Mile Heritage Asset",
-      typology: {
-        en: "17th-Century Church Adaptation into Cultural Visitor Hub",
-        de: "Umnutzung der historischen Kirche an der Royal Mile",
-        pl: "Adaptacja XVII-wiecznego kościoła przy Royal Mile"
-      },
-      role: {
-        en: "Conservation Architecture & Exhibition Detailing",
-        de: "Denkmalgerechte Umnutzungsplanung",
-        pl: "Projekt adaptacji konserwatorskiej"
-      }
-    },
-    {
-      id: "rmjm-kings-stables",
-      title: {
-        en: "King's Stables Road Mixed-Use Masterplan",
-        de: "Kingʼs Stables Road Wohn-Einkaufs-Büroobjekt",
-        pl: "King's Stables Road Zespół Wielofunkcyjny"
-      },
-      year: "2005",
-      type: "competition",
-      studio: "RMJM",
-      studioUrl: "https://rmjm.com/",
-      location: {
-        en: "Grassmarket / King's Stables Rd, Edinburgh, UK",
+        en: "Edinburgh, United Kingdom",
         de: "Edinburgh, Grossbritannien",
-        pl: "Edynburg, Szkocja, UK"
+        pl: "Edinburgh, Wielka Brytania"
       },
-      lat: 55.9472,
-      lng: -3.2014,
-      scale: "Old Town Masterplan",
-      typology: {
-        en: "Residential, Retail & Commercial Urban Quarter",
-        de: "Wohn- und Geschäftsquartier unterhalb des Castle Rock",
-        pl: "Koncepcja kwartału mieszkaniowo-usługowego"
-      },
-      role: {
-        en: "Urban Concept & Volumetric Studies",
-        de: "Städtebauliche Konzeptentwicklung",
-        pl: "Studium urbanistyczne i kompozycja brył"
-      }
+      lat: 55.9533,
+      lng: -3.1883,
+      scale: "24.428m2 / £48M"
+,
+      awards: "2011 RIBA Awards (Shortlisted)"
+
     },
     {
-      id: "rmjm-bells-brae",
+      id: "p22-rmjm-jewel-esk-valley-college",
       title: {
-        en: "Bells Brae 6 & 10 Commercial Conversion",
-        de: "Bells Brae 6 & 10, Umbau Büroobjekte",
-        pl: "Bells Brae 6 & 10, Adaptacja Biurowa"
+        en: "Jewel & Esk Valley College",
+        de: "Jewel & Esk Valley College",
+        pl: "Jewel & Esk Valley College"
       },
-      year: "2010–2011",
+      year: "2007",
       type: "realisation",
       studio: "RMJM",
-      studioUrl: "https://rmjm.com/",
+      studioUrl: "https://rmjm.com/portfolio/jewel-esk-college/",
       location: {
-        en: "Dean Village, Edinburgh, UK",
-        de: "Edinburgh Dean Village, Grossbritannien",
-        pl: "Edynburg Dean Village, Szkocja"
+        en: "Edinburgh and Dalkeith, United Kingdom",
+        de: "Edinburgh and Dalkeith, Grossbritannien",
+        pl: "Edinburgh and Dalkeith, Wielka Brytania"
       },
-      lat: 55.9520,
-      lng: -3.2167,
-      scale: "Dean Village Historic Context",
-      typology: {
-        en: "Commercial Office Refurbishment & Adaptive Reuse",
-        de: "Umbau und Modernisierung denkmalgeschützter Büroflächen",
-        pl: "Modernizacja i adaptacja zabytkowych biur"
-      },
-      role: {
-        en: "Lead Architect & Technical Delivery",
-        de: "Projektarchitekt",
-        pl: "Architekt prowadzący"
-      }
+      lat: 55.92,
+      lng: -3.1,
+      scale: "£52M"
+
     },
     {
-      id: "rmjm-napier-university",
-      title: {
-        en: "Edinburgh Napier University (Sighthill Campus)",
-        de: "Napier University, Edinburgh",
-        pl: "Edinburgh Napier University (Kampus Sighthill)"
-      },
-      year: "2008–2010",
-      type: "realisation",
-      studio: "RMJM",
-      studioUrl: "https://rmjm.com/",
-      location: {
-        en: "Sighthill, Bankhead Ave, Edinburgh, UK",
-        de: "Edinburgh Sighthill, Grossbritannien",
-        pl: "Edynburg Sighthill, Szkocja, UK"
-      },
-      lat: 55.9248,
-      lng: -3.2885,
-      scale: "£ 48.0M · 24,428 m² · BREEAM",
-      typology: {
-        en: "University Campus Academic & Health Sciences Hub",
-        de: "Neuer Campus für Napier University ‒ Neubauten & BREEAM",
-        pl: "Nowy kampus uniwersytecki i budynki wydziałowe"
-      },
-      role: {
-        en: "Architect — MEP Coordination, Tendering, Executive Detailing & Site Supervision",
-        de: "Architekt — Ausführungsplanung, HLKSE-Koordination, BREEAM & Bauaufsicht",
-        pl: "Architekt — Dokumentacja wykonawcza, przetargi, certyfikacja BREEAM i nadzór"
-      }
-    },
-    {
-      id: "rmjm-jewel-esk-college",
-      title: {
-        en: "Jewel & Esk Valley College (JEVC Campuses)",
-        de: "Jewel & Esk Valley College, Edinburgh & Dalkeith",
-        pl: "Jewel & Esk Valley College (Kampusy Edinburgh i Midlothian)"
-      },
-      year: "2007–2008",
-      type: "realisation",
-      studio: "RMJM",
-      studioUrl: "https://rmjm.com/",
-      location: {
-        en: "Milton Road / Dalkeith, UK",
-        de: "Edinburgh & Dalkeith, Grossbritannien",
-        pl: "Edynburg i Dalkeith, UK"
-      },
-      lat: 55.9410,
-      lng: -3.1110,
-      scale: "£ 52.0 Million",
-      typology: {
-        en: "Higher Education Campuses in Edinburgh & Midlothian",
-        de: "Neue Campus-Bauten für JEVC College",
-        pl: "Nowoczesne kampusy edukacyjne i laboratoria"
-      },
-      role: {
-        en: "Planning Documentation, Structural Coordination & Site Inspections",
-        de: "Baugenehmigungsplanung, Koordinierung mit Statikern, Bauaufsicht",
-        pl: "Dokumentacja do pozwolenia na budowę, koordynacja konstrukcyjna"
-      }
-    },
-    {
-      id: "rmjm-doncaster-arena",
+      id: "p23-rmjm-doncaster-bloodstock-sales-are",
       title: {
         en: "Doncaster Bloodstock Sales Arena",
         de: "Doncaster Bloodstock Sales Arena",
         pl: "Doncaster Bloodstock Sales Arena"
       },
-      year: "2006–2008",
+      year: "2006",
       type: "realisation",
       studio: "RMJM",
-      studioUrl: "https://rmjm.com/",
+      studioUrl: "https://rmjm.com/portfolio/doncaster-bloodstock-complex/",
       location: {
-        en: "Doncaster, England, UK",
+        en: "Doncaster, United Kingdom",
         de: "Doncaster, Grossbritannien",
-        pl: "Doncaster, Anglia, UK"
+        pl: "Doncaster, Wielka Brytania"
       },
       lat: 53.5228,
-      lng: -1.1285,
-      scale: "£ 5.5 Million · Scottish Design Award",
-      typology: {
-        en: "Thoroughbred Bloodstock Auction Complex & Grandstand",
-        de: "Prestigeträchtiger Auktionskomplex für Rennpferde",
-        pl: "Prestiżowy kompleks aukcyjny koni wyścigowych"
-      },
-      role: {
-        en: "Executive Detailing, Engineering Coordination & Site Oversight",
-        de: "Ausführungsplanung, Koordination mit Fachingenieuren, Bauaufsicht",
-        pl: "Projekt wykonawczy, koordynacja inżynierska i nadzór budowy"
-      }
+      lng: -1.1288,
+      scale: "1.790m2 / £5.5M"
+,
+      awards: "2010 Scottish Design Awards Commendation"
+
     },
     {
-      id: "rmjm-newcastle-rye-hill",
+      id: "p24-rmjm-newcastle-college-rye-hill-hou",
       title: {
         en: "Newcastle College Rye Hill House",
         de: "Newcastle College Rye Hill House",
@@ -1845,703 +1790,851 @@ const siteData = {
       year: "2006",
       type: "realisation",
       studio: "RMJM",
-      studioUrl: "https://rmjm.com/",
+      studioUrl: "https://rmjm.com/portfolio/rye-hill-house/",
       location: {
-        en: "Newcastle upon Tyne, UK",
+        en: "Newcastle, United Kingdom",
         de: "Newcastle, Grossbritannien",
-        pl: "Newcastle upon Tyne, UK"
+        pl: "Newcastle, Wielka Brytania"
       },
-      lat: 54.9667,
-      lng: -1.6250,
-      scale: "£ 5.2M · 3,300 m² · Lord Mayor's Award",
-      typology: {
-        en: "Adaptive Reuse & Modern Extension to Heritage Asset",
-        de: "Moderner Ausbau des historischen Objekts",
-        pl: "Nowoczesna rozbudowa obiektu zabytkowego"
-      },
-      role: {
-        en: "Executive Planning & Site Quality Inspections",
-        de: "Ausführungsplanung und Baustelleninspektionen",
-        pl: "Projekt wykonawczy i inspekcje budowlane"
-      }
+      lat: 54.9783,
+      lng: -1.6178,
+      scale: "3.300m2 / £5.2M"
+,
+      awards: "2007 Commendations from the local Lord Mayor"
+
     },
     {
-      id: "rmjm-noga-bahrain",
+      id: "p25-rmjm-pyramids-business-park",
       title: {
-        en: "NOGA Headquarters Skyscraper",
-        de: "NOGA Wolkenkratzer (LEED Gold)",
-        pl: "Wieżowiec Centrali NOGA (LEED Gold)"
+        en: "Pyramids Business Park",
+        de: "Pyramids Business Park",
+        pl: "Pyramids Business Park"
+      },
+      year: "2005",
+      type: "realisation",
+      studio: "RMJM",
+      studioUrl: "",
+      location: {
+        en: "Bathgate, United Kingdom",
+        de: "Bathgate, Grossbritannien",
+        pl: "Bathgate, Wielka Brytania"
+      },
+      lat: 55.9027,
+      lng: -3.642,
+      scale: "4.058m2 / £1.25M"
+
+    },
+    {
+      id: "p26-rmjm-syetun-housing-estate",
+      title: {
+        en: "Syetun Housing Estate",
+        de: "Syetun Housing Estate",
+        pl: "Syetun Housing Estate"
+      },
+      year: "2005",
+      type: "competition",
+      studio: "RMJM",
+      studioUrl: "",
+      location: {
+        en: "Moscow, Russia",
+        de: "Moscow, Russia",
+        pl: "Moscow, Russia"
+      },
+      lat: 55.7558,
+      lng: 37.6173,
+      scale: ""
+,
+      awards: "2006 1st prize in an international housing competition, \nARX AWARDS 2007 - best tall building in Russia"
+
+    },
+    {
+      id: "p27-rmjm-national-oil-and-gas-authority",
+      title: {
+        en: "National Oil and Gas Authority HQ",
+        de: "National Oil and Gas Authority HQ",
+        pl: "National Oil and Gas Authority HQ"
       },
       year: "2011",
       type: "competition",
       studio: "RMJM",
-      studioUrl: "https://rmjm.com/",
+      studioUrl: "https://www.tjeg.com/portfolio/noga-headquaters/",
       location: {
-        en: "Manama, Bahrain",
-        de: "Manama, Bahrain",
-        pl: "Manama, Bahrajn"
+        en: "Bahrain",
+        de: "Bahrain",
+        pl: "Bahrain"
       },
       lat: 26.2285,
-      lng: 50.5860,
-      scale: "High-Rise Tower · LEED Gold",
-      typology: {
-        en: "National Oil & Gas Authority Headquarters Skyscraper",
-        de: "Nachhaltiger Wolkenkratzer-Entwurf",
-        pl: "Wieżowiec korporacyjny ze standardem LEED Gold"
-      },
-      role: {
-        en: "Parametric Facade & High-Rise Concept Architecture",
-        de: "Fassaden- und Hochhauskonzeption",
-        pl: "Koncepcja architektoniczna i fasady wieżowca"
-      }
+      lng: 50.586,
+      scale: ""
+
     },
     {
-      id: "rmjm-avia-park",
+      id: "p28-rmjm-bells-brae-6-office-refurbishm",
       title: {
-        en: "Avia Park Commercial & Retail Center",
-        de: "Avia Park Einkaufszentrum",
-        pl: "Centrum Handlowo-Usługowe Avia Park"
+        en: "Bells Brae 6 office refurbishment",
+        de: "Bells Brae 6 office refurbishment",
+        pl: "Bells Brae 6 office refurbishment"
       },
-      year: "2005",
+      year: "2011",
       type: "realisation",
       studio: "RMJM",
-      studioUrl: "https://rmjm.com/",
+      studioUrl: "",
+      location: {
+        en: "Bells Brae 6, Edinburgh, United Kingdom",
+        de: "Bells Brae 6, Edinburgh, Grossbritannien",
+        pl: "Bells Brae 6, Edinburgh, Wielka Brytania"
+      },
+      lat: 55.9515,
+      lng: -3.216,
+      scale: ""
+
+    },
+    {
+      id: "p29-rmjm-bells-brae-10-office-refurbish",
+      title: {
+        en: "Bells Brae 10 office refurbishment",
+        de: "Bells Brae 10 office refurbishment",
+        pl: "Bells Brae 10 office refurbishment"
+      },
+      year: "2010",
+      type: "realisation",
+      studio: "RMJM",
+      studioUrl: "",
+      location: {
+        en: "Bells Brae 10, Edinburgh, United Kingdom",
+        de: "Bells Brae 10, Edinburgh, Grossbritannien",
+        pl: "Bells Brae 10, Edinburgh, Wielka Brytania"
+      },
+      lat: 55.9517,
+      lng: -3.2165,
+      scale: ""
+
+    },
+    {
+      id: "p30-rmjm-avia-park-shopping-centre",
+      title: {
+        en: "Avia Park Shopping Centre",
+        de: "Avia Park Shopping Centre",
+        pl: "Avia Park Shopping Centre"
+      },
+      year: "2005",
+      type: "competition",
+      studio: "RMJM",
+      studioUrl: "",
       location: {
         en: "Moscow, Russia",
-        de: "Moskau, Russland",
-        pl: "Moskwa, Rosja"
+        de: "Moscow, Russia",
+        pl: "Moscow, Russia"
       },
-      lat: 55.7903,
-      lng: 37.5314,
-      scale: "Mega-Scale Retail Hub",
-      typology: {
-        en: "Major Commercial & Lifestyle Destination",
-        de: "Großflächiges Einkaufs- und Freizeitzentrum",
-        pl: "Wielkopowierzchniowe centrum handlowo-rozrywkowe"
-      },
-      role: {
-        en: "Retail Planning & Spatial Strategy",
-        de: "Entwurfsplanung und Erschließungskonzept",
-        pl: "Koncepcja układu przestrzennego i komunikacji"
-      }
+      lat: 55.7558,
+      lng: 37.6173,
+      scale: ""
+
     },
     {
-      id: "rmjm-moscow-city-tower",
+      id: "p31-rmjm-evolution-tower",
       title: {
-        en: "Moscow City Business Centre Skyscraper",
-        de: "Moscow City Business Centre Wolkenkratzer",
-        pl: "Wieżowiec Moscow City Business Centre"
+        en: "Evolution Tower",
+        de: "Evolution Tower",
+        pl: "Evolution Tower"
+      },
+      year: "2005",
+      type: "realisation",
+      studio: "RMJM",
+      studioUrl: "https://en.wikipedia.org/wiki/Evolution_Tower",
+      location: {
+        en: "Moscow, Russia",
+        de: "Moscow, Russia",
+        pl: "Moscow, Russia"
+      },
+      lat: 55.7558,
+      lng: 37.6173,
+      scale: "169.000m2 / 55 storey"
+,
+      awards: "Emporis Skyscraper Award 2015 (2nd place),\nGlass in Architecture 2015 (Grand Prix),\nNOPRIZ Awards Competition 2015 (First Prize),\nCRE Award Moscow 2016 (best class A office building),\nCity Authorities Award 2014 (Moscow's best multi-use building)"
+
+    },
+    {
+      id: "p32-rmjm-king-s-stables-road-developmen",
+      title: {
+        en: "King's Stables Road Development",
+        de: "King's Stables Road Development",
+        pl: "King's Stables Road Development"
       },
       year: "2005",
       type: "competition",
       studio: "RMJM",
-      studioUrl: "https://rmjm.com/",
+      studioUrl: "",
       location: {
-        en: "Moscow City, Russia",
-        de: "Moskau City, Russland",
-        pl: "Moskwa City, Rosja"
+        en: "King's Stables Road, Edinburgh, United Kingdom",
+        de: "King's Stables Road, Edinburgh, Grossbritannien",
+        pl: "King's Stables Road, Edinburgh, Wielka Brytania"
       },
-      lat: 55.7494,
-      lng: 37.5370,
-      scale: "Super-Tall Skyscraper",
-      typology: {
-        en: "High-Rise Commercial & Financial Center Concept",
-        de: "Wolkenkratzerkonzeption im Finanzdistrikt",
-        pl: "Koncepcja wieżowca biurowego w centrum finansowym"
-      },
-      role: {
-        en: "Tower Geometry & Structural Concept",
-        de: "Turmgeometrie & Vorentwurf",
-        pl: "Geometria wieży i koncepcja strukturalna"
-      }
+      lat: 55.9472,
+      lng: -3.201,
+      scale: ""
+
     },
     {
-      id: "rmjm-syetun",
+      id: "p33-rmjm-royal-museum-refurbishment",
       title: {
-        en: "Syetun Residential Settlement",
-        de: "Syetun Wohnsiedlung",
-        pl: "Osiedle Mieszkaniowe Syetun"
+        en: "Royal Museum refurbishment",
+        de: "Royal Museum refurbishment",
+        pl: "Royal Museum refurbishment"
       },
       year: "2005",
+      type: "realisation",
+      studio: "RMJM",
+      studioUrl: "",
+      location: {
+        en: "Edinburgh, United Kingdom",
+        de: "Edinburgh, Grossbritannien",
+        pl: "Edinburgh, Wielka Brytania"
+      },
+      lat: 55.9533,
+      lng: -3.1883,
+      scale: ""
+
+    },
+    {
+      id: "p34-rmjm-tron-kirk-conversion",
+      title: {
+        en: "Tron Kirk conversion",
+        de: "Tron Kirk conversion",
+        pl: "Tron Kirk conversion"
+      },
+      year: "2006",
       type: "competition",
       studio: "RMJM",
-      studioUrl: "https://rmjm.com/",
-      location: {
-        en: "Setun River, Moscow, Russia",
-        de: "Moskau, Russland",
-        pl: "Moskwa, Rosja"
-      },
-      lat: 55.7200,
-      lng: 37.4500,
-      scale: "Residential Quarter",
-      typology: {
-        en: "Masterplanned Riverside Housing Community",
-        de: "Städtebauliche Konzeption für Wohnquartier",
-        pl: "Koncepcja osiedla mieszkaniowego nad rzeką"
-      },
-      role: {
-        en: "Masterplan Layout & Typology Design",
-        de: "Städtebaulicher Entwurf",
-        pl: "Projekt urbanistyczny i typologia mieszkań"
-      }
-    },
-    {
-      id: "rmjm-pyramids-park",
-      title: {
-        en: "Pyramids Business Park Factory Conversion",
-        de: "Pyramids Business Park, Fabrikumbau",
-        pl: "Pyramids Business Park — Konwersja Fabryki"
-      },
-      year: "2005–2006",
-      type: "realisation",
-      studio: "RMJM",
-      studioUrl: "https://rmjm.com/",
-      location: {
-        en: "Bathgate, West Lothian, Scotland, UK",
-        de: "Bathgate, Grossbritannien",
-        pl: "Bathgate, Szkocja, UK"
-      },
-      lat: 55.8970,
-      lng: -3.6150,
-      scale: "Industrial Adaptive Reuse",
-      typology: {
-        en: "High-Tech Manufacturing Plant to Modern Office Campus",
-        de: "Fabrikumbau zu modernem Technologie- und Bürozentrum",
-        pl: "Adaptacja zakładu produkcyjnego na park biurowy"
-      },
-      role: {
-        en: "Envelope Refurbishment & Interior Workspace Planning",
-        de: "Fassaden- und Innenausbauplanung",
-        pl: "Projekt rewitalizacji elewacji i wnętrz"
-      }
-    },
-
-    // --- Trevor Black Architects (Highlands, Scotland) ---
-    {
-      id: "trevor-black-highland",
-      title: {
-        en: "Highland Residential & Conservation Projects",
-        de: "Wohn- und Denkmalprojekte Highlands",
-        pl: "Rezydencje i Obiekty Zabytkowe w Highlands"
-      },
-      year: "2004–2005",
-      type: "realisation",
-      studio: "Trevor Black Architects",
       studioUrl: "",
       location: {
-        en: "Invergordon / Scottish Highlands, UK",
-        de: "Invergordon, Schottland",
-        pl: "Invergordon / Highlands, Szkocja"
+        en: "Edinburgh, United Kingdom",
+        de: "Edinburgh, Grossbritannien",
+        pl: "Edinburgh, Wielka Brytania"
       },
-      lat: 57.6900,
-      lng: -4.1700,
-      scale: "Vernacular Architecture",
-      typology: {
-        en: "Highland Vernacular Dwellings & Historic Restorations",
-        de: "Traditionelle Wohnbauten & Denkmalrestaurierung",
-        pl: "Tradycyjne domy szkockie i renowacje zabytków"
-      },
-      role: {
-        en: "Assistant Architect",
-        de: "Assistant Architekt",
-        pl: "Asystent Architekta"
-      }
-    },
+      lat: 55.9533,
+      lng: -3.1883,
+      scale: ""
 
-    // --- Studio Barańska – Bernardi (Wrocław, Poland) ---
+    },
     {
-      id: "baranska-wroclaw",
+      id: "p35-cropka-augusta-raurica",
       title: {
-        en: "Wrocław Commercial & Residential Architecture",
-        de: "Wrocław Gewerbe- und Wohnbauten",
-        pl: "Obiekty Komercyjne i Mieszkaniowe we Wrocławiu"
+        en: "Augusta Raurica",
+        de: "Augusta Raurica",
+        pl: "Augusta Raurica"
       },
-      year: "2003",
-      type: "realisation",
-      studio: "Studio Barańska – Bernardi",
+      year: "2014",
+      type: "competition",
+      studio: "CROPKA",
       studioUrl: "",
       location: {
-        en: "Wrocław, Poland",
-        de: "Breslau, Polen",
-        pl: "Wrocław, Polska"
+        en: "Basel Land, Switzerland",
+        de: "Basel Land, Schweiz",
+        pl: "Basel Land, Szwajcaria"
       },
-      lat: 51.1079,
-      lng: 17.0385,
-      scale: "Urban Architecture",
-      typology: {
-        en: "Urban Infill & Commercial Interiors",
-        de: "Gewerbeobjekte und Innenausbau",
-        pl: "Architektura miejska i wnętrza komercyjne"
-      },
-      role: {
-        en: "Assistant Architect",
-        de: "Assistant Architekt",
-        pl: "Asystent Architekta"
-      }
-    },
+      lat: 47.5333,
+      lng: 7.7208,
+      scale: "7'253 m2"
+,
+      hasInternalDetail: true,
+      internalId: "augusta-raurica",
+      internalCategory: "architecture"
 
-    // --- CROPKA architects (Edinburgh / Zürich / St. Moritz) ---
-    {
-      id: "cropka-taguy",
-      title: {
-        en: "Residence Le Taguy",
-        de: "Residenz Le Taguy",
-        pl: "Apartament Le Taguy"
-      },
-      year: "2021",
-      type: "realisation",
-      studio: "CROPKA architects",
-      studioUrl: "https://cropka.com/projects-list/54-le-taguy/",
-      location: {
-        en: "Saint-Gervais Mont-Blanc, France",
-        de: "Saint-Gervais Mont-Blanc, Frankreich",
-        pl: "Saint-Gervais Mont-Blanc, Francja"
-      },
-      lat: 45.8920,
-      lng: 6.7120,
-      scale: "24 m² Micro-Apartment",
-      typology: {
-        en: "Luxury Micro-Living & Alpine Bespoke Joinery",
-        de: "Alpines Luxus-Mikroapartment",
-        pl: "Luksusowe mikro-wnętrze alpejskie"
-      },
-      role: {
-        en: "Founding Partner / Lead Architect",
-        de: "Partner / Gesamtplanung",
-        pl: "Główny Architekt / Partner"
-      },
-      hasInternalDetail: true,
-      internalId: "le-taguy-chamonix",
-      internalCategory: "architecture"
     },
     {
-      id: "cropka-lomnica",
+      id: "p36-cropka-baileyfield-hotel-concept-st",
       title: {
-        en: "House in Łomnica",
-        de: "Haus in Łomnica",
-        pl: "Dom w Łomnicy"
+        en: "Baileyfield Hotel concept study",
+        de: "Baileyfield Hotel concept study",
+        pl: "Baileyfield Hotel concept study"
       },
-      year: "2019",
-      type: "realisation",
-      studio: "CROPKA architects",
-      studioUrl: "https://cropka.com/projects-list/55-mys/",
+      year: "2011",
+      type: "competition",
+      studio: "CROPKA",
+      studioUrl: "",
       location: {
-        en: "Łomnica, Giant Mountains, Poland",
-        de: "Łomnica, Riesengebirge, Polen",
-        pl: "Łomnica, Karkonosze, Polska"
+        en: "Edinburgh, United Kingdom",
+        de: "Edinburgh, Grossbritannien",
+        pl: "Edinburgh, Wielka Brytania"
       },
-      lat: 50.8750,
-      lng: 15.8050,
-      scale: "295 m² · Passivhaus",
-      typology: {
-        en: "Passivhaus Mountain Residence in Shou-Sugi-Ban Charred Wood",
-        de: "Passivhaus mit verkohlter Holzfassade",
-        pl: "Rezydencja pasywna z opalanego drewna"
-      },
-      role: {
-        en: "Founding Partner / Lead Architect",
-        de: "Partner / Gesamtplanung",
-        pl: "Główny Architekt / Partner"
-      },
-      hasInternalDetail: true,
-      internalId: "house-in-lomnica",
-      internalCategory: "architecture"
+      lat: 55.9533,
+      lng: -3.1883,
+      scale: "9'838 m2"
+
     },
     {
-      id: "cropka-spylaw",
+      id: "p37-cropka-bridge-over-vistula-river",
       title: {
-        en: "Spylaw Park Residence",
-        de: "Residenz Spylaw Park",
-        pl: "Dom w Spylaw Park"
-      },
-      year: "2015",
-      type: "realisation",
-      studio: "CROPKA architects",
-      studioUrl: "https://cropka.com/projects-list/42-spylaw-house/",
-      location: {
-        en: "Colinton, Edinburgh, Scotland, UK",
-        de: "Edinburgh Colinton, Grossbritannien",
-        pl: "Edynburg Colinton, Szkocja, UK"
-      },
-      lat: 55.9080,
-      lng: -3.2620,
-      scale: "173 m²",
-      typology: {
-        en: "Inward Courtyard Private House with Black Zinc & Turf Roof",
-        de: "Atrium-Wohnhaus mit Zinkkröpfung und Gründach",
-        pl: "Dom atrialny z czarnym cynkiem i dachem darniowym"
-      },
-      role: {
-        en: "Partner / Concept & Technical Delivery",
-        de: "Partner / Gesamtplanung",
-        pl: "Główny Architekt / Partner"
-      },
-      hasInternalDetail: true,
-      internalId: "spylaw-park-house",
-      internalCategory: "architecture"
-    },
-    {
-      id: "cropka-gillian",
-      title: {
-        en: "Gillian Kit-Home",
-        de: "Gillian Modulhaus",
-        pl: "Dom Modułowy Gillian"
-      },
-      year: "2020",
-      type: "realisation",
-      studio: "CROPKA architects",
-      studioUrl: "https://cropka.com/projects-list/44-kit-homes-gillian/",
-      location: {
-        en: "United Kingdom / Switzerland",
-        de: "Grossbritannien / Schweiz",
-        pl: "Wielka Brytania / Szwajcaria"
-      },
-      lat: 55.9585,
-      lng: -3.1950,
-      scale: "60 m² Prefabricated System",
-      typology: {
-        en: "Sustainable Modular Kit-Home System",
-        de: "Nachhaltiges Holzmodulhaus",
-        pl: "Ekologiczny dom modułowy"
-      },
-      role: {
-        en: "Partner / System Design",
-        de: "Partner / Systementwicklung",
-        pl: "Główny Architekt / Partner"
-      },
-      hasInternalDetail: true,
-      internalId: "gillian-kit-home",
-      internalCategory: "architecture"
-    },
-    {
-      id: "cropka-uallas",
-      title: {
-        en: "Uallas Kit-Home",
-        de: "Uallas Modulhaus",
-        pl: "Dom Modułowy Uallas"
-      },
-      year: "2020",
-      type: "realisation",
-      studio: "CROPKA architects",
-      studioUrl: "https://cropka.com/projects-list/43-kit-homes-uallas/",
-      location: {
-        en: "United Kingdom / Switzerland",
-        de: "Grossbritannien / Schweiz",
-        pl: "Wielka Brytania / Szwajcaria"
-      },
-      lat: 55.9380,
-      lng: -3.2200,
-      scale: "170 m² Modular Eco-Residence",
-      typology: {
-        en: "Flexible Family Modular Eco-Residence",
-        de: "Modulares Familien-Ökohaus",
-        pl: "Rodzinny modułowy dom ekologiczny"
-      },
-      role: {
-        en: "Partner / System Design",
-        de: "Partner / Systementwicklung",
-        pl: "Główny Architekt / Partner"
-      },
-      hasInternalDetail: true,
-      internalId: "uallas-kit-home",
-      internalCategory: "architecture"
-    },
-    {
-      id: "cropka-vst-bridge",
-      title: {
-        en: "Karowa-Okrzei Bridge",
-        de: "Karowa-Okrzei Brücke",
-        pl: "Most Karowa-Okrzei"
+        en: "Bridge over Vistula River",
+        de: "Bridge over Vistula River",
+        pl: "Bridge over Vistula River"
       },
       year: "2017",
       type: "competition",
-      studio: "CROPKA architects",
-      studioUrl: "https://cropka.com/projects-list/26-vst-bridge-warsaw",
+      studio: "CROPKA",
+      studioUrl: "",
       location: {
-        en: "Vistula River / Powiśle, Warsaw, Poland",
-        de: "Warschau Weichsel, Polen",
-        pl: "Warszawa, Powiśle / Praga, Polska"
+        en: "Warsaw, Poland",
+        de: "Warsaw, Polen",
+        pl: "Warszawa, Polska"
       },
-      lat: 52.2415,
-      lng: 21.0220,
-      scale: "Span: 450 m",
-      typology: {
-        en: "Pedestrian & Cyclist Double-Arch Bridge over Vistula River",
-        de: "Fuß- und Radwegbrücke mit Doppelbogen",
-        pl: "Pieszo-rowerowy most łukowy nad Wisłą"
-      },
-      role: {
-        en: "Competition Entry in Consortium with Gruner AG & Forum Architekci",
-        de: "Wettbewerbsbeitrag mit Gruner AG & Forum",
-        pl: "Projekt konkursowy w konsorcjum z Gruner AG i Forum Architekci"
-      },
+      lat: 52.2297,
+      lng: 21.0122,
+      scale: "Span: 450m"
+,
       hasInternalDetail: true,
       internalId: "vst-bridge-warsaw",
       internalCategory: "architecture"
+
     },
     {
-      id: "cropka-tvp",
+      id: "p38-cropka-crematorium-thun",
       title: {
-        en: "TVP Broadcaster Headquarters",
-        de: "TVP Medienzentrum Warschau",
-        pl: "Nowa Siedziba TVP Warszawa"
+        en: "Crematorium Thun",
+        de: "Crematorium Thun",
+        pl: "Crematorium Thun"
       },
-      year: "2018",
+      year: "2015",
       type: "competition",
-      studio: "CROPKA architects",
-      studioUrl: "https://cropka.com/projects-list/51-tvp/",
-      location: {
-        en: "Woronicza 17, Mokotów, Warsaw, Poland",
-        de: "Warschau Mokotów, Polen",
-        pl: "Warszawa, ul. Woronicza 17, Polska"
-      },
-      lat: 52.1905,
-      lng: 21.0090,
-      scale: "23,700 m² · Jury Commendation",
-      typology: {
-        en: "Television Broadcast Campus, Studios & Public Gateway",
-        de: "Medien-Campus & Fernsehstudios",
-        pl: "Centrala telewizyjna i studia transmisyjne"
-      },
-      role: {
-        en: "Competition Entry Awarded with Jury's Commendation",
-        de: "Auszeichnung im int. Wettbewerb",
-        pl: "Wyróżnienie w konkursie międzynarodowym"
-      },
-      hasInternalDetail: true,
-      internalId: "tvp-headquarters",
-      internalCategory: "architecture"
-    },
-    {
-      id: "cropka-zollhaus",
-      title: {
-        en: "Zollhaus Mixed-Use",
-        de: "Zollhaus Zürich",
-        pl: "Zollhaus Zurych"
-      },
-      year: "2016",
-      type: "competition",
-      studio: "CROPKA architects",
-      studioUrl: "https://cropka.com/projects-list/52-zollhaus/",
-      location: {
-        en: "Zollstrasse / Kreis 5, Zürich, Switzerland",
-        de: "Zürich Kreis 5, Schweiz",
-        pl: "Zurych, Kreis 5, Szwajcaria"
-      },
-      lat: 47.3820,
-      lng: 8.5280,
-      scale: "14,300 m² · 2000-Watt Society",
-      typology: {
-        en: "Multi-Family Residential, Retail & Co-Working Community",
-        de: "Wohnen, Gewerbe, Bildung & Gastronomie",
-        pl: "Zespół wielorodzinny, biura i usługi"
-      },
-      role: {
-        en: "Competition Entry",
-        de: "Wettbewerbsbeitrag",
-        pl: "Projekt konkursowy"
-      },
-      hasInternalDetail: true,
-      internalId: "zollhaus-zurich",
-      internalCategory: "architecture"
-    },
-    {
-      id: "cropka-thun-crematorium",
-      title: {
-        en: "Thun Crematorium 'EO IPSO'",
-        de: "Krematorium Thun 'EO IPSO'",
-        pl: "Krematorium w Thun 'EO IPSO'"
-      },
-      year: "2017",
-      type: "competition",
-      studio: "CROPKA architects",
-      studioUrl: "https://cropka.com/projects-list/47-thun-crematorium/",
+      studio: "CROPKA",
+      studioUrl: "",
       location: {
         en: "Thun, Switzerland",
         de: "Thun, Schweiz",
         pl: "Thun, Szwajcaria"
       },
-      lat: 46.7580,
-      lng: 7.6280,
-      scale: "2,485 m²",
-      typology: {
-        en: "Sacred & Contemplative Landscape Architecture",
-        de: "Sakral- & Landschaftsarchitektur",
-        pl: "Architektura sakralna i krajobraz"
-      },
-      role: {
-        en: "Open Competition Entry",
-        de: "Offener Architekturwettbewerb",
-        pl: "Otwarty konkurs architektoniczny"
-      },
+      lat: 46.758,
+      lng: 7.628,
+      scale: "2'485 m2"
+,
       hasInternalDetail: true,
       internalId: "thun-crematorium",
       internalCategory: "architecture"
+
     },
     {
-      id: "cropka-ossolineum",
+      id: "p39-cropka-drylaw-house",
       title: {
-        en: "Museum of Lubomirski Princes (Ossolineum)",
-        de: "Museum der Fürsten Lubomirski",
-        pl: "Muzeum Książąt Lubomirskich"
+        en: "Drylaw House",
+        de: "Drylaw House",
+        pl: "Drylaw House"
       },
-      year: "2018",
+      year: "2017",
       type: "competition",
-      studio: "CROPKA architects",
-      studioUrl: "https://cropka.com/projects-list/50-ossolineum/",
+      studio: "CROPKA",
+      studioUrl: "",
       location: {
-        en: "Szewska St, Wrocław, Poland",
-        de: "Breslau Altstadt, Polen",
-        pl: "Wrocław, ul. Szewska, Polska"
+        en: "Drylaw, Edinburgh, United Kingdom",
+        de: "Drylaw, Edinburgh, Grossbritannien",
+        pl: "Drylaw, Edinburgh, Wielka Brytania"
       },
-      lat: 51.1140,
-      lng: 17.0340,
-      scale: "7,962 m²",
-      typology: {
-        en: "National Museum with Perforated Bronze Facade",
-        de: "Kultur- & Museumsbau mit Bronzefassade",
-        pl: "Gmach muzealny z perforowaną fasadą z brązu"
+      lat: 55.968,
+      lng: -3.253,
+      scale: "4'385 m2"
+
+    },
+    {
+      id: "p40-cropka-gillian-single-family-house",
+      title: {
+        en: "Gillian single family house",
+        de: "Gillian single family house",
+        pl: "Gillian single family house"
       },
-      role: {
-        en: "Architectural Competition",
-        de: "Architekturwettbewerb",
-        pl: "Konkurs architektoniczny"
+      year: "2010",
+      type: "competition",
+      studio: "CROPKA",
+      studioUrl: "",
+      location: {
+        en: "Scotland",
+        de: "Scotland",
+        pl: "Scotland"
       },
+      lat: 56.4907,
+      lng: -4.2026,
+      scale: "60 m2"
+,
       hasInternalDetail: true,
-      internalId: "ossolineum-museum",
+      internalId: "gillian-kit-home",
       internalCategory: "architecture"
+
     },
     {
-      id: "cropka-mxv",
-      title: {
-        en: "Viaduc de la Baye de Clarens",
-        de: "Viadukt Baye de Clarens",
-        pl: "Wiadukt Baye de Clarens"
-      },
-      year: "2016",
-      type: "competition",
-      studio: "CROPKA architects",
-      studioUrl: "https://cropka.com/projects-list/49-mxv/",
-      location: {
-        en: "Gorges du Chauderon, Montreux, Switzerland",
-        de: "Montreux Schlucht, Schweiz",
-        pl: "Montreux, Alpy Vaud, Szwajcaria"
-      },
-      lat: 46.4312,
-      lng: 6.9106,
-      scale: "Span: 130 m",
-      typology: {
-        en: "Extradosed Alpine Railway Viaduct in Precast Modular Concrete",
-        de: "Extradosed Eisenbahnbrücke",
-        pl: "Ekstradosowy wiadukt kolejowy w Alpach"
-      },
-      role: {
-        en: "Infrastructure Competition with GMASP",
-        de: "Infrastrukturwettbewerb",
-        pl: "Konkurs infrastrukturalny"
-      },
-      hasInternalDetail: true,
-      internalId: "mxv-rail-bridge",
-      internalCategory: "architecture"
-    },
-    {
-      id: "cropka-augusta",
-      title: {
-        en: "Augusta Raurica Finds Center",
-        de: "Augusta Raurica Modulhülle",
-        pl: "Augusta Raurica Powłoka Modułowa"
-      },
-      year: "2014",
-      type: "competition",
-      studio: "CROPKA architects",
-      studioUrl: "https://cropka.com/projects-list/46-augusta-raurica/",
-      location: {
-        en: "Augst, Switzerland",
-        de: "Augst, Schweiz",
-        pl: "Augst, Szwajcaria"
-      },
-      lat: 47.5333,
-      lng: 7.7167,
-      scale: "7,253 m² · Minergie-P",
-      typology: {
-        en: "Timber Modular Archaeological Center",
-        de: "Forschungszentrum / Minergie-P",
-        pl: "Centrum Archeologiczne / Minergie-P"
-      },
-      role: {
-        en: "Minergie-P Sustainable Optimization",
-        de: "Minergie-P Nachhaltigkeitskonzept",
-        pl: "Optymalizacja standardu Minergie-P"
-      },
-      hasInternalDetail: true,
-      internalId: "augusta-raurica",
-      internalCategory: "research"
-    },
-    {
-      id: "cropka-hkpb",
-      title: {
-        en: "HKPB Parametric Bridge",
-        de: "HKPB Parametrische Brücke",
-        pl: "Kładka Parametryczna HKPB"
-      },
-      year: "2014",
-      type: "competition",
-      studio: "CROPKA architects",
-      studioUrl: "https://cropka.com/projects-list/45-hkpb-bridge/",
-      location: {
-        en: "Elbe River, Hradec Králové, Czech Republic",
-        de: "Königgrätz Elbe, Tschechien",
-        pl: "Hradec Králové, Łaba, Czechy"
-      },
-      lat: 50.2104,
-      lng: 15.8252,
-      scale: "Span: 70 m",
-      typology: {
-        en: "Parametric Steel Infrastructure & Park Furniture",
-        de: "Parametrische Brücke & Parkmöbel",
-        pl: "Infrastruktura parametryczna i mebel miejski"
-      },
-      role: {
-        en: "Computational Design Competition with vanOmmeren Architekten",
-        de: "Parametrischer Wettbewerbsbeitrag",
-        pl: "Projekt konkursowy kładki pieszej"
-      },
-      hasInternalDetail: true,
-      internalId: "hkpb-pedestrian-bridge",
-      internalCategory: "research"
-    },
-    {
-      id: "cropka-kindergarten",
+      id: "p41-cropka-kindergarten-wildenstein",
       title: {
         en: "Kindergarten Wildenstein",
         de: "Kindergarten Wildenstein",
-        pl: "Przedszkole Wildenstein"
+        pl: "Kindergarten Wildenstein"
+      },
+      year: "2014",
+      type: "competition",
+      studio: "CROPKA",
+      studioUrl: "",
+      location: {
+        en: "Rohrschacherberg, Switzerland",
+        de: "Rohrschacherberg, Schweiz",
+        pl: "Rohrschacherberg, Szwajcaria"
+      },
+      lat: 47.4883,
+      lng: 9.5083,
+      scale: "424 m2"
+,
+      hasInternalDetail: true,
+      internalId: "kindergarten-wildenstein",
+      internalCategory: "architecture"
+
+    },
+    {
+      id: "p42-cropka-le-taguy",
+      title: {
+        en: "Le Taguy",
+        de: "Le Taguy",
+        pl: "Le Taguy"
+      },
+      year: "2021",
+      type: "realisation",
+      studio: "CROPKA",
+      studioUrl: "",
+      location: {
+        en: "Saint-Gervais-les-Bains, France",
+        de: "Saint-Gervais-les-Bains, Frankreich",
+        pl: "Saint-Gervais-les-Bains, Francja"
+      },
+      lat: 45.892,
+      lng: 6.713,
+      scale: "24 m2"
+,
+      hasInternalDetail: true,
+      internalId: "le-taguy-chamonix",
+      internalCategory: "architecture"
+
+    },
+    {
+      id: "p43-cropka-museum-of-the-lubomirski-pri",
+      title: {
+        en: "Museum of the Lubomirski Princes",
+        de: "Museum of the Lubomirski Princes",
+        pl: "Museum of the Lubomirski Princes"
+      },
+      year: "2018",
+      type: "competition",
+      studio: "CROPKA",
+      studioUrl: "",
+      location: {
+        en: "Wroclaw, Poland",
+        de: "Wroclaw, Polen",
+        pl: "Wroclaw, Polska"
+      },
+      lat: 51.1079,
+      lng: 17.0385,
+      scale: "7'962 m2"
+,
+      hasInternalDetail: true,
+      internalId: "ossolineum-museum",
+      internalCategory: "architecture"
+
+    },
+    {
+      id: "p44-cropka-national-maritime-museum",
+      title: {
+        en: "National Maritime Museum",
+        de: "National Maritime Museum",
+        pl: "National Maritime Museum"
       },
       year: "2015",
       type: "competition",
-      studio: "CROPKA architects",
-      studioUrl: "https://cropka.com/projects-list/48-kindergarten-wildenstein/",
+      studio: "CROPKA",
+      studioUrl: "",
       location: {
-        en: "Rorschacherberg, Switzerland",
-        de: "Rorschacherberg, Schweiz",
-        pl: "Rorschacherberg, Szwajcaria"
+        en: "Leba, Poland",
+        de: "Leba, Polen",
+        pl: "Leba, Polska"
       },
-      lat: 47.4720,
-      lng: 9.5050,
-      scale: "424 m²",
-      typology: {
-        en: "Topographical Educational Architecture with Green Roof",
-        de: "Bildungsbau / Topographisches Konzept",
-        pl: "Edukacja / Architektura topograficzna"
+      lat: 54.76,
+      lng: 17.55,
+      scale: "4'510 m2"
+,
+      awards: "2015 - shortlisted in final"
+
+    },
+    {
+      id: "p45-trevor-black-architects-multi-famil",
+      title: {
+        en: "Multi-family housing estate",
+        de: "Multi-family housing estate",
+        pl: "Multi-family housing estate"
       },
-      role: {
-        en: "Competition Entry",
-        de: "Wettbewerbserfolg",
-        pl: "Projekt konkursowy"
+      year: "2004",
+      type: "realisation",
+      studio: "Trevor Black Architects",
+      studioUrl: "http://www.trevorblackarchitects.co.uk",
+      location: {
+        en: "Conon Bridge, United Kingdom",
+        de: "Conon Bridge, Grossbritannien",
+        pl: "Conon Bridge, Wielka Brytania"
       },
+      lat: 57.568,
+      lng: -4.432,
+      scale: ""
+
+    },
+    {
+      id: "p46-trevor-black-architects-conversion-",
+      title: {
+        en: "Conversion of church into housing",
+        de: "Conversion of church into housing",
+        pl: "Conversion of church into housing"
+      },
+      year: "2004",
+      type: "realisation",
+      studio: "Trevor Black Architects",
+      studioUrl: "http://www.trevorblackarchitects.co.uk",
+      location: {
+        en: "Helmsdale, United Kingdom",
+        de: "Helmsdale, Grossbritannien",
+        pl: "Helmsdale, Wielka Brytania"
+      },
+      lat: 58.118,
+      lng: -3.652,
+      scale: ""
+
+    },
+    {
+      id: "p47-trevor-black-architects-single-fami",
+      title: {
+        en: "Single family house",
+        de: "Single family house",
+        pl: "Single family house"
+      },
+      year: "2004",
+      type: "realisation",
+      studio: "Trevor Black Architects",
+      studioUrl: "http://www.trevorblackarchitects.co.uk",
+      location: {
+        en: "Invergordon, United Kingdom",
+        de: "Invergordon, Grossbritannien",
+        pl: "Invergordon, Wielka Brytania"
+      },
+      lat: 57.688,
+      lng: -4.17,
+      scale: ""
+
+    },
+    {
+      id: "p48-studio-bara-ska-bernardi-single-fam",
+      title: {
+        en: "Single family house - interior design",
+        de: "Single family house - interior design",
+        pl: "Single family house - interior design"
+      },
+      year: "2003",
+      type: "realisation",
+      studio: "Studio Bara\u0144ska - Bernardi",
+      studioUrl: "",
+      location: {
+        en: "Wrocław, Poland",
+        de: "Wrocław, Polen",
+        pl: "Wrocław, Polska"
+      },
+      lat: 51.1079,
+      lng: 17.0385,
+      scale: ""
+
+    },
+    {
+      id: "p49-projx-luxury-private-apartment",
+      title: {
+        en: "Luxury private apartment",
+        de: "Luxury private apartment",
+        pl: "Luxury private apartment"
+      },
+      year: "2014",
+      type: "realisation",
+      studio: "ProjX",
+      studioUrl: "https://www.houstonmorris.com/projects/apartment-switzerland/",
+      location: {
+        en: "Pontresina, Switzerland",
+        de: "Pontresina, Schweiz",
+        pl: "Pontresina, Szwajcaria"
+      },
+      lat: 46.49,
+      lng: 9.9056,
+      scale: ""
+
+    },
+    {
+      id: "p50-cropka-national-polish-television-h",
+      title: {
+        en: "National Polish Television HQ",
+        de: "National Polish Television HQ",
+        pl: "National Polish Television HQ"
+      },
+      year: "2015",
+      type: "competition",
+      studio: "CROPKA",
+      studioUrl: "",
+      location: {
+        en: "Warsaw, Poland",
+        de: "Warsaw, Polen",
+        pl: "Warszawa, Polska"
+      },
+      lat: 52.2297,
+      lng: 21.0122,
+      scale: "23'700 m2"
+,
+      awards: "2015 - Award winner (4th place)"
+,
       hasInternalDetail: true,
-      internalId: "kindergarten-wildenstein",
-      internalCategory: "research"
+      internalId: "tvp-headquarters",
+      internalCategory: "architecture"
+
+    },
+    {
+      id: "p51-cropka-private-house-in-omnica",
+      title: {
+        en: "Private house in Łomnica",
+        de: "Private house in Łomnica",
+        pl: "Private house in Łomnica"
+      },
+      year: "2021",
+      type: "realisation",
+      studio: "CROPKA",
+      studioUrl: "",
+      location: {
+        en: "Łomnica (Karkonosze), Poland",
+        de: "Łomnica (Karkonosze), Polen",
+        pl: "Łomnica (Karkonosze), Polska"
+      },
+      lat: 50.876,
+      lng: 15.808,
+      scale: "295 m2"
+,
+      hasInternalDetail: true,
+      internalId: "house-in-lomnica",
+      internalCategory: "architecture"
+
+    },
+    {
+      id: "p52-cropka-sports-club-h-ngg",
+      title: {
+        en: "Sports Club Höngg",
+        de: "Sports Club Höngg",
+        pl: "Sports Club Höngg"
+      },
+      year: "2017",
+      type: "competition",
+      studio: "CROPKA",
+      studioUrl: "",
+      location: {
+        en: "Hoengg, Zurich, Switzerland",
+        de: "Hoengg, Zurich, Schweiz",
+        pl: "Hoengg, Zurich, Szwajcaria"
+      },
+      lat: 47.4042,
+      lng: 8.4975,
+      scale: "1'980 m2"
+
+    },
+    {
+      id: "p53-cropka-spylaw-park",
+      title: {
+        en: "Spylaw Park",
+        de: "Spylaw Park",
+        pl: "Spylaw Park"
+      },
+      year: "2019",
+      type: "competition",
+      studio: "CROPKA",
+      studioUrl: "",
+      location: {
+        en: "Spylaw Park, Edinburgh, United Kingdom",
+        de: "Spylaw Park, Edinburgh, Grossbritannien",
+        pl: "Spylaw Park, Edinburgh, Wielka Brytania"
+      },
+      lat: 55.908,
+      lng: -3.265,
+      scale: "173 m2"
+,
+      hasInternalDetail: true,
+      internalId: "spylaw-park-house",
+      internalCategory: "architecture"
+
+    },
+    {
+      id: "p54-cropka-the-mart-masterplan",
+      title: {
+        en: "The Mart Masterplan",
+        de: "The Mart Masterplan",
+        pl: "The Mart Masterplan"
+      },
+      year: "2019",
+      type: "competition",
+      studio: "CROPKA",
+      studioUrl: "",
+      location: {
+        en: "East Linton, Scotland",
+        de: "East Linton, Scotland",
+        pl: "East Linton, Scotland"
+      },
+      lat: 55.986,
+      lng: -2.668,
+      scale: "9'720 m2"
+
+    },
+    {
+      id: "p55-cropka-uallas-single-family-house",
+      title: {
+        en: "Uallas single family house",
+        de: "Uallas single family house",
+        pl: "Uallas single family house"
+      },
+      year: "2010",
+      type: "competition",
+      studio: "CROPKA",
+      studioUrl: "",
+      location: {
+        en: "Scotland",
+        de: "Scotland",
+        pl: "Scotland"
+      },
+      lat: 56.4907,
+      lng: -4.2026,
+      scale: "170 m2"
+,
+      hasInternalDetail: true,
+      internalId: "uallas-kit-home",
+      internalCategory: "architecture"
+
+    },
+    {
+      id: "p56-cropka-upmo-performing-arts-hub",
+      title: {
+        en: "UpMo Performing Arts Hub",
+        de: "UpMo Performing Arts Hub",
+        pl: "UpMo Performing Arts Hub"
+      },
+      year: "2019",
+      type: "competition",
+      studio: "CROPKA",
+      studioUrl: "",
+      location: {
+        en: "Leith, Edinburgh, Scotland",
+        de: "Leith, Edinburgh, Scotland",
+        pl: "Leith, Edinburgh, Scotland"
+      },
+      lat: 55.975,
+      lng: -3.17,
+      scale: ""
+
+    },
+    {
+      id: "p57-cropka-viaduc-de-la-baye-de-clarens",
+      title: {
+        en: "Viaduc de la Baye de Clarens",
+        de: "Viaduc de la Baye de Clarens",
+        pl: "Viaduc de la Baye de Clarens"
+      },
+      year: "2016",
+      type: "competition",
+      studio: "CROPKA",
+      studioUrl: "",
+      location: {
+        en: "Clarens, Switzerland",
+        de: "Clarens, Schweiz",
+        pl: "Clarens, Szwajcaria"
+      },
+      lat: 46.442,
+      lng: 6.895,
+      scale: "Span: 130m"
+
+    },
+    {
+      id: "p58-cropka-villa-mw",
+      title: {
+        en: "Villa MW",
+        de: "Villa MW",
+        pl: "Villa MW"
+      },
+      year: "2019",
+      type: "competition",
+      studio: "CROPKA",
+      studioUrl: "",
+      location: {
+        en: "Jelenia Gora, Poland",
+        de: "Jelenia Gora, Polen",
+        pl: "Jelenia Gora, Polska"
+      },
+      lat: 50.9044,
+      lng: 15.7389,
+      scale: "195 m2"
+
+    },
+    {
+      id: "p59-cropka-visitor-shelters-wester-ross",
+      title: {
+        en: "Visitor Shelters Wester Ross",
+        de: "Visitor Shelters Wester Ross",
+        pl: "Visitor Shelters Wester Ross"
+      },
+      year: "2016",
+      type: "competition",
+      studio: "CROPKA",
+      studioUrl: "",
+      location: {
+        en: "Wester Ross, United Kingdom",
+        de: "Wester Ross, Grossbritannien",
+        pl: "Wester Ross, Wielka Brytania"
+      },
+      lat: 57.733,
+      lng: -5.333,
+      scale: ""
+
+    },
+    {
+      id: "p60-cropka-western-terrace",
+      title: {
+        en: "Western Terrace",
+        de: "Western Terrace",
+        pl: "Western Terrace"
+      },
+      year: "2019",
+      type: "competition",
+      studio: "CROPKA",
+      studioUrl: "",
+      location: {
+        en: "Western Terrace, Edinburgh, United Kingdom",
+        de: "Western Terrace, Edinburgh, Grossbritannien",
+        pl: "Western Terrace, Edinburgh, Wielka Brytania"
+      },
+      lat: 55.945,
+      lng: -3.235,
+      scale: "172 m2"
+
+    },
+    {
+      id: "p61-cropka-zollhaus-mixed-use-developme",
+      title: {
+        en: "Zollhaus Mixed Use Development",
+        de: "Zollhaus Mixed Use Development",
+        pl: "Zollhaus Mixed Use Development"
+      },
+      year: "2015",
+      type: "competition",
+      studio: "CROPKA",
+      studioUrl: "",
+      location: {
+        en: "Zurich, Switzerland",
+        de: "Zurich, Schweiz",
+        pl: "Zurich, Szwajcaria"
+      },
+      lat: 47.3769,
+      lng: 8.5417,
+      scale: "14'300 m2"
+,
+      hasInternalDetail: true,
+      internalId: "zollhaus-zurich",
+      internalCategory: "architecture"
+
     }
   ],
 

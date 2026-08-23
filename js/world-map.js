@@ -366,6 +366,13 @@ window.WorldMapController = {
           </div>
         ` : ''}
 
+        ${project.awards ? `
+          <div class="hover-meta-row hover-awards-row">
+            <span class="meta-label">Awards:</span>
+            <span class="meta-value hover-awards-val">${project.awards}</span>
+          </div>
+        ` : ''}
+
         ${monographBtnHtml}
       </div>
     `;
