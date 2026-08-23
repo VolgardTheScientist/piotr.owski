@@ -609,33 +609,7 @@ window.WorldMapController = {
     canvasContainer.addEventListener('touchend', handleTouchEnd);
     canvasContainer.addEventListener('touchcancel', handleTouchEnd);
 
-    // 7. Robust Project Pin Hover Card Handler
-    const pinNodes = containerEl.querySelectorAll('.map-pin-node');
-    pinNodes.forEach(pin => {
-      const projId = pin.dataset.projectId;
-      const project = (siteData.cvProjects || []).find(p => p.id === projId);
-      if (!project) return;
-
-      pin.addEventListener('mouseenter', () => {
-        clearTimeout(this.tooltipTimeout);
-        this.activeProjectId = projId;
-        this.showHoverCard(hoverCard, canvasContainer, pin, project, lang);
-      });
-
-      pin.addEventListener('mouseleave', () => {
-        this.tooltipTimeout = setTimeout(() => {
-          if (!hoverCard.matches(':hover')) {
-            this.hideHoverCard(hoverCard);
-          }
-        }, 200);
-      });
-
-      pin.addEventListener('click', (e) => {
-        e.stopPropagation();
-        this.activeProjectId = projId;
-        this.showHoverCard(hoverCard, canvasContainer, pin, project, lang);
-      });
-    });
+    // 7. Hover Card Interaction Listeners
 
     hoverCard.addEventListener('mouseenter', () => {
       clearTimeout(this.tooltipTimeout);
@@ -895,7 +869,7 @@ window.WorldMapController = {
       pin.addEventListener('mouseenter', () => {
         clearTimeout(this.tooltipTimeout);
         this.activeProjectId = cluster.projects[0].id;
-        this.showHoverCard(hoverCard, canvasContainer, pin, isCluster ? cluster : cluster.projects[0], lang);
+        this.showHoverCard(hoverCard, canvasContainer, pin, isCluster ? cluster : cluster.projects[0], lang, false);
       });
 
       pin.addEventListener('mouseleave', () => {
@@ -908,20 +882,10 @@ window.WorldMapController = {
 
       pin.addEventListener('click', (e) => {
         e.stopPropagation();
-        if (isCluster) {
-          // Smoothly zoom in centered on cluster to separate the dots
-          const canvasRect = canvasContainer.getBoundingClientRect();
-          const containerAspect = Math.max(0.2, canvasRect.width / canvasRect.height);
-          const zoomTargetW = Math.max(0.4, this.viewBox.w * 0.45);
-          const zoomTargetH = zoomTargetW / containerAspect;
-          const targetX = Math.max(0, Math.min(1000 - zoomTargetW, cluster.x - zoomTargetW / 2));
-          const targetY = Math.max(8, Math.min(425 - zoomTargetH, cluster.y - zoomTargetH / 2));
-
-          this.animateViewBoxTo(svgEl, containerEl, { x: targetX, y: targetY, w: zoomTargetW, h: zoomTargetH }, 600);
-        } else {
-          this.activeProjectId = cluster.projects[0].id;
-          this.showHoverCard(hoverCard, canvasContainer, pin, cluster.projects[0], lang);
-        }
+        clearTimeout(this.tooltipTimeout);
+        this.activeProjectId = cluster.projects[0].id;
+        // Always display the combined box with all projects in the first place
+        this.showHoverCard(hoverCard, canvasContainer, pin, isCluster ? cluster : cluster.projects[0], lang, false);
       });
     });
   },
