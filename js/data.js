@@ -127,9 +127,9 @@ const siteData = {
       pl: "W realizacji"
     },
     filterCompetition: {
-      en: "Competition Concept",
-      de: "Wettbewerbskonzept",
-      pl: "Koncepcja konkursowa"
+      en: "Concepts",
+      de: "Entwürfe",
+      pl: "Koncepcje"
     },
     studioFilterLabel: {
       en: "Filter by Studio:",
@@ -485,9 +485,9 @@ const siteData = {
       pl: "W realizacji"
     },
     competition: {
-      en: "Competition Concept",
-      de: "Wettbewerbskonzept",
-      pl: "Koncepcja konkursowa"
+      en: "Concepts",
+      de: "Entwürfe",
+      pl: "Koncepcje"
     }
   },
 
