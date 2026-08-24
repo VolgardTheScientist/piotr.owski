@@ -1703,9 +1703,9 @@ const siteData = {
     {
       id: "p20-santiago-calatrava-train-station",
       title: {
-        en: "Train station",
-        de: "Train station",
-        pl: "Train station"
+        en: "Gare de Mons Multimodal Transport Hub",
+        de: "Gare de Mons Multimodal Transport Hub",
+        pl: "Gare de Mons Multimodal Transport Hub"
       },
       year: "2011",
       type: "realisation",
