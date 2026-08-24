@@ -32,8 +32,8 @@ A minimalist, high-performance architectural monograph, vector world map explore
        ▼                                     ▼
 ┌──────────────────────────────┐   ┌──────────────────────────────┐
 │  Studio Notification (Piotr) │   │  Client Confirmation Copy    │
-│  piotr@owski.ch              │   │  Inquirer Email (EN/DE/PL)   │
-│  (Infomaniak Mailbox)        │   │  From: enquiry@piotr.owski.ch│
+│  *****@owski.ch              │   │  Inquirer Email (EN/DE/PL)   │
+│  (Infomaniak Mailbox)        │   │  From: *****@piotr.owski.ch│
 └──────────────────────────────┘   └──────────────────────────────┘
 ```
 
@@ -114,12 +114,12 @@ The app automatically detects where it is running via `getAssetUrl()` in `js/mai
 When an inquiry is submitted on the website:
 1. **Validation & Anti-Spam**: Sanitizes fields and verifies honeypot/timestamp spam guards.
 2. **Notification Email (to Studio)**:
-   - Sent to: `piotr@owski.ch` (Infomaniak mailbox).
+   - Sent to: `*****@owski.ch` (Infomaniak mailbox).
    - `Reply-To`: Set directly to the inquirer's email address (simply click "Reply" in your email client).
    - Includes timestamp formatted in **Swiss Local Time (`Europe/Zurich`)**.
 3. **Confirmation Copy (to Client)**:
    - Sent to the inquirer's address with an automated acknowledgment in their selected language (EN, DE, or PL).
-   - Sender: `Piotr Piotrowski Studio <enquiry@piotr.owski.ch>` *(with automatic fallback to `enquiry@owski.ch`)*.
+   - Sender: `Piotr Piotrowski Studio <*****@piotr.owski.ch>` *(with automatic fallback to `*****@owski.ch`)*.
 
 ### Cloudflare Environment Variable
 - `RESEND_API_KEY`: Stored in **Cloudflare Pages** → **Settings** → **Environment variables** (Production).
@@ -136,7 +136,7 @@ All DNS records are managed in the **Cloudflare Dashboard** under zone `owski.ch
 | **CNAME** | `www` | `owski.ch` | 🟧 **Proxied** | `www` subdomain alias |
 | **CNAME** | `piotr` | `piotr-owski.pages.dev` | 🟧 **Proxied** | Main portfolio website production URL |
 | **CNAME** | `assets` | `public.r2.dev` / R2 Bucket | 🟧 **Proxied** | High-performance custom domain for media files |
-| **MX** | `@` | `mta-gw.infomaniak.ch` (Priority 5) | ☁️ *DNS only* | Infomaniak studio email routing (`piotr@owski.ch`) |
+| **MX** | `@` | `mta-gw.infomaniak.ch` (Priority 5) | ☁️ *DNS only* | Infomaniak studio email routing (`*****@owski.ch`) |
 | **TXT** | `@` | `v=spf1 include:infomaniak.ch ~all` | ☁️ *DNS only* | SPF email authentication for Infomaniak |
 | **TXT** | `resend._domainkey` | `k=rsa; p=...` (from Resend) | ☁️ *DNS only* | DKIM email authentication for Resend API |
 
