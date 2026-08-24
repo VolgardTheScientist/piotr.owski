@@ -2197,9 +2197,9 @@ const siteData = {
     {
       id: "p42-cropka-le-taguy",
       title: {
-        en: "Le Taguy",
-        de: "Le Taguy",
-        pl: "Le Taguy"
+        en: "Residence Le Taguy",
+        de: "Residenz Le Taguy",
+        pl: "Apartament Le Taguy"
       },
       year: "2021",
       type: "realisation",
