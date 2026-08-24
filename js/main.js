@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     window.location.hostname === '' ||
                     window.location.protocol === 'file:';
 
-    const videoUrl = isLocal ? 'assets/videos/PPwebVideo.mp4' : getAssetUrl('assets/videos/PPwebVideo.mp4');
+    const videoUrl = isLocal ? 'assets/videos/PPwebVideoIntro.mp4' : getAssetUrl('assets/videos/PPwebVideoIntro.mp4');
 
     heroVideo.src = videoUrl;
     const sourceEl = heroVideo.querySelector('source');
