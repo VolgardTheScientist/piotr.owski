@@ -565,9 +565,9 @@ const siteData = {
                 pl: "Haptyczność Materiałów i Dialog z Naturą"
               },
               text: {
-                en: "A tactile green marble wall in the bathroom with its leathered texture resembles a frameless aperture into the pine forest. Local slate vanity surfaces and brushed metal details ground the compact volume in traditional alpine craftsmanship, elevated by precise modern joinery.",
-                de: "Eine grüne Marmorwand im Bad mit samtig-lederartiger Textur wirkt wie ein rahmenloses Fenster in den Bergwald. Regionaler Schiefer und gebürstetes Metall verbinden alpine Handwerkstradition mit zeitgenössischer Präzision.",
-                pl: "Zielony marmur w łazience o fakturze miękkiej skóry przypomina bezramowe okno otwarte na alpejski las. Płytki z lokalnego łupka i szczotkowana stal łączą tradycyjne rzemiosło z nowoczesną geometrią."
+                en: "A tactile green marble wall in the bathroom with its leathered texture resembles a frameless aperture into the pine forest. Local slate lines the walls and floor, grounding the compact space in alpine materiality, while natural timber joinery adds warmth and matte-black metal fittings sharpen the contemporary character.",
+                de: "Eine grüne Marmorwand im Bad mit samtig-lederartiger Textur wirkt wie ein rahmenloser Blick in den Bergwald. Regionaler Schiefer an Wänden und Boden verankert den kompakten Raum in alpiner Materialität, während natürliche Holzeinbauten Wärme spenden und mattschwarze Metallbeschläge den zeitgenössischen Charakter schärfen.",
+                pl: "Zielony marmur w łazience o fakturze miękkiej skóry przypomina bezramowe okno otwarte na sosnowy las. Lokalny łupek pokrywa ściany i posadzkę, zakorzeniając kompaktową przestrzeń w alpejskiej materialności, podczas gdy naturalna stolarka dodaje ciepła, a matowoczarne metalowe okucia podkreślają współczesny charakter wnętrza."
               },
               quote: {
                 en: "“The tactile leathered marble wall resembles a frameless window into the alpine forest.”",
@@ -577,9 +577,9 @@ const siteData = {
               image: "assets/images/letaguy/CROPKA_Le_Taguy_Mont_Blanc_Bathroom_01_1200_834.jpg",
               format: "portrait",
               imageCaption: {
-                en: "Tactile green leathered marble bathroom wall and bespoke slate vanity.",
-                de: "Badezimmer mit grünem Ledermarmor und Schieferwaschtisch.",
-                pl: "Łazienka z zielonym marmurem i blatem z łupka."
+                en: "Tactile green leathered marble and local slate bathroom walls.",
+                de: "Samtiger grüner Ledermarmor und regionale Schieferwände im Bad.",
+                pl: "Ściany łazienki wykończone zielonym marmurem o fakturze skóry i lokalnym łupkiem."
               }
             },
             {
@@ -594,9 +594,9 @@ const siteData = {
               imageRight: "assets/images/letaguy/CROPKA_Le_Taguy_Mont_Blanc_Living_Room_06_1200_834.jpg",
               formatRight: "portrait",
               captionRight: {
-                en: "Compact lounge setting with integrated audio.",
-                de: "Kompakte Lounge mit integriertem Soundsystem.",
-                pl: "Strefa wypoczynkowa ze zintegrowanym nagłośnieniem."
+                en: "Elegant sintered-stone worktops are set against glossy green walls that lend the compact space a sense of depth.",
+                de: "Elegante Arbeitsplatten aus gesintertem Stein heben sich von glänzend grünen Wänden ab, die dem kompakten Raum Tiefe verleihen.",
+                pl: "Eleganckie blaty ze spieku kwarcowego zestawiono z błyszczącymi zielonymi ścianami, które nadają kompaktowej przestrzeni głębi."
               }
             },
             {
@@ -615,9 +615,9 @@ const siteData = {
               image: "assets/images/letaguy/CROPKA_Le_Taguy_Mont_Blanc_Bedroom_03_1200_834.jpg",
               format: "portrait",
               imageCaption: {
-                en: "Custom wood climbing wall providing vertical access to the upper bunk.",
-                de: "Integrierte Kletterwand als Aufstieg zum oberen Hochbett.",
-                pl: "Drewniana ścianka wspinaczkowa prowadząca na górne łóżko."
+                en: "Sleeping alcove with integrated lighting and privacy curtains.",
+                de: "Schlafnische mit integrierter Beleuchtung und Vorhängen für Privatsphäre.",
+                pl: "Wnęka sypialna ze zintegrowanym oświetleniem i zasłonami zapewniającymi prywatność."
               }
             },
             {
@@ -625,16 +625,16 @@ const siteData = {
               imageLeft: "assets/images/letaguy/CROPKA_Le_Taguy_Mont_Blanc_Bedroom_01_1200_834.jpg",
               formatLeft: "portrait",
               captionLeft: {
-                en: "Master sleeping alcove with integrated lighting and natural wood grain.",
-                de: "Hauptschlafnische mit integriertem Lichtband und Holzmaserung.",
-                pl: "Główna wnęka sypialna z nastrojowym oświetleniem liniowym."
+                en: "Custom wood climbing wall providing vertical access to the upper bunk.",
+                de: "Maßgefertigte Holzkletterwand als vertikaler Aufstieg zum oberen Hochbett.",
+                pl: "Drewniana ścianka wspinaczkowa zapewniająca wejście na górne łóżko piętrowe."
               },
               imageRight: "assets/images/letaguy/CROPKA_Le_Taguy_Mont_Blanc_Bathroom_02_1200_834.jpg",
               formatRight: "portrait",
               captionRight: {
-                en: "Slate shower stall and matte black minimalist fittings.",
-                de: "Schieferdusche mit mattschwarzen minimalistischen Armaturen.",
-                pl: "Kabina prysznicowa z łupka i matowa czarna armatura."
+                en: "Slate shower and matte black minimalist fittings.",
+                de: "Schieferdusche und mattschwarze minimalistische Armaturen.",
+                pl: "Prysznic wykończony łupkiem i matowoczarna minimalistyczna armatura."
               }
             }
           ],
@@ -653,7 +653,7 @@ const siteData = {
             },
             {
               label: { en: "Primary Materials", de: "Materialien", pl: "Materiały" },
-              value: "Green Leathered Marble, Natural Ash Wood, French Slate, Charred Veneers"
+              value: "Green Leathered Marble, Natural Ash Wood and Veneers, French Slate"
             },
             {
               label: { en: "Year Completed", de: "Fertigstellung", pl: "Rok ukończenia" },
