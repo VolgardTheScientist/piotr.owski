@@ -83,8 +83,8 @@ export async function onRequestPost(context) {
     const RESEND_API_KEY = env.RESEND_API_KEY;
     const NOTIFICATION_RECIPIENT = env.NOTIFICATION_EMAIL || 'piotr@owski.ch';
     
-    // Sender address: Default to custom domain sender, with fallback if not yet verified
-    let senderEmail = env.SENDER_EMAIL || 'Piotr Piotrowski Studio <enquiry@owski.ch>';
+    // Sender address: Default to piotr.owski.ch sender, with fallback
+    let senderEmail = env.SENDER_EMAIL || 'Piotr Piotrowski Studio <enquiry@piotr.owski.ch>';
 
     if (!RESEND_API_KEY) {
       console.warn('RESEND_API_KEY not configured in Cloudflare environment. Simulation mode.');
@@ -258,7 +258,7 @@ export async function onRequestPost(context) {
       });
     }
 
-    // Attempt 1: Send with custom sender
+    // Attempt 1: Send with enquiry@piotr.owski.ch
     let adminRes = await sendResendMail(
       senderEmail,
       NOTIFICATION_RECIPIENT,
@@ -267,11 +267,20 @@ export async function onRequestPost(context) {
       adminHtml
     );
 
-    // If custom domain is not yet verified in Resend, automatically fallback to onboarding@resend.dev
+    // If piotr.owski.ch is not yet added in Resend, fallback to enquiry@owski.ch
+    if (!adminRes.ok && senderEmail.includes('piotr.owski.ch')) {
+      senderEmail = 'Piotr Piotrowski Studio <enquiry@owski.ch>';
+      adminRes = await sendResendMail(
+        senderEmail,
+        NOTIFICATION_RECIPIENT,
+        `${name} <${email}>`,
+        `Enquiry [${adminServiceName}]: ${name}`,
+        adminHtml
+      );
+    }
+
+    // If still not ok, fallback to onboarding@resend.dev
     if (!adminRes.ok) {
-      const errJson = await adminRes.json().catch(() => ({}));
-      console.warn('Resend send failed with custom domain, retrying with onboarding sender:', errJson);
-      
       senderEmail = 'Piotr Piotrowski Studio <onboarding@resend.dev>';
       adminRes = await sendResendMail(
         senderEmail,
