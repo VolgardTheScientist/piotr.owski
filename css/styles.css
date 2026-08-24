@@ -898,12 +898,15 @@ body.theme-light .map-floating-topbar {
 }
 
 .map-studio-select {
-  background: var(--color-surface);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: var(--color-surface);
   color: var(--color-text);
   border: 1px solid var(--border-color);
   font-family: inherit;
   font-size: 11px;
-  padding: 0 10px;
+  padding: 0 28px 0 10px;
   height: 34px;
   line-height: 32px;
   outline: none;
@@ -912,7 +915,22 @@ body.theme-light .map-floating-topbar {
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
-  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px 6px;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body.theme-light .map-studio-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23000000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.map-studio-select option {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  padding: 8px 10px;
 }
 
 /* --- Mobile Responsive Map Header Controls (<= 991px) --- */
@@ -968,7 +986,8 @@ body.theme-light .map-floating-topbar {
   .map-studio-select {
     width: 100%;
     font-size: 11px;
-    padding: 6px 8px;
+    padding: 0 28px 0 10px;
+    background-position: right 10px center;
   }
 }
 
