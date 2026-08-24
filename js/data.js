@@ -132,7 +132,7 @@ const siteData = {
       pl: "W realizacji"
     },
     filterCompetition: {
-      en: "Concepts",
+      en: "Concept",
       de: "Entwürfe",
       pl: "Koncepcje"
     },
@@ -490,7 +490,7 @@ const siteData = {
       pl: "W realizacji"
     },
     competition: {
-      en: "Concepts",
+      en: "Concept",
       de: "Entwürfe",
       pl: "Koncepcje"
     }
