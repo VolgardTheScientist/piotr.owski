@@ -335,21 +335,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateUrlRoute(routeStr, push = true) {
     const cleanRoute = (routeStr || '').replace(/^[\/#]+/, '').trim();
-    const targetHash = cleanRoute ? `#${cleanRoute}` : '';
+    const targetPath = cleanRoute ? `/${cleanRoute}` : '/';
     
-    if (window.location.hash !== targetHash) {
+    // Check if path or hash needs updating
+    if (window.location.pathname !== targetPath || window.location.hash) {
       if (push && window.history && window.history.pushState) {
-        window.history.pushState(null, '', targetHash || window.location.pathname + window.location.search);
+        window.history.pushState({ route: cleanRoute }, '', targetPath);
       } else if (window.history && window.history.replaceState) {
-        window.history.replaceState(null, '', targetHash || window.location.pathname + window.location.search);
-      } else {
-        window.location.hash = targetHash;
+        window.history.replaceState({ route: cleanRoute }, '', targetPath);
       }
     }
   }
 
   function handleUrlRouting() {
-    const raw = window.location.hash.replace(/^[\/#]+/, '').trim();
+    // Read both clean path and legacy hash anchors for 100% compatibility
+    const pathSegment = window.location.pathname.replace(/^\/+|\/+$/g, '').trim();
+    const hashSegment = window.location.hash.replace(/^[\/#]+/, '').trim();
+    const raw = hashSegment || pathSegment;
     
     if (!raw || raw === 'home' || raw === 'video') {
       if (state.isContentOpen) {
@@ -390,7 +392,11 @@ document.addEventListener('DOMContentLoaded', () => {
         state.activeItemId = null;
         renderDigitalisationView();
       }
-    } else if (primary === 'about') {
+    } else if (primary === 'map') {
+      state.activeCategory = 'architecture';
+      state.activeItemId = null;
+      renderWorldMapView('all');
+    } else if (primary === 'about' || primary === 'cv') {
       state.activeCategory = 'about';
       state.activeItemId = null;
       renderAboutView();
@@ -511,8 +517,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Process route on initial load
-    if (window.location.hash) {
+    // Process route on initial load (clean path or hash)
+    const pathSegment = window.location.pathname.replace(/^\/+|\/+$/g, '').trim();
+    const hashSegment = window.location.hash.replace(/^[\/#]+/, '').trim();
+    if (pathSegment || hashSegment) {
       handleUrlRouting();
     }
   }
