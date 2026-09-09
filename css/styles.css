@@ -1414,6 +1414,13 @@ body.theme-light .project-hover-card {
   white-space: nowrap;
   text-align: right;
   z-index: 30;
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+.map-interaction-hint.is-overlapping {
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 @media (min-width: 992px) {
@@ -1421,6 +1428,12 @@ body.theme-light .project-hover-card {
     display: block;
     bottom: 28px;
     right: 28px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .map-interaction-hint {
+    display: none !important;
   }
 }
 

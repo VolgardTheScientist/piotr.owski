@@ -440,7 +440,34 @@ window.WorldMapController = {
 
 
 
-    // 5. Strict Native Mouse Wheel Zooming (Framed to Inhabited World: Greenland -> South America)
+    // 4. Dynamic Collision Detector: Hide hint the moment it starts overlapping with the region box
+    const regionBar = containerEl.querySelector('.region-shortcuts-bar');
+    const hintEl = containerEl.querySelector('.map-interaction-hint');
+
+    const checkHintOverlap = () => {
+      if (!regionBar || !hintEl) return;
+      const barRect = regionBar.getBoundingClientRect();
+      const hintRect = hintEl.getBoundingClientRect();
+
+      if (barRect.width > 0 && hintRect.width > 0) {
+        // If the gap between the box and the hint is less than 24px, hide the hint
+        if (barRect.right + 24 >= hintRect.left) {
+          hintEl.classList.add('is-overlapping');
+        } else {
+          hintEl.classList.remove('is-overlapping');
+        }
+      }
+    };
+
+    setTimeout(checkHintOverlap, 60);
+    window.addEventListener('resize', checkHintOverlap);
+
+    if (window.ResizeObserver && canvasContainer) {
+      const ro = new ResizeObserver(checkHintOverlap);
+      ro.observe(canvasContainer);
+      if (regionBar) ro.observe(regionBar);
+    }
+
     canvasContainer.addEventListener('wheel', (e) => {
       e.preventDefault();
       
