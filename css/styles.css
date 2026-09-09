@@ -1401,20 +1401,26 @@ body.theme-light .project-hover-card {
 
 .map-interaction-hint {
   position: absolute;
-  bottom: 22px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 24px;
+  right: 20px;
+  left: auto;
+  transform: none;
   font-size: 11px;
   letter-spacing: 0.08em;
   color: var(--color-text-muted);
   text-transform: uppercase;
   pointer-events: none;
   display: none;
+  white-space: nowrap;
+  text-align: right;
+  z-index: 30;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 992px) {
   .map-interaction-hint {
     display: block;
+    bottom: 28px;
+    right: 28px;
   }
 }
 
