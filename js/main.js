@@ -335,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateUrlRoute(routeStr, push = true) {
     const cleanRoute = (routeStr || '').replace(/^[\/#]+/, '').trim();
-    const targetPath = cleanRoute ? `/${cleanRoute}` : '/';
+    const targetPath = cleanRoute ? `/${cleanRoute}/` : '/';
     
     // Check if path or hash needs updating
     if (window.location.pathname !== targetPath || window.location.hash) {
