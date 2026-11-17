@@ -979,9 +979,9 @@ const siteData = {
           },
           image: "assets/images/mxv_01_valley_1200_675.jpg",
           description: {
-            en: "An enclosed extradosed railway viaduct designed to accommodate differential geological movements over a 100-year lifetime with precast modular concrete and internal prestressed cables.",
-            de: "Eine geschlossene Extradosed-Eisenbahnbrücke über die Schlucht von Montreux, ausgelegt auf tektonische Verschiebungen.",
-            pl: "Wiadukt kolejowy w szwajcarskich Alpach zaprojektowany na kompensację przesunięć tektonicznych z prefabrykowanego betonu sprężonego."
+            en: "An enclosed extradosed railway viaduct designed to accommodate differential geological movements of more than a metre over a 100-year lifetime. Built using internal steel cables and modular precast concrete construction, the bridge will have a low carbon footprint and require only minimal maintenance.",
+            de: "Eine geschlossene Extradosed-Eisenbahnbrücke, die für differenzielle geologische Verschiebungen von über einem Meter bei einer Lebensdauer von 100 Jahren ausgelegt ist. Aus modularen Betonfertigteilen und innenliegenden Stahlseilen errichtet, weist die Brücke einen geringen CO₂-Fussabdruck auf und benötigt nur minimalen Unterhalt.",
+            pl: "Zamknięty ekstradosowy wiadukt kolejowy zaprojektowany z myślą o kompensacji różnicowych przemieszczeń geologicznych o ponad metr w 100-letnim okresie eksploatacji. Zrealizowany z wykorzystaniem wewnętrznych lin stalowych i modułowych prefabrykatów betonowych, charakteryzuje się niskim śladem węglowym i minimalnymi wymaganiami konserwacyjnymi."
           }
         },
         {

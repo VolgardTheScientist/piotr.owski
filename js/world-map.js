@@ -354,25 +354,23 @@ window.WorldMapController = {
       studioLinkHtml = `<span class="hover-studio-name">${project.studio}</span>`;
     }
 
-    let monographBtnHtml = '';
+    let internalSpreadCategory = null;
     if (project.hasInternalDetail && project.internalId) {
       const targetCategory = project.internalCategory || 'architecture';
       const categoryData = siteData.categories && siteData.categories[targetCategory];
       const spreadExists = categoryData && Array.isArray(categoryData.items) && categoryData.items.some(i => i.id === project.internalId);
-
       if (spreadExists) {
-        monographBtnHtml = `
-          <a href="/${targetCategory}/${project.internalId}/" class="hover-monograph-btn" data-category="${targetCategory}" data-item-id="${project.internalId}">
-            ${ui.viewProjectDetail[lang]}
-          </a>
-        `;
+        internalSpreadCategory = targetCategory;
       }
     }
 
     const hasProjectPageUrl = this.hasSpecificProjectUrl(project.studioUrl);
-    const titleInnerHtml = hasProjectPageUrl
-      ? `<a href="${project.studioUrl}" target="_blank" rel="noopener noreferrer" class="hover-project-title-link" title="Open ${project.title[lang]} project page"><span>${project.title[lang]}</span><span class="link-arrow" aria-hidden="true">↗</span></a>`
-      : project.title[lang];
+    let titleInnerHtml = project.title[lang];
+    if (internalSpreadCategory) {
+      titleInnerHtml = `<a href="/${internalSpreadCategory}/${project.internalId}/" class="hover-project-title-link hover-internal-link" data-category="${internalSpreadCategory}" data-item-id="${project.internalId}" title="Open ${project.title[lang]}"><span>${project.title[lang]}</span><span class="link-arrow" aria-hidden="true">↗</span></a>`;
+    } else if (hasProjectPageUrl) {
+      titleInnerHtml = `<a href="${project.studioUrl}" target="_blank" rel="noopener noreferrer" class="hover-project-title-link" title="Open ${project.title[lang]} project page"><span>${project.title[lang]}</span><span class="link-arrow" aria-hidden="true">↗</span></a>`;
+    }
 
     const backLabel = lang === 'pl' ? 'Wróć' : (lang === 'de' ? 'Zurück' : 'Back');
 
@@ -416,8 +414,6 @@ window.WorldMapController = {
             <span class="meta-value hover-awards-val">${project.awards}</span>
           </div>
         ` : ''}
-
-        ${monographBtnHtml}
       </div>
     `;
   },
@@ -699,7 +695,7 @@ window.WorldMapController = {
       }
 
       const clusterEntry = e.target.closest('.hover-cluster-entry');
-      if (clusterEntry && !e.target.closest('.hover-monograph-btn') && !e.target.closest('a')) {
+      if (clusterEntry && !e.target.closest('a')) {
         // Prevent mobile ghost-click/tap-through from initial pin tap
         if (this.clusterOpenedTime && (Date.now() - this.clusterOpenedTime < 450)) {
           e.stopPropagation();
@@ -716,14 +712,14 @@ window.WorldMapController = {
         return;
       }
 
-      const monographBtn = e.target.closest('.hover-monograph-btn');
-      if (monographBtn) {
+      const internalLink = e.target.closest('.hover-internal-link');
+      if (internalLink) {
         if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
           return;
         }
         e.preventDefault();
-        const cat = monographBtn.dataset.category || 'architecture';
-        const itemId = monographBtn.dataset.itemId;
+        const cat = internalLink.dataset.category || 'architecture';
+        const itemId = internalLink.dataset.itemId;
         if (itemId && typeof window.handleDirectItemNavigation === 'function') {
           window.handleDirectItemNavigation(cat, itemId);
         }
