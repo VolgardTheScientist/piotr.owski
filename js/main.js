@@ -291,11 +291,12 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="hero-caption-inner">
         <div class="hero-caption-text">
           <p class="hero-caption-name">${c.name}</p>
-          <p class="hero-caption-role">${c.role}</p>
+          <p class="hero-caption-role">${formatSplitSpanHtml(c.role, ' | ', ['about-role-text', 'about-role-sep', 'about-role-loc'])}</p>
           <p class="hero-caption-desc">${c.desc}</p>
         </div>
       </div>
     `;
+    syncResponsiveLineBreaks();
   }
 
   function updateStaticTranslations() {
@@ -1616,6 +1617,32 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- 4. About Piotr Piotrowski ---
+  function formatSplitSpanHtml(text, separator, partClasses) {
+    const idx = text ? text.lastIndexOf(separator) : -1;
+    if (idx === -1) return `<span class="${partClasses[0]}">${text || ''}</span>`;
+    const first = text.slice(0, idx);
+    const second = text.slice(idx + separator.length);
+    return `<span class="${partClasses[0]}">${first}</span><span class="${partClasses[1]}" aria-hidden="true">${separator}</span><span class="${partClasses[2]}">${second}</span>`;
+  }
+
+  function syncResponsiveLineBreaks() {
+    const pairs = [
+      ['#aboutTitle', '.about-title-name', '.about-title-degree'],
+      ['#aboutRole', '.about-role-text', '.about-role-loc'],
+      ['.hero-caption-role', '.about-role-text', '.about-role-loc']
+    ];
+    pairs.forEach(([containerSel, firstSel, secondSel]) => {
+      const container = document.querySelector(containerSel);
+      if (!container) return;
+      container.classList.remove('is-multiline');
+      const firstEl = container.querySelector(firstSel);
+      const secondEl = container.querySelector(secondSel);
+      if (firstEl && secondEl && secondEl.offsetTop > firstEl.offsetTop + 2) {
+        container.classList.add('is-multiline');
+      }
+    });
+  }
+
   function renderAboutView() {
     stageBody.classList.remove('has-fullscreen-map');
     updateDocumentMetadata('about');
@@ -1632,12 +1659,23 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `).join('');
 
+    const titleHtml = formatSplitSpanHtml(
+      about.title[state.lang],
+      ', ',
+      ['about-title-name', 'about-title-comma', 'about-title-degree']
+    );
+    const roleHtml = formatSplitSpanHtml(
+      about.role[state.lang],
+      ' | ',
+      ['about-role-text', 'about-role-sep', 'about-role-loc']
+    );
+
     stageBody.innerHTML = `
       <div class="about-view">
         <header class="about-header">
           <div class="about-header-main">
-            <h1 class="about-title">${about.title[state.lang]}</h1>
-            <p class="about-role">${about.role[state.lang]}</p>
+            <h1 class="about-title" id="aboutTitle">${titleHtml}</h1>
+            <p class="about-role" id="aboutRole">${roleHtml}</p>
           </div>
           ${about.linkedinUrl ? `
             <div class="about-linkedin-action">
@@ -1662,6 +1700,7 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `;
 
+    syncResponsiveLineBreaks();
     activateStage();
   }
 
@@ -1958,6 +1997,16 @@ document.addEventListener('DOMContentLoaded', () => {
         openMobileMenu();
       }
     });
+
+    // Responsive multi-line header alignment + font load re-check
+    let resizeBreakTimer = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeBreakTimer);
+      resizeBreakTimer = setTimeout(syncResponsiveLineBreaks, 60);
+    });
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(syncResponsiveLineBreaks).catch(() => {});
+    }
 
     // Keyboard support
     document.addEventListener('keydown', (e) => {
