@@ -25,4 +25,5 @@ assets/
 Thumbs.db
 .vscode/
 .idea/
+exports/
 *.log

@@ -1,7 +1,7 @@
 /**
- * Piotr Piotrowski Architecture & Spatial Design
- * Authentic Projects from CROPKA architects & Professional CV (Edinburgh | Zürich | St. Moritz | Bern | Baden | London)
- * Multilingual Data Store (EN, DE, PL) with Direct Studio Project URLs and Precise Geocodes
+ * Piotr Piotrowski — Architecture, Circularity & BIM Consulting
+ * Verified Portfolio, Research Publications & Career Archive (Aarau | Switzerland | Worldwide)
+ * Multilingual Data Store (EN, DE, PL)
  */
 
 const siteData = {
@@ -221,9 +221,9 @@ const siteData = {
       pl: "Piotr Piotrowski w swojej pracy architektonicznej poszukuje klarowności, charakteru i trwałej jakości. Inspirację czerpie z kontekstu, materiału i logiki natury, łącząc wyraziste idee projektowe z praktycznym rozumieniem tego, jak budynki powstają, funkcjonują i zmieniają się w czasie."
     },
     p2: {
-      en: "His experience spans Scotland, Switzerland and Poland, with projects across the UK, France, Belgium, the US, Russia and Bahrain, developed in collaboration with leading architects, engineers and specialists.",
-      de: "Seine berufliche Erfahrung umfasst Schottland, die Schweiz und Polen. Projekte führten ihn darüber hinaus nach Grossbritannien, Frankreich, Belgien, in die USA, nach Russland und Bahrain – stets in Zusammenarbeit mit erfahrenen Architekten, Ingenieuren und Fachplanern.",
-      pl: "Doświadczenie zawodowe zdobywał w Szkocji, Szwajcarii i Polsce, pracując przy projektach w Wielkiej Brytanii, Francji, Belgii, USA, Rosji i Bahrajnie, we współpracy z uznanymi architektami, inżynierami i specjalistami branżowymi."
+      en: "His experience spans more than two decades of architectural practice across Switzerland, the UK, Poland, France, Belgium, the US, Russia and Bahrain, from private homes to hospitals, university buildings and major transport projects. His contributions include design, architectural team leadership, coordination with engineers and specialist consultants, and the development of digital tools and automated workflows to improve planning processes.",
+      de: "Seine Erfahrung umfasst mehr als zwei Jahrzehnte Architekturpraxis in der Schweiz, Grossbritannien, Polen, Frankreich, Belgien, den USA, Russland und Bahrain – von Wohnhäusern über Spitäler und Universitätsbauten bis hin zu grossen Verkehrsprojekten. Zu seinen Leistungen gehören Entwurf, die Leitung von Architekturteams, die Koordination mit Ingenieuren und Fachplanern sowie die Entwicklung digitaler Werkzeuge und automatisierter Workflows zur Verbesserung von Planungsprozessen.",
+      pl: "Jego doświadczenie obejmuje ponad dwie dekady praktyki architektonicznej w Szwajcarii, Wielkiej Brytanii, Polsce, Francji, Belgii, USA, Rosji i Bahrajnie – od domów prywatnych po szpitale, budynki uniwersyteckie i duże projekty infrastruktury transportowej. Jego udział obejmuje projektowanie, kierowanie zespołami architektonicznymi, koordynację z inżynierami i projektantami branżowymi oraz tworzenie narzędzi cyfrowych i zautomatyzowanych procesów usprawniających projektowanie."
     },
     projectsBtn: {
       en: "projects >|",
@@ -285,6 +285,12 @@ const siteData = {
           pl: "Wypożycz w bibliotece (swisscovery) ↗"
         },
         linkUrl: "https://swisscovery.ch/permalink/41SLSP_NETWORK/ck7c0t/alma991173082312305501",
+        secondLinkText: {
+          en: "Read Publication (DOI: 10.5281/zenodo.24109442) ↗",
+          de: "Publikation lesen (DOI: 10.5281/zenodo.24109442) ↗",
+          pl: "Przeczytaj publikację (DOI: 10.5281/zenodo.24109442) ↗"
+        },
+        secondLinkUrl: "https://doi.org/10.5281/zenodo.24109442",
         images: [
           "assets/images/research_circular_cover.webp",
           "assets/images/research_circular.webp"
@@ -524,9 +530,9 @@ const siteData = {
             pl: "Saint-Gervais Mont-Blanc, Francja"
           },
           typology: {
-            en: "Luxury Micro-Apartment & Bespoke Joinery",
-            de: "Alpines Luxus-Mikroapartment & Möbelbau",
-            pl: "Luksusowe mikro-wnętrze alpejskie"
+            en: "Compact Alpine Residence & Bespoke Joinery",
+            de: "Alpines Mikroapartment & Maßmöbelbau",
+            pl: "Kompaktowy apartament alpejski i zabudowa stolarska"
           },
           client: {
             en: "Private Client / CROPKA architects",
@@ -534,16 +540,16 @@ const siteData = {
             pl: "Klient prywatny / CROPKA architects"
           },
           scope: {
-            en: "Realisation (Built) — Complete Interior Planning & Craft",
-            de: "Realisierung (Gebaut) — Vollständiger Innenausbau",
-            pl: "Realizacja — Kompleksowy projekt wnętrza i rzemiosło"
+            en: "Realisation (Built) — Interior Planning & Craft",
+            de: "Realisierung (Gebaut) — Innenausbau",
+            pl: "Realizacja — Projekt wnętrza i wykonawstwo"
           },
           image: "assets/images/letaguy/CROPKA_Le_Taguy_Mont_Blanc_Living_Room_01_1200_834.jpg",
           isEditorialLayout: true,
           leadIntro: {
-            en: "Located in the stunning Mont-Blanc region, this holiday apartment provides the ultimate luxury and comfort within an extremely compact 24 m² footprint. Surrounding alpine landscapes directly influenced the tactile material palette: natural wood veneers, local slate, bright ash wood flooring, and light, serene tones.",
-            de: "Am Fuße des Mont-Blanc-Massivs gelegen, bietet dieses Ferienapartment höchsten Komfort und Eleganz auf kompakten 24 m² Grundfläche. Die alpine Umgebung bestimmte die Haptik der Materialien: Echtholzfurniere, regionaler Schiefer, helle Eschenholzböden und beruhigende Naturtöne.",
-            pl: "Zlokalizowany w rejonie Mont-Blanc apartament wakacyjny łączy luksus i funkcjonalność na powierzchni zaledwie 24 m². Otaczający krajobraz zdefiniował paletę materiałową: naturalne forniry drewniane, lokalny łupek, deski jesionowe oraz szlachetną zieleń marmuru."
+            en: "Located in the Mont-Blanc region, this holiday apartment balances bespoke comfort and spatial efficiency within a compact 24 m² footprint. Surrounding alpine landscapes directly influenced the tactile material palette: natural wood veneers, local slate, bright ash wood flooring, and calm natural tones.",
+            de: "Am Fuße des Mont-Blanc-Massivs gelegen, verbindet dieses Ferienapartment hohen Wohnkomfort und Präzision auf kompakten 24 m² Grundfläche. Die alpine Umgebung bestimmte die Haptik der Materialien: Echtholzfurniere, regionaler Schiefer, helle Eschenholzböden und ruhige Naturtöne.",
+            pl: "Zlokalizowany w rejonie Mont-Blanc apartament wakacyjny łączy funkcjonalność i dopracowany detal na powierzchni 24 m². Otaczający krajobraz zdefiniował paletę materiałową: naturalne forniry drewniane, lokalny łupek, deski jesionowe oraz stonowaną zieleń marmuru."
           },
           editorialSections: [
             {
@@ -705,7 +711,7 @@ const siteData = {
             de: "Zollhaus Zürich",
             pl: "Zollhaus Zurych"
           },
-          year: "2016 · 14,300 m²",
+          year: "2015 · 14,300 m²",
           location: {
             en: "Zürich, Switzerland",
             de: "Zürich, Schweiz",
@@ -722,25 +728,25 @@ const siteData = {
             pl: "Spółdzielnia Kalkbreite / CROPKA"
           },
           scope: {
-            en: "Competition / 2000-Watt Society Standard",
-            de: "Wettbewerb / 2000-Watt-Gesellschaft",
-            pl: "Konkurs / Standard 2000-Watt Society"
+            en: "Competition / 2000-Watt Society Standard Target",
+            de: "Wettbewerb / Zielstandard 2000-Watt-Gesellschaft",
+            pl: "Konkurs / Założenia standardu 2000-Watt Society"
           },
           image: "assets/images/zollhaus_flats_offices_restaurant.jpg",
           description: {
-            en: "A contemporary solution to modern multifamily living. The project combines living, working, education, leisure and retail together to form an almost completely self-sufficient community. Located in the heart of Zurich, this stylish development delivers extraordinary energy performance aiming for the 2000 Watt Society standard.",
-            de: "Ein zukunftsweisendes Konzept für mehrgeschossiges urbanes Wohnen. Das Projekt vereint Wohnen, Arbeiten, Bildung und Gewerbe zu einem autarken Quartier im Zentrum von Zürich, konsequent optimiert nach den Standards der 2000-Watt-Gesellschaft.",
-            pl: "Innowacyjne rozwiązanie dla wielorodzinnego życia w centrum Zurychu. Projekt łączy mieszkania, przestrzenie pracy, edukację i handel w samowystarczalną wspólnotę spełniającą rygorystyczne kryteria standardu 2000 Watt Society."
+            en: "A mixed-use urban housing proposal combining living, working, education, leisure and retail into a compact community in central Zurich, designed around the targets of the 2000-Watt Society.",
+            de: "Ein Konzept für mehrgeschossiges urbanes Wohnen. Das Projekt vereint Wohnen, Arbeiten, Bildung und Gewerbe im Zentrum von Zürich, ausgerichtet an den Zielen der 2000-Watt-Gesellschaft.",
+            pl: "Koncepcja wielorodzinnej zabudowy miejskiej w centrum Zurychu łącząca mieszkania, przestrzenie pracy, edukację i handel, projektowana zgodnie z założeniami standardu 2000-Watt Society."
           }
         },
         {
           id: "thun-crematorium",
           title: {
-            en: "Thun Crematorium 'EO IPSO'",
-            de: "Krematorium Thun 'EO IPSO'",
-            pl: "Krematorium w Thun 'EO IPSO'"
+            en: "Thun Crematorium",
+            de: "Krematorium Thun",
+            pl: "Krematorium w Thun"
           },
-          year: "2017 · 2,485 m²",
+          year: "2015 · 2,485 m²",
           location: {
             en: "Thun, Switzerland",
             de: "Thun, Schweiz",
@@ -763,9 +769,9 @@ const siteData = {
           },
           image: "assets/images/KRE_exterior_01.jpg",
           description: {
-            en: "An understated and classically elegant building form houses a new crematorium for the town of Thun. The architecture and landscape work closely together to create a space dedicated to contemplation. Internal, airy gardens grant a serene atmosphere, and warm private spaces bring solace to visitors.",
-            de: "Ein zurückhaltender, klassisch eleganter Baukörper eingebettet in die alpine Landschaft von Thun. Lichtdurchflutete Atriumgärten und natürliche Materialien schaffen eine würdevolle, kontemplative Atmosphäre des Trostes.",
-            pl: "Powściągliwa i elegancka forma nowego krematorium w Thun. Architektura i krajobraz tworzą harmonijną przestrzeń kontemplacji, z wewnętrznymi ogrodami i naturalnym światłem wnoszącym ukojenie."
+            en: "An understated and classically proportioned building form for the town of Thun crematorium. Architecture and landscape work together to create calm spaces dedicated to contemplation, with internal courtyard gardens and daylighted rooms.",
+            de: "Ein zurückhaltender, klassisch proportionierter Baukörper eingebettet in die Landschaft von Thun. Lichtdurchflutete Atriumgärten und natürliche Materialien schaffen eine ruhige, kontemplative Atmosphäre.",
+            pl: "Powściągliwa i wyważona forma nowego krematorium w Thun. Architektura i krajobraz tworzą spójną przestrzeń kontemplacji z wewnętrznymi ogrodami i naturalnym oświetleniem."
           }
         },
         {
@@ -775,7 +781,7 @@ const siteData = {
             de: "TVP Medienzentrum Warschau",
             pl: "Nowa Siedziba TVP Warszawa"
           },
-          year: "2018 · 23,700 m²",
+          year: "2015 · 23,700 m²",
           location: {
             en: "Warsaw, Poland",
             de: "Warschau, Polen",
@@ -792,15 +798,15 @@ const siteData = {
             pl: "CROPKA architects & FORUM Architekci"
           },
           scope: {
-            en: "Awarded Jury's Commendation",
-            de: "Auszeichnung im int. Wettbewerb",
-            pl: "Wyróżnienie w konkursie międzynarodowym"
+            en: "Competition (Honourable Mention / 4th Prize)",
+            de: "Wettbewerb (Auszeichnung / 4. Preis)",
+            pl: "Konkurs (Wyróżnienie / IV nagroda)"
           },
           image: "assets/images/tvp_01_woronicza_1200_675.jpg",
           description: {
-            en: "Awarded with a jury commendation, the design for the Polish TV HQ houses two large studios with a high-level fully glazed panoramic studio overlooking Warsaw. The newsroom forms the dynamic heart of the building, while a central gate and public plaza integrate the campus with the urban realm.",
-            de: "Prämierter Entwurf für den TVP-Hauptsitz mit zwei Großraumstudios und einem spektakulären verglasten Panoramastudio. Die Newsroom-Zentrale bildet den lebendigen Mittelpunkt, ergänzt durch ein monumentales Torgebäude und eine öffentliche Plaza.",
-            pl: "Wyróżniony projekt nowej siedziby Telewizji Polskiej przy ul. Woronicza. Obejmuje dwa duże studia telewizyjne, przeszklone studio panoramiczne, centralną bramę urbanistyczną oraz zadaszony plac publiczny otwierający kampus na miasto."
+            en: "Competition entry awarded an honourable mention (4th prize) for Polish Television HQ, housing two large production studios and a glazed upper panoramic studio overlooking Warsaw. The newsroom forms the central hub, linked to a public plaza.",
+            de: "Prämierter Wettbewerbsentwurf (4. Preis) für den TVP-Hauptsitz mit zwei Großraumstudios und einem verglasten Panoramastudio. Die Newsroom-Zentrale bildet den Mittelpunkt, ergänzt durch ein Torgebäude und eine öffentliche Plaza.",
+            pl: "Wyróżniony projekt konkursowy (IV nagroda) nowej siedziby Telewizji Polskiej przy ul. Woronicza. Obejmuje dwa duże studia telewizyjne, przeszklone studio panoramiczne oraz zadaszony plac publiczny."
           }
         },
         {
@@ -810,16 +816,16 @@ const siteData = {
             de: "Haus in Łomnica",
             pl: "Dom w Łomnicy"
           },
-          year: "2019 · 295 m²",
+          year: "2021 (Design 2019) · 295 m²",
           location: {
             en: "Łomnica, Poland",
             de: "Łomnica, Polen",
             pl: "Łomnica, Polska"
           },
           typology: {
-            en: "Private Residential / Passivhaus",
-            de: "Einfamilienhaus / Passivhaus",
-            pl: "Rezydencja prywatna / Dom pasywny"
+            en: "Private Residential / Low-Energy Design",
+            de: "Einfamilienhaus / Niedrigenergie-Bauweise",
+            pl: "Rezydencja prywatna / Budynek niskoenergetyczny"
           },
           client: {
             en: "Private Client / CROPKA architects",
@@ -827,15 +833,15 @@ const siteData = {
             pl: "Klient prywatny / CROPKA architects"
           },
           scope: {
-            en: "Realisation (Built) — Complete Design",
-            de: "Realisierung (Gebaut) — Gesamtplanung",
-            pl: "Realizacja — Projekt kompleksowy i wykonanie"
+            en: "Built — Complete Architecture & Realisation",
+            de: "Realisiert — Gesamtarchitektur & Ausführung",
+            pl: "Zrealizowany — Kompleksowa architektura i realizacja"
           },
           image: "assets/images/CROPKA_MYS_front_1200_675.jpg",
           description: {
-            en: "Surrounded by the Karkonosze (Giant Mountains) and Rudawy ranges, this Passivhaus residence maximizes scenic mountain views. Clad in traditional Shou-Sugi-Ban charred timber with anthracite ceramic tiles and high-thermal-mass clay block walls, combining vernacular texture with ultra-low energy performance.",
-            de: "Eingebettet in das Panorama des Riesengebirges verbindet dieses Passivhaus traditionell verkohltes Shou-Sugi-Ban Lärchenholz mit modernen Tonblock-Speichermassen, anthrazitfarbenen Ziegeln und raumhoher Verglasung.",
-            pl: "Rezydencja pasywna w Łomnicy z panoramą Karkonoszy i Rudaw Janowickich. Elewacja z opalanego drewna modrzewiowego Shou-Sugi-Ban połączona z lokalnym granitem i ścianami ceramicznymi o wysokiej bezwładności cieplnej."
+            en: "An airy, spacious passive house in Łomnica in the Karkonosze Mountains, combining energy efficiency with charred larch (Shou-Sugi-Ban) timber cladding, anthracite ceramic roof tiles, and high-thermal-mass masonry walls.",
+            de: "Ein großzügiges Passivhaus in Łomnica im Riesengebirge, das hohe Energieeffizienz mit verkohltem Shou-Sugi-Ban-Lärchenholz, anthrazitfarbenen Dachziegeln und wärmespeicherndem Mauerwerk verbindet.",
+            pl: "Przestronny dom pasywny w Łomnicy w Karkonoszach, łączący wysoką efektywność energetyczną z elewacją z opalanego modrzewia (Shou-Sugi-Ban), ceramiczną dachówką oraz ścianami o wysokiej bezwładności cieplnej."
           }
         },
         {
@@ -845,32 +851,32 @@ const siteData = {
             de: "Gillian Modulhaus",
             pl: "Dom Modułowy Gillian"
           },
-          year: "2020 · 60 m²",
+          year: "2010 · 60 m²",
           location: {
-            en: "United Kingdom / Switzerland",
-            de: "Großbritannien / Schweiz",
-            pl: "Wielka Brytania / Szwajcaria"
+            en: "Scotland, United Kingdom",
+            de: "Schottland, Großbritannien",
+            pl: "Szkocja, Wielka Brytania"
           },
           typology: {
-            en: "Compact Prefabricated Living",
-            de: "Kompaktes Holzmodulhaus",
-            pl: "Kompaktowy ekologiczny dom modułowy"
+            en: "Compact Prefabricated Kit Home System",
+            de: "Kompaktes Holzmodul-System",
+            pl: "Kompaktowy system domu modułowego"
           },
           client: {
-            en: "Kit-Homes Collection / CROPKA",
-            de: "Modulhaus-Kollektion / CROPKA",
-            pl: "Kolekcja domów modułowych / CROPKA"
+            en: "Kit-Homes Collection / CROPKA architects",
+            de: "Modulhaus-Kollektion / CROPKA architects",
+            pl: "Kolekcja domów modułowych / CROPKA architects"
           },
           scope: {
-            en: "Realisation / Prefabrication System",
-            de: "Realisierung / Modulsystem",
-            pl: "Realizacja / System prefabrykacji"
+            en: "Concept / Kit Home System",
+            de: "Konzept / Modulsystem-Entwicklung",
+            pl: "Koncepcja / System prefabrykacji"
           },
           image: "assets/images/gillian_1403_800.jpg",
           description: {
-            en: "Gillian represents a fresh approach to traditional architectural forms through sustainable timber technology. This affordable compact kit home optimizes internal flow to deliver a spacious open-plan living core with zero wasted circulation.",
-            de: "Gillian interpretiert traditionelle Bauformen neu durch nachhaltige Holzrahmenbauweise. Das kompakte Modulhaus maximiert den nutzbaren Wohnraum bei minimalen Baukosten und exzellenter Energieeffizienz.",
-            pl: "Gillian to nowoczesna interpretacja tradycyjnej bryły z wykorzystaniem technologii ekologicznego szkieletu drewnianego. Kompaktowy dom optymalizuje komunikację, oferując przestronną strefę dzienną."
+            en: "Gillian explores traditional residential proportions adapted for prefabricated timber frame construction. The compact 60 m² system optimizes internal circulation around an open-plan living core.",
+            de: "Gillian überträgt traditionelle Bauformen in eine vorgefertigte Holzrahmenbauweise. Das kompakte 60-m²-System optimiert die Erschließung rund um einen offenen Wohnkern.",
+            pl: "Gillian to koncepcja domu modułowego łącząca tradycyjną bryłę z prefabrykowanym szkieletem drewnianym. Kompaktowy układ 60 m² minimalizuje komunikację na rzecz otwartej strefy dziennej."
           }
         },
         {
@@ -880,32 +886,32 @@ const siteData = {
             de: "Uallas Modulhaus",
             pl: "Dom Modułowy Uallas"
           },
-          year: "2020 · 170 m²",
+          year: "2010 · 170 m²",
           location: {
-            en: "United Kingdom / Switzerland",
-            de: "Großbritannien / Schweiz",
-            pl: "Wielka Brytania / Szwajcaria"
+            en: "Scotland, United Kingdom",
+            de: "Schottland, Großbritannien",
+            pl: "Szkocja, Wielka Brytania"
           },
           typology: {
-            en: "Family Modular Eco-Residence",
-            de: "Modulares Familien-Ökohaus",
-            pl: "Rodzinny modułowy dom ekologiczny"
+            en: "Modular Timber Residence Concept",
+            de: "Modulares Holzbau-Konzept",
+            pl: "Koncepcja modułowego domu z drewna"
           },
           client: {
-            en: "Kit-Homes Collection / CROPKA",
-            de: "Modulhaus-Kollektion / CROPKA",
-            pl: "Kolekcja domów modułowych / CROPKA"
+            en: "Kit-Homes Collection / CROPKA architects",
+            de: "Modulhaus-Kollektion / CROPKA architects",
+            pl: "Kolekcja domów modułowych / CROPKA architects"
           },
           scope: {
-            en: "Realisation / Modular Architecture",
-            de: "Realisierung / Systementwicklung",
-            pl: "Realizacja / Standaryzacja modułowa"
+            en: "Concept / Kit Home System",
+            de: "Konzept / Modulsystem-Entwicklung",
+            pl: "Koncepcja / Standaryzacja modułowa"
           },
           image: "assets/images/uallas.jpg",
           description: {
-            en: "Uallas is a progressive design featuring highly flexible indoor and outdoor spaces realized through sustainable materials to deliver generous spatial volume for contemporary family living.",
-            de: "Uallas ist ein zukunftsweisendes Einfamilienhaus mit flexiblen Raumkonfigurationen und markanter zeitgenössischer Holzbauästhetik.",
-            pl: "Uallas to progresywny projekt domu jednorodzinnego z elastycznym układem wnętrz z naturalnych, ekologicznych materiałów."
+            en: "Uallas is a modular residential system featuring flexible indoor-outdoor configurations developed for prefabricated timber construction and contemporary family living.",
+            de: "Uallas ist ein modulares Wohnkonzept mit flexiblen Innen- und Außenraumkonfigurationen für die vorgefertigte Holzbauweise.",
+            pl: "Uallas to modułowa koncepcja domu jednorodzinnego z elastycznym układem wnętrz przeznaczona do prefabrykacji drewnianej."
           }
         },
         {
@@ -927,9 +933,9 @@ const siteData = {
             pl: "Obiekt muzealno-wystawienniczy"
           },
           client: {
-            en: "Ossolineum National Institute",
-            de: "Nationales Ossolineum Institut",
-            pl: "Zakład Narodowy im. Ossolińskich"
+            en: "Ossolineum National Institute / CROPKA architects",
+            de: "Nationales Ossolineum Institut / CROPKA architects",
+            pl: "Zakład Narodowy im. Ossolińskich / CROPKA architects"
           },
           scope: {
             en: "Architectural Competition",
@@ -952,9 +958,9 @@ const siteData = {
           },
           year: "2016 · Span: 130 m",
           location: {
-            en: "Montreux, Switzerland",
-            de: "Montreux, Schweiz",
-            pl: "Montreux, Szwajcaria"
+            en: "Clarens / Montreux, Switzerland",
+            de: "Clarens / Montreux, Schweiz",
+            pl: "Clarens / Montreux, Szwajcaria"
           },
           typology: {
             en: "Extradosed Railway Viaduct",
@@ -974,27 +980,27 @@ const siteData = {
           image: "assets/images/mxv_01_valley_1200_675.jpg",
           description: {
             en: "An enclosed extradosed railway viaduct designed to accommodate differential geological movements over a 100-year lifetime with precast modular concrete and internal prestressed cables.",
-            de: "Eine geschlossene Extradosed-Eisenbahnbrücke über die Schlucht von Montreux, ausgelegt auf seismische Verschiebungen.",
+            de: "Eine geschlossene Extradosed-Eisenbahnbrücke über die Schlucht von Montreux, ausgelegt auf tektonische Verschiebungen.",
             pl: "Wiadukt kolejowy w szwajcarskich Alpach zaprojektowany na kompensację przesunięć tektonicznych z prefabrykowanego betonu sprężonego."
           }
         },
         {
           id: "spylaw-park-house",
           title: {
-            en: "Spylaw Park Residence",
-            de: "Residenz Spylaw Park",
+            en: "Spylaw Park",
+            de: "Haus Spylaw Park",
             pl: "Dom w Spylaw Park"
           },
-          year: "2015 · 173 m²",
+          year: "2019 · 173 m²",
           location: {
-            en: "Edinburgh, Scotland",
-            de: "Edinburgh, Schottland",
-            pl: "Edynburg, Szkocja"
+            en: "Edinburgh, United Kingdom",
+            de: "Edinburgh, Großbritannien",
+            pl: "Edynburg, Wielka Brytania"
           },
           typology: {
-            en: "Inward Courtyard Private House",
-            de: "Atrium-Wohnhaus mit Zinkkröpfung",
-            pl: "Dom atrialny z czarnym cynkiem"
+            en: "Private House / Courtyard Residence",
+            de: "Privathaus / Atrium-Wohnhaus",
+            pl: "Dom jednorodzinny / Dom atrialny"
           },
           client: {
             en: "Private Client / CROPKA architects",
@@ -1002,100 +1008,50 @@ const siteData = {
             pl: "Klient prywatny / CROPKA architects"
           },
           scope: {
-            en: "Realisation (Built) — Concept & Planning",
-            de: "Realisierung (Gebaut) — Planung & Ausführung",
-            pl: "Realizacja — Projekt i wykonanie"
+            en: "Realisation (Built) — Private House",
+            de: "Realisierung (Gebaut) — Privathaus",
+            pl: "Realizacja (Zbudowany) — Dom prywatny"
           },
           image: "assets/images/Spylaw_Edinburgh_CROPKA_1200_675.jpg",
           description: {
-            en: "An inward-focused private residence organized around a rainwater-harvesting courtyard pool. A dramatic black zinc cantilevered volume rests above a white base, capped with a Scandinavian turf roof.",
+            en: "An inward-focused private residence organized around a rainwater-harvesting courtyard pool. A black zinc cantilevered volume rests above a white base, capped with a planted turf roof.",
             de: "Ein introvertiertes Privathaus in Edinburgh um einen Gartenhof mit schwarzem Zinkauskragungskörper und Gründach.",
             pl: "Prywatny dom w Edynburgu zorganizowany wokół wewnętrznego patio ze zbiornikiem retencyjnym i bryłą z czarnego cynku."
           }
-        }
-      ]
-    },
-
-    research: {
-      title: {
-        en: "Research & Computational Practice",
-        de: "Forschung & Digitale Praxis",
-        pl: "Badania i Praktyka Obliczeniowa"
-      },
-      subtitle: {
-        en: "Doctoral research on digital material passports, circular economy frameworks, and Minergie-P modular prototypes.",
-        de: "Doktorarbeit über digitale Materialpässe, Zirkularität im Bauwesen und Minergie-P-Prototypen.",
-        pl: "Praca doktorska w zakresie paszportów materiałowych, gospodarka cyrkularna i prototypy Minergie-P."
-      },
-      items: [
+        },
         {
           id: "augusta-raurica",
           title: {
-            en: "Augusta Raurica Modular Envelope",
-            de: "Augusta Raurica Modulhülle",
-            pl: "Augusta Raurica Powłoka Modułowa"
+            en: "Augusta Raurica",
+            de: "Augusta Raurica",
+            pl: "Augusta Raurica"
           },
           year: "2014 · 7,253 m²",
           location: {
-            en: "Augst, Switzerland",
-            de: "Augst, Schweiz",
-            pl: "Augst, Szwajcaria"
+            en: "Augst, Basel-Landschaft, Switzerland",
+            de: "Augst, Basel-Landschaft, Schweiz",
+            pl: "Augst, Basel-Landschaft, Szwajcaria"
           },
           typology: {
-            en: "Archaeological Center / Minergie-P",
-            de: "Forschungszentrum / Minergie-P",
-            pl: "Centrum Archeologiczne / Minergie-P"
+            en: "Archaeological Center / Timber Modular Structure",
+            de: "Forschungszentrum / Modulare Holzkonstruktion",
+            pl: "Centrum Archeologiczne / Modułowa konstrukcja drewniana"
           },
           client: {
-            en: "Kanton Basel-Landschaft / CROPKA",
-            de: "Kanton Basel-Landschaft / CROPKA",
-            pl: "Kanton Bazylea-Okręg / CROPKA"
+            en: "Kanton Basel-Landschaft / CROPKA architects",
+            de: "Kanton Basel-Landschaft / CROPKA architects",
+            pl: "Kanton Bazylea-Okręg / CROPKA architects"
           },
           scope: {
-            en: "Minergie-P Sustainable Optimization",
-            de: "Minergie-P Nachhaltigkeitskonzept",
-            pl: "Optymalizacja standardu Minergie-P"
+            en: "Architectural Competition — Minergie-P Design Target",
+            de: "Architekturwettbewerb — Zielstandard Minergie-P",
+            pl: "Konkurs architektoniczny — Założenia standardu Minergie-P"
           },
           image: "assets/images/augusta_02_1200.jpg",
           description: {
-            en: "Archaeological finds center conceived as a flexible timber modular structure. External glu-lam frames free the internal floorplates, with Brettstapel solid timber panels and an intelligent responsive louvered skin minimizing solar thermal gains under Swiss Minergie-P standards.",
-            de: "Archäologisches Fundzentrum mit außenliegender Brettschichtholz-Tragstruktur für stützenfreie Innenräume. Brettstapel-Elemente und eine intelligente Lamellenfassade optimieren das Raumklima nach Minergie-P-Kriterien.",
-            pl: "Ośrodek znalezisk archeologicznych o konstrukcji z drewna klejonego i paneli Brettstapel. Zewnętrzne ramy konstrukcyjne uwalniają wnętrze, a inteligentne żaluzje fasadowe ograniczają zyski słoneczne w standardzie Minergie-P."
-          }
-        },
-        {
-          id: "hkpb-pedestrian-bridge",
-          title: {
-            en: "HKPB Parametric Bridge",
-            de: "HKPB Parametrische Brücke",
-            pl: "Kładka Parametryczna HKPB"
-          },
-          year: "2014 · Span: 70 m",
-          location: {
-            en: "Hradec Králové, Czech Republic",
-            de: "Königgrätz, Tschechien",
-            pl: "Hradec Králové, Czechy"
-          },
-          typology: {
-            en: "Parametric Infrastructure & Urban Furniture",
-            de: "Parametrische Brücke & Parkmöbel",
-            pl: "Infrastruktura parametryczna i mebel miejski"
-          },
-          client: {
-            en: "CROPKA architects | vanOmmeren Architekten",
-            de: "CROPKA architects | vanOmmeren Architekten",
-            pl: "CROPKA architects | vanOmmeren Architekten"
-          },
-          scope: {
-            en: "Computational Bridge Design",
-            de: "Parametrischer Wettbewerbsbeitrag",
-            pl: "Projekt konkursowy kładki pieszej"
-          },
-          image: "assets/images/01_HKPB_CAM_AeroSouth_People_web.jpg",
-          description: {
-            en: "Bridge as a primary piece of park furniture across the Elbe river. The computational steel rib design functions as a continuous meeting platform, seating area, and viewpoints uniting human circulation with riverside ecology.",
-            de: "Eine Fußgängerbrücke als integrales Parkmöbel über die Elbe. Die parametrische Stahlrippen-Struktur dient gleichzeitig als Aussichtsplattform, Treffpunkt und ökologische Wegeverbindung.",
-            pl: "Kładka nad Łabą zaprojektowana jako zintegrowany mebel miejski. Parametryczna struktura żeber stalowych tworzy przestrzeń spotkań, taras widokowy i spójne połączenie z parkiem nadbrzeżnym."
+            en: "Archaeological finds center conceived as a flexible timber modular structure. External glu-lam frames free the internal floorplates, with Brettstapel solid timber panels and an external louvered shading envelope designed around Swiss Minergie-P energy targets.",
+            de: "Archäologisches Fundzentrum mit außenliegender Brettschichtholz-Tragstruktur für stützenfreie Innenräume. Brettstapel-Elemente und eine Lamellenfassade orientieren sich an Minergie-P-Kriterien.",
+            pl: "Ośrodek znalezisk archeologicznych o konstrukcji z drewna klejonego i paneli Brettstapel. Zewnętrzne ramy konstrukcyjne uwalniają wnętrze, a żaluzje fasadowe ograniczają zyski słoneczne zgodnie z założeniami Minergie-P."
           }
         },
         {
@@ -1105,7 +1061,7 @@ const siteData = {
             de: "Kindergarten Wildenstein",
             pl: "Przedszkole Wildenstein"
           },
-          year: "2015 · 424 m²",
+          year: "2014 · 424 m²",
           location: {
             en: "Rorschacherberg, Switzerland",
             de: "Rorschacherberg, Schweiz",
@@ -1117,24 +1073,60 @@ const siteData = {
             pl: "Edukacja / Architektura topograficzna"
           },
           client: {
-            en: "Gemeinde Rorschacherberg / CROPKA",
-            de: "Gemeinde Rorschacherberg / CROPKA",
-            pl: "Gmina Rorschacherberg / CROPKA"
+            en: "Gemeinde Rorschacherberg / CROPKA architects",
+            de: "Gemeinde Rorschacherberg / CROPKA architects",
+            pl: "Gmina Rorschacherberg / CROPKA architects"
           },
           scope: {
             en: "Competition Entry",
-            de: "Wettbewerbserfolg",
+            de: "Wettbewerbsbeitrag",
             pl: "Projekt konkursowy"
           },
           image: "assets/images/front_diagram.jpg",
           description: {
-            en: "Eco-friendly educational building inspired by the geometry of Rubik's Snake. Extends across the hillside with a green turf roof, connecting classrooms around a central daylight atrium and bridging directly over the access road to the primary school.",
-            de: "Ökologischer Bildungsbau an einem Hang des Rorschacherbergs, inspiriert von der Rubik's Snake Geometrie. Ein begehbares Gründach und ein zentrales Lichtatrium verbinden alle Funktionsbereiche.",
-            pl: "Ekologiczne przedszkole na zboczu w Rorschacherberg inspirowane geometrią Węża Rubika. Kaskadowa bryła z zielonym dachem łączy sale dydaktyczne wokół centralnego atrium pełnego światła."
+            en: "Educational building proposal shaped around hillside topography in Rorschacherberg. Extends across the slope under a continuous planted roof, connecting classrooms around a daylight atrium and bridging toward the primary school.",
+            de: "Bildungsbau an einem Hang des Rorschacherbergs, angepasst an die Topografie. Ein begrüntes Dach und ein zentrales Lichtatrium verbinden die Gruppenräume mit der Primarschule.",
+            pl: "Koncepcja przedszkola w Rorschacherberg wpisana w zbocze. Kaskadowa bryła pod zielonym dachem łączy sale dydaktyczne wokół centralnego atrium i prowadzi w stronę szkoły podstawowej."
+          }
+        },
+        {
+          id: "kantonsspital-baden",
+          title: {
+            en: "Kantonsspital Baden",
+            de: "Kantonsspital Baden",
+            pl: "Szpital Kantonalny Baden"
+          },
+          year: "2016–2023 · 76,215 m²",
+          location: {
+            en: "Baden, Switzerland",
+            de: "Baden, Schweiz",
+            pl: "Baden, Szwajcaria"
+          },
+          typology: {
+            en: "Healthcare Complex",
+            de: "Spitalneubau",
+            pl: "Kompleks szpitalny"
+          },
+          client: {
+            en: "Nickl and Partner (Lead Architect · Client: Kantonsspital Baden AG)",
+            de: "Nickl & Partner (Gesamtplanung · Bauherr: Kantonsspital Baden AG)",
+            pl: "Nickl & Partner (Generalny Projektant · Inwestor: Kantonsspital Baden AG)"
+          },
+          scope: {
+            en: "Architectural Project Lead (Phases 4–5)",
+            de: "Projektleitung Architektur (Phasen 4–5)",
+            pl: "Kierownik Projektu Architektonicznego (Fazy 4–5)"
+          },
+          image: "",
+          description: {
+            en: "Piotr served as Architectural Project Lead at Nickl and Partner for the new Kantonsspital Baden during project phases 4 and 5. He managed the architectural planning team, coordinated specialist consultants and represented the general planning team in discussions with the client.",
+            de: "Piotr leitete bei Nickl & Partner die Architekturplanung für den Neubau des Kantonsspitals Baden in den Phasen 4 und 5. Er führte das Architektur-Planungsteam, koordinierte die Fachplaner und vertrat das Generalplanungsteam in den Gesprächen mit der Bauherrschaft.",
+            pl: "Piotr pełnił funkcję Kierownika Projektu Architektonicznego w pracowni Nickl & Partner przy realizacji nowego Szpitala Kantonalnego w Baden w fazach 4 i 5. Zarządzał zespołem projektowym architektury, koordynował projektantów branżowych i reprezentował zespół generalnego projektanta w rozmowach z inwestorem."
           }
         }
       ]
     },
+
     digitalisation: {
       title: {
         en: "Digitalisation & Computational Systems",
@@ -1142,152 +1134,11 @@ const siteData = {
         pl: "Digitalizacja i Systemy Parametryczne"
       },
       subtitle: {
-        en: "Advanced OpenBIM coordination, algorithmic geometry, prefabricated timber modular configurators, and automated digital fabrication workflows.",
-        de: "Ganzheitliche OpenBIM-Koordination, algorithmische Geometrien, parametrische Modulhaus-Konfiguratoren und digitale Fertigung.",
-        pl: "Kompleksowa koordynacja OpenBIM, geometria algorytmiczna, parametryczne konfiguratory domów modułowych i cyfrowa prefabrykacja."
+        en: "OpenBIM coordination, algorithmic geometry workflows, timber modular configurators, and Digital Material Bank pipelines.",
+        de: "OpenBIM-Koordination, algorithmische Geometrie-Workflows, modulare Holzbaukonfiguratoren und digitale Materialbank-Prozesse.",
+        pl: "Koordynacja OpenBIM, parametryczne przepływy pracy, konfiguratory modułowe oraz cyfrowe banki materiałów."
       },
-      items: [
-        {
-          id: "kit-homes-configurator",
-          title: {
-            en: "Kit-Homes Parametric Configurator",
-            de: "Kit-Homes Parametrischer Konfigurator",
-            pl: "Konfigurator Parametryczny Kit-Homes"
-          },
-          year: "2016–2022",
-          location: {
-            en: "Switzerland & Poland",
-            de: "Schweiz & Polen",
-            pl: "Szwajcaria i Polska"
-          },
-          typology: {
-            en: "Computational Prefabricated Housing System",
-            de: "Digitales modulares Holzbausystem",
-            pl: "Cyfrowy system modułowy domów z drewna"
-          },
-          client: {
-            en: "CROPKA architects / R&D",
-            de: "CROPKA architects / F&E",
-            pl: "CROPKA architects / B+R"
-          },
-          scope: {
-            en: "Algorithmic Design Engine & CNC Fabrication Workflow",
-            de: "Parametrisches Entwurfstool & CNC-Fertigung",
-            pl: "Silnik algorytmiczny i cyfrowa produkcja CNC"
-          },
-          image: "assets/images/front_diagram.jpg",
-          description: {
-            en: "A cutting-edge algorithmic housing configurator that generates personalized timber dwellings based on site topography, solar orientation, and family requirements with direct export to CNC fabrication lines.",
-            de: "Ein hochentwickelter algorithmischer Konfigurator für nachhaltige Holzhäuser, der Entwürfe anhand von Topografie, Sonneneinstrahlung und Kundenwünschen direkt für die CNC-Fertigung generiert.",
-            pl: "Zaawansowany algorytmiczny konfigurator domów drewnianych generujący indywidualne warianty bryły w oparciu o ukształtowanie terenu i nasłonecznienie z bezpośrednim eksportem do obrabiarek CNC."
-          }
-        },
-        {
-          id: "hkpb-parametric-bridge-dig",
-          title: {
-            en: "HKPB Parametric Bridge",
-            de: "HKPB Parametrische Brücke",
-            pl: "Kładka Parametryczna HKPB"
-          },
-          year: "2014",
-          location: {
-            en: "Elbe River, Hradec Králové, Czech Republic",
-            de: "Königgrätz Elbe, Tschechien",
-            pl: "Hradec Králové, Łaba, Czechy"
-          },
-          typology: {
-            en: "Parametric Steel Infrastructure & Urban Furniture",
-            de: "Parametrische Infrastruktur",
-            pl: "Infrastruktura parametryczna i mebel miejski"
-          },
-          client: {
-            en: "CROPKA architects | vanOmmeren Architekten",
-            de: "CROPKA architects | vanOmmeren Architekten",
-            pl: "CROPKA architects | vanOmmeren Architekten"
-          },
-          scope: {
-            en: "Algorithmic Geometric & Structural Optimization",
-            de: "Geometrische Optimierung",
-            pl: "Optymalizacja geometryczna i parametryczna"
-          },
-          image: "assets/images/01_HKPB_CAM_AeroSouth_People_web.jpg",
-          description: {
-            en: "A lightweight generative pedestrian bridge utilizing parametric structural ribbing that dynamically responds to bending moments while integrating urban park seating.",
-            de: "Eine leichte, generativ entworfene Fußgängerbrücke mit parametrischer Rippenstruktur, die statische Biegemomente aufnimmt und Sitzlandschaften integriert.",
-            pl: "Lekka kładka piesza zaprojektowana algorytmicznie z parametrycznym ożebrowaniem reagującym na siły zginające i integrującym meble miejskie."
-          }
-        },
-        {
-          id: "bim-spital-baden-agnes",
-          title: {
-            en: "Kantonsspital Baden — OpenBIM Management",
-            de: "Kantonsspital Baden, OpenBIM-Management",
-            pl: "Szpital Kantonalny Baden — Koordynacja OpenBIM"
-          },
-          year: "2016–2023",
-          location: {
-            en: "Baden, Switzerland",
-            de: "Baden, Schweiz",
-            pl: "Baden, Szwajcaria"
-          },
-          typology: {
-            en: "Major Healthcare Complex (CHF 478M)",
-            de: "Großspitalneubau (CHF 478 Mio.)",
-            pl: "Nowy kompleks szpitalny (CHF 478M)"
-          },
-          client: {
-            en: "Kantonsspital Baden AG / Nickl & Partner",
-            de: "Kantonsspital Baden AG / Nickl & Partner",
-            pl: "Kantonsspital Baden AG / Nickl & Partner"
-          },
-          scope: {
-            en: "Multi-Disciplinary OpenBIM Management & Coordination",
-            de: "OpenBIM Koordination & Kollisionsprüfung",
-            pl: "Zarządzanie OpenBIM i detekcja kolizji"
-          },
-          image: "assets/images/augusta_02_1200.jpg",
-          description: {
-            en: "Full-scale OpenBIM model management for one of Switzerland's largest medical infrastructure projects, unifying architectural, structural, and complex MEP installations across 76,000 m².",
-            de: "Umfassendes OpenBIM-Modellmanagement für eines der größten Spitalprojekte der Schweiz mit 76.000 m² Nutzfläche und hochkomplexer Haustechnik.",
-            pl: "Koordynacja modeli OpenBIM dla jednej z największych inwestycji medycznych w Szwajcarii o powierzchni 76 000 m², integrująca architekturę, konstrukcję i zaawansowane instalacje."
-          }
-        },
-        {
-          id: "noga-parametric-tower",
-          title: {
-            en: "NOGA Parametric Tower",
-            de: "NOGA Parametrischer Turm",
-            pl: "Wieża Parametryczna NOGA"
-          },
-          year: "2011",
-          location: {
-            en: "Manama, Bahrain",
-            de: "Manama, Bahrain",
-            pl: "Manama, Bahrajn"
-          },
-          typology: {
-            en: "LEED Gold High-Rise Skyscraper",
-            de: "LEED Gold Wolkenkratzer",
-            pl: "Wieżowiec ze standardem LEED Gold"
-          },
-          client: {
-            en: "NOGA / RMJM",
-            de: "NOGA / RMJM",
-            pl: "NOGA / RMJM"
-          },
-          scope: {
-            en: "Solar-Responsive Algorithmic Facade",
-            de: "Solar-optimierte Fassadengeometrie",
-            pl: "Fasada optymalizowana solarnie"
-          },
-          image: "assets/images/research_lakhta.webp",
-          description: {
-            en: "A computational high-rise envelope engineered to minimize extreme desert solar heat gain through algorithmic shading louvers and integrated environmental geometry.",
-            de: "Eine digital optimierte Hochhausfassade mit algorithmisch gesteuerten Verschattungslamellen zur Minimierung der Kühllasten im Wüstenklima.",
-            pl: "Elewacja wieżowca zaprojektowana algorytmicznie w celu redukcji przegrzewania budynku w klimacie pustynnym poprzez zintegrowane żaluzje strukturalne."
-          }
-        }
-      ]
+      items: []
     }
   },
 
@@ -1340,9 +1191,9 @@ const siteData = {
     {
       id: "p03-schneider-schneider-corporate-headq",
       title: {
-        en: "Corporate Headquartes",
-        de: "Corporate Headquartes",
-        pl: "Corporate Headquartes"
+        en: "Corporate Headquarters",
+        de: "Corporate Headquarters",
+        pl: "Corporate Headquarters"
       },
       year: "2019",
       type: "realisation",
@@ -1586,9 +1437,11 @@ const siteData = {
       },
       lat: 47.4736,
       lng: 8.3087,
-      scale: "76.215m2 / CHF 478M"
-,
-      awards: "World Architecture Festival (WAF) Award 2025, \nHealing Architecture Award 2025, \nEuropean Healthcare Design Award 2025"
+      scale: "76.215m2 / CHF 478M",
+      awards: "World Architecture Festival (WAF) Award 2025 · Healing Architecture Award 2025 · European Healthcare Design Award 2025",
+      hasInternalDetail: true,
+      internalId: "kantonsspital-baden",
+      internalCategory: "architecture"
 
     },
     {
@@ -1695,7 +1548,7 @@ const siteData = {
       },
       lat: 32.7767,
       lng: -96.797,
-      scale: "Lenght: 358m Span: 184m"
+      scale: "Length: 358 m · Span: 184 m"
 ,
       awards: "ECCS European Award for Steel Bridges 2012"
 
@@ -1854,7 +1707,7 @@ const siteData = {
       lng: 37.6173,
       scale: ""
 ,
-      awards: "2006 1st prize in an international housing competition, \nARX AWARDS 2007 - best tall building in Russia"
+      awards: "2006 1st prize in an international housing competition · ARX AWARDS 2007 - best tall building in Russia"
 
     },
     {
@@ -1961,7 +1814,7 @@ const siteData = {
       lng: 37.6173,
       scale: "169.000m2 / 55 storey"
 ,
-      awards: "Emporis Skyscraper Award 2015 (2nd place),\nGlass in Architecture 2015 (Grand Prix),\nNOPRIZ Awards Competition 2015 (First Prize),\nCRE Award Moscow 2016 (best class A office building),\nCity Authorities Award 2014 (Moscow's best multi-use building)"
+      awards: "Emporis Skyscraper Award 2015 (2nd place) · Glass in Architecture 2015 (Grand Prix) · NOPRIZ Awards Competition 2015 (First Prize) · CRE Award Moscow 2016 (best class A office building) · City Authorities Award 2014 (Moscow's best multi-use building)"
 
     },
     {
@@ -2181,9 +2034,9 @@ const siteData = {
       studio: "CROPKA",
       studioUrl: "",
       location: {
-        en: "Rohrschacherberg, Switzerland",
-        de: "Rohrschacherberg, Schweiz",
-        pl: "Rohrschacherberg, Szwajcaria"
+        en: "Rorschacherberg, Switzerland",
+        de: "Rorschacherberg, Schweiz",
+        pl: "Rorschacherberg, Szwajcaria"
       },
       lat: 47.4883,
       lng: 9.5083,
@@ -2339,7 +2192,7 @@ const siteData = {
       },
       year: "2003",
       type: "realisation",
-      studio: "Studio Bara\u0144ska - Bernardi",
+      studio: "Studio Barańska - Bernardi",
       studioUrl: "",
       location: {
         en: "Wrocław, Poland",
@@ -2453,7 +2306,7 @@ const siteData = {
         pl: "Spylaw Park"
       },
       year: "2019",
-      type: "competition",
+      type: "realisation",
       studio: "CROPKA",
       studioUrl: "",
       location: {
@@ -2555,7 +2408,10 @@ const siteData = {
       },
       lat: 46.442,
       lng: 6.895,
-      scale: "Span: 130m"
+      scale: "Span: 130m",
+      hasInternalDetail: true,
+      internalId: "mxv-rail-bridge",
+      internalCategory: "architecture"
 
     },
     {
@@ -2651,19 +2507,19 @@ const siteData = {
   // About Piotr Piotrowski - Verified credentials
   about: {
     title: {
-      en: "Piotr Piotrowski",
-      de: "Piotr Piotrowski",
-      pl: "Piotr Piotrowski"
+      en: "Piotr Piotrowski, Dr. sc.",
+      de: "Piotr Piotrowski, Dr. sc.",
+      pl: "Piotr Piotrowski, dr inż. arch."
     },
     subtitle: {
-      en: "PhD, Architect & Engineer",
-      de: "Dr. sc., Architekt & Ingenieur",
-      pl: "dr inż. arch."
+      en: "Architect, engineer and researcher | Aarau, Switzerland",
+      de: "Architekt, Ingenieur und Forscher | Aarau, Schweiz",
+      pl: "Architekt, inżynier i badacz | Aarau, Szwajcaria"
     },
     role: {
-      en: "PhD, Architect & Engineer",
-      de: "Dr. sc., Architekt & Ingenieur",
-      pl: "dr inż. arch."
+      en: "Architect, engineer and researcher | Aarau, Switzerland",
+      de: "Architekt, Ingenieur und Forscher | Aarau, Schweiz",
+      pl: "Architekt, inżynier i badacz | Aarau, Szwajcaria"
     },
     linkedinLabel: {
       en: "LinkedIn Profile",
@@ -2673,24 +2529,24 @@ const siteData = {
     linkedinUrl: "https://www.linkedin.com/in/piotr-piotrowski-a2913815/",
     paragraphs: [
       {
-        en: "Piotr Piotrowski is an architect, BIM manager and researcher with more than two decades of professional experience across architecture, design technology and the built environment. His work combines architectural design with digital methods, process development and research into more sustainable ways of designing, constructing and transforming buildings.",
-        de: "Piotr Piotrowski ist Architekt, BIM-Manager und Forscher mit über zwei Jahrzehnten Berufserfahrung in Architektur, Planungstechnologie und der gebauten Umwelt. Seine Arbeit verbindet architektonischen Entwurf mit digitalen Methoden, Prozessentwicklung und Forschung zu nachhaltigeren Ansätzen des Entwerfens, Bauens und Transformierens von Gebäuden.",
-        pl: "Piotr Piotrowski jest architektem, BIM managerem i naukowcem z ponad dwudziestoletnim doświadczeniem zawodowym w architekturze, technologii projektowania oraz środowisku budowlanym. Jego praca łączy projektowanie architektoniczne z metodami cyfrowymi, rozwojem procesów oraz badaniami nad bardziej zrównoważonymi sposobami projektowania, wznoszenia i transformacji budynków."
+        en: "Piotr Piotrowski is an architect, engineer and researcher based in Aarau, Switzerland. He combines more than two decades of architectural practice with expertise in BIM, digitalisation and circular construction. His work connects design and project leadership with the development of practical tools that improve how buildings are planned, delivered and adapted.",
+        de: "Piotr Piotrowski ist Architekt, Ingenieur und Forscher mit Sitz in Aarau, Schweiz. Er verbindet über zwei Jahrzehnte Architekturpraxis mit ausgewiesener Expertise in BIM, Digitalisierung und zirkulärem Bauen. Seine Arbeit verknüpft Entwurf und Projektleitung mit der Entwicklung praxisnaher Werkzeuge, die Planung, Ausführung und Transformation von Gebäuden verbessern.",
+        pl: "Piotr Piotrowski jest architektem, inżynierem i badaczem pracującym w Aarau w Szwajcarii. Łączy ponad dwie dekady praktyki architektonicznej ze specjalistyczną wiedzą z zakresu BIM, cyfryzacji i budownictwa cyrkularnego. Jego praca łączy projektowanie i kierowanie projektami z tworzeniem praktycznych narzędzi usprawniających planowanie, realizację i adaptację budynków."
       },
       {
-        en: "His architectural experience spans projects in Switzerland, the United Kingdom, Poland and internationally, ranging from design-led architecture to large and technically complex projects. Alongside architectural practice, he has developed particular expertise in Building Information Modelling (BIM), Virtual Design and Construction (VDC), information management and the development of digital workflows that improve coordination, quality and decision-making throughout the design process.",
-        de: "Seine architektonische Erfahrung umfasst Projekte in der Schweiz, Grossbritannien, Polen und international – von designorientierter Architektur bis hin zu grossen und technisch komplexen Bauvorhaben. Neben der Architekturpraxis verfügt er über ausgewiesene Expertise in Building Information Modelling (BIM), Virtual Design and Construction (VDC), Informationsmanagement und der Entwicklung digitaler Workflows zur Optimierung von Koordination, Qualität und Entscheidungsfindung im gesamten Planungsprozess.",
-        pl: "Jego doświadczenie architektoniczne obejmuje projekty w Szwajcarii, Wielkiej Brytanii, Polsce oraz na arenie międzynarodowej – od autorskiej architektury po wielkoskalowe i technicznie złożone przedsięwzięcia. Równolegle z praktyką projektową rozwinął szczególną wiedzę w zakresie Building Information Modelling (BIM), Virtual Design and Construction (VDC), zarządzania informacją oraz tworzenia cyfrowych procedur podnoszących jakość koordynacji i procesów decyzyjnych."
+        en: "His international experience spans Switzerland, the UK, Poland, France, Belgium, the US, Russia and Bahrain, from private homes to hospitals, university buildings and major transport projects. His responsibilities have included architectural team leadership and coordination with engineers and specialist consultants. He also develops digital tools and automated workflows to improve information management, coordination and decision making.",
+        de: "Seine internationale Erfahrung umfasst Projekte in der Schweiz, Grossbritannien, Polen, Frankreich, Belgien, den USA, Russland und Bahrain – von Wohnhäusern über Spitäler und Universitätsbauten bis hin zu grossen Verkehrsprojekten. Zu seinen Aufgaben zählten die Leitung von Architekturteams sowie die Koordination mit Ingenieuren und Fachplanern. Zudem entwickelt er digitale Werkzeuge und automatisierte Workflows zur Verbesserung von Informationsmanagement, Koordination und Entscheidungsfindung.",
+        pl: "Jego międzynarodowe doświadczenie obejmuje Szwajcarię, Wielką Brytanię, Polskę, Francję, Belgię, USA, Rosję i Bahrajn – od domów prywatnych po szpitale, budynki uniwersyteckie i duże inwestycje transportowe. Do jego obowiązków należało kierowanie zespołami architektonicznymi oraz koordynacja z inżynierami i projektantami branżowymi. Tworzy również narzędzia cyfrowe i zautomatyzowane procesy usprawniające zarządzanie informacją, koordynację i podejmowanie decyzji."
       },
       {
-        en: "A central focus of his current work is circular construction and the reuse of building materials and components. His doctoral research at the University of Liechtenstein investigated how BIM-assisted Digital Material Banks can make information about existing buildings more accessible and support material reuse at scale. This research brings together architecture, digital technology and practical implementation, with a particular interest in low-threshold tools that can be integrated into everyday professional workflows.",
-        de: "Ein zentraler Schwerpunkt seiner aktuellen Arbeit liegt auf dem zirkulären Bauen und der Wiederverwendung von Baumaterialien und Bauteilen. Seine Doktoratsforschung an der Universität Liechtenstein untersuchte, wie BIM-gestützte digitale Materialbanken Informationen über bestehende Gebäude zugänglicher machen und die Bauteilwiederverwendung im grossen Massstab unterstützen können. Diese Forschung verbindet Architektur, digitale Technologie und praktische Umsetzung mit besonderem Fokus auf niederschwellige Werkzeuge für den beruflichen Alltag.",
-        pl: "Kluczowym obszarem jego obecnej działalności jest budownictwo cyrkularne oraz ponowne wykorzystanie materiałów i komponentów budowlanych. Jego badania doktorskie na Uniwersytecie w Liechtensteinie analizowały, jak cyfrowe banki materiałów wspierane przez BIM mogą ułatwić dostęp do informacji o istniejących budynkach i umożliwić ponowne wykorzystanie materiałów na dużą skalę. Badania te łączą architekturę, technologie cyfrowe i praktyczne wdrożenie, ze szczególnym uwzględnieniem przystępnych narzędzi integrowanych z codzienną praktyką zawodową."
+        en: "Piotr holds a doctorate from the University of Liechtenstein, where his research examined how existing BIM models can support building component reuse through digital material banks. Combining expert interviews, software development and analysis of real building data, he explored how these systems could become accessible tools for everyday practice.",
+        de: "Piotr promovierte an der Universität Liechtenstein und untersuchte in seiner Dissertation, wie bestehende BIM-Modelle die Wiederverwendung von Bauteilen über digitale Materialbanken unterstützen können. Durch Experteninterviews, Softwareentwicklung und die Analyse realer Gebäudedaten erforschte er, wie solche Systeme zu zugänglichen Werkzeugen für die tägliche Praxis werden.",
+        pl: "Piotr uzyskał stopień doktora na Uniwersytecie w Liechtensteinie, gdzie w swoich badaniach analizował, jak istniejące modele BIM mogą wspierać ponowne wykorzystanie komponentów budowlanych poprzez cyfrowe banki materiałów. Łącząc wywiady eksperckie, tworzenie oprogramowania oraz analizę rzeczywistych danych budynków, badał sposoby przekształcenia tych systemów w dostępne narzędzia dla codziennej praktyki."
       },
       {
-        en: "Across practice and research, his interests centre on architectural quality, digitalisation, automation, circular design and the long-term value of buildings and materials.",
-        de: "Über Praxis und Forschung hinweg konzentrieren sich seine Interessen auf architektonische Qualität, Digitalisierung, Automatisierung, zirkuläres Entwerfen und den langfristigen Wert von Gebäuden und Materialien.",
-        pl: "Zarówno w praktyce, jak i w działalności naukowej, jego zainteresowania koncentrują się na jakości architektonicznej, cyfryzacji, automatyzacji, projektowaniu cyrkularnym oraz długoterminowej wartości budynków i materiałów."
+        en: "He provides independent advice on BIM, digital workflows and circular construction, drawing on both project experience and research to help clients turn technical requirements into workable processes.",
+        de: "Er bietet unabhängige Beratung zu BIM, digitalen Workflows und zirkulärem Bauen und unterstützt Bauherren und Planungsteams auf Basis von Projekterfahrung und Forschung dabei, technische Anforderungen in tragfähige Prozesse umzusetzen.",
+        pl: "Świadczy niezależne doradztwo w zakresie BIM, cyfrowych procesów pracy i budownictwa cyrkularnego, wykorzystując zarówno doświadczenie projektowe, jak i badania naukowe, aby pomóc klientom przekładać wymagania techniczne na skuteczne procesy."
       }
     ],
     disciplines: [

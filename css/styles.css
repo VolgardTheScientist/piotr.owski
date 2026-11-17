@@ -663,46 +663,62 @@ body.theme-light .viewport-stage.content-active .hero-video {
   font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.08em;
-  padding: 2px 4px;
+  padding: 4px 0;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
   cursor: pointer;
-  transition: color 0.25s ease;
+  background: transparent;
+  border: none;
+  transition: opacity 0.2s ease;
 }
 
 .theme-btn:hover {
-  color: var(--color-text);
+  opacity: 0.8;
 }
 
-.theme-label-white,
-.theme-label-black {
-  padding: 0 2px;
-  position: relative;
-  cursor: pointer;
-  transition: color 0.25s ease, font-weight 0.25s ease;
+.theme-btn:focus-visible {
+  outline: 1px solid var(--color-text);
+  outline-offset: 4px;
+  border-radius: 999px;
 }
 
-.theme-label-white.active,
-.theme-label-black.active {
-  color: var(--color-text);
-  font-weight: 700;
-}
-
-.theme-label-white.active::after,
-.theme-label-black.active::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 2px;
-  right: 2px;
-  height: 1px;
+.theme-switch-track {
+  display: inline-flex;
+  align-items: center;
+  width: 36px;
+  height: 20px;
+  padding: 3px;
+  border-radius: 999px;
   background-color: var(--color-text);
+  box-sizing: border-box;
+  transition: background-color 0.25s ease;
 }
 
-.theme-sep {
-  color: var(--border-subtle);
-  font-size: 12px;
+.theme-switch-thumb {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--color-bg);
+  transform: translateX(16px);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease;
+}
+
+body.theme-light .theme-switch-track {
+  background-color: #000000;
+}
+
+body.theme-light .theme-switch-thumb {
+  background-color: #ffffff;
+  transform: translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-switch-track,
+  .theme-switch-thumb {
+    transition: none;
+  }
 }
 
 .lang-switcher {
@@ -2416,10 +2432,20 @@ body.theme-light .code-column {
 }
 
 @media (max-width: 991px) {
-  .stage-body:has(.enquire-view) {
-    padding: 70px 16px 60px !important;
+  .content-stage:has(.enquire-view) {
     display: block !important;
+  }
+
+  .stage-body:has(.enquire-view) {
+    padding: calc(var(--header-height-mobile) + 24px) 20px calc(20px + env(safe-area-inset-bottom, 0px)) !important;
+    display: block !important;
+    flex: none !important;
     height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .enquire-view {
+    gap: 24px;
   }
 }
 
@@ -3298,4 +3324,399 @@ body.theme-light .hover-back-to-cluster-btn {
 
 body.theme-light .hover-back-to-cluster-btn:hover {
   background: rgba(0, 0, 0, 0.16);
+}
+
+/* ==========================================================================
+   AUDIT ENHANCEMENTS: ANCHOR LINKS, HERO CONTEXT, CURATED GRID, WORKFLOWS,
+   ABOUT CREDENTIALS, ENQUIRY PRIVACY & REDUCED MOTION
+   ========================================================================== */
+
+a.nav-btn,
+a.mobile-nav-btn,
+a.submenu-btn,
+a.project-card,
+a.editorial-next-banner,
+a.architecture-map-btn,
+a.digitalisation-enquire-btn,
+a.hover-monograph-btn {
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+a.nav-btn,
+a.submenu-btn {
+  display: inline-flex;
+  align-items: center;
+}
+
+a.hover-monograph-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Home Hero Visible Context Overlay (Desktop & Mobile) */
+.hero-intro-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  padding: 48px 36px 28px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.35) 65%, transparent 100%);
+  color: #ffffff;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+body.theme-light .hero-intro-caption {
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.68) 65%, transparent 100%);
+  color: #111111;
+}
+
+.viewport-stage.content-active .hero-intro-caption {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.hero-caption-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+  max-width: 1480px;
+}
+
+.hero-caption-text {
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hero-caption-name {
+  margin: 0;
+  font-size: clamp(18px, 1.8vw, 24px);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.hero-caption-role {
+  margin: 0;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+}
+
+.hero-caption-desc {
+  margin: 4px 0 6px;
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.hero-caption-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.hero-caption-link {
+  color: inherit;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  opacity: 0.92;
+  transition: opacity 0.2s ease;
+}
+
+.hero-caption-link:hover {
+  opacity: 1;
+}
+
+.hero-video-toggle {
+  background: rgba(128, 128, 128, 0.2);
+  color: inherit;
+  border: 1px solid currentColor;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background 0.2s ease;
+}
+
+.hero-video-toggle:hover {
+  background: rgba(128, 128, 128, 0.36);
+}
+
+@media (max-width: 991px) {
+  .hero-intro-caption {
+    padding: 36px 20px 22px;
+  }
+}
+
+/* Curated Selected Works Section on Architecture Page */
+.architecture-selected-section {
+  margin-top: 56px;
+  padding-top: 36px;
+  border-top: 1px solid var(--border-color);
+  width: 100%;
+}
+
+.architecture-selected-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.architecture-selected-heading {
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 400;
+  margin: 0;
+  color: var(--color-text);
+}
+
+.architecture-map-inline-link {
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.architecture-map-inline-link:hover {
+  color: var(--color-text);
+  border-color: var(--color-text);
+}
+
+.card-attribution {
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}
+
+/* Digitalisation Practical Workflow Case Cards */
+.digitalisation-workflows-section {
+  width: 100%;
+  max-width: 1320px;
+  margin: 56px auto 0;
+  padding-top: 40px;
+  border-top: 1px solid var(--border-color);
+}
+
+.digitalisation-workflows-header {
+  margin-bottom: 28px;
+}
+
+.digitalisation-workflows-title {
+  font-size: clamp(24px, 2.8vw, 34px);
+  font-weight: 400;
+  margin: 0 0 8px;
+  color: var(--color-text);
+}
+
+.digitalisation-workflows-subtitle {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-dim);
+  margin: 0;
+  max-width: 780px;
+}
+
+.digitalisation-workflows-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.workflow-case-card {
+  border: 1px solid var(--border-subtle);
+  background: rgba(128, 128, 128, 0.03);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.workflow-case-title {
+  font-size: 17px;
+  font-weight: 400;
+  margin: 0;
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+.workflow-case-dl {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.workflow-case-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.workflow-case-row dt {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+
+.workflow-case-row dd {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--color-text-dim);
+}
+
+.workflow-case-link {
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-color);
+  align-self: flex-start;
+}
+
+.workflow-case-link:hover {
+  border-color: var(--color-text);
+}
+
+/* About Verified Credentials, Education & Publications */
+.about-header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.about-summary {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--color-text);
+  margin: 10px 0 0;
+  max-width: 780px;
+}
+
+.about-credentials-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.about-credential-block {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.about-section-heading {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+  font-weight: 400;
+}
+
+.about-records-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about-record-item {
+  display: grid;
+  grid-template-columns: 95px 1fr;
+  gap: 16px;
+  align-items: baseline;
+}
+
+@media (max-width: 600px) {
+  .about-record-item {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+.about-record-period {
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+  letter-spacing: 0.03em;
+}
+
+.about-record-title {
+  font-size: 15px;
+  color: var(--color-text);
+  line-height: 1.45;
+  margin-bottom: 2px;
+}
+
+.about-record-sub {
+  font-size: 13.5px;
+  color: var(--color-text-dim);
+  line-height: 1.5;
+}
+
+.about-doi-link {
+  color: var(--color-text);
+  text-decoration: underline;
+}
+
+/* Enquire Direct Mailto & Privacy Notice */
+.enquire-direct-email {
+  margin: 12px 0 0;
+  font-size: 14px;
+  color: var(--color-text-dim);
+}
+
+.enquire-direct-email a {
+  color: var(--color-text);
+  text-decoration: underline;
+}
+
+.enquire-privacy-note {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .typing-cursor,
+  .enquire-btn-cursor {
+    animation: none !important;
+  }
 }

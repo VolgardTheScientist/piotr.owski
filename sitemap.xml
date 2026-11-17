@@ -1,49 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://piotr.owski.ch/</loc>
-    <lastmod>2026-09-09</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-11-17</lastmod>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://piotr.owski.ch/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://piotr.owski.ch/" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://piotr.owski.ch/" />
   </url>
   <url>
     <loc>https://piotr.owski.ch/architecture/</loc>
-    <lastmod>2026-09-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://piotr.owski.ch/research/</loc>
-    <lastmod>2026-09-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://piotr.owski.ch/digitalisation/</loc>
-    <lastmod>2026-09-09</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-11-17</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://piotr.owski.ch/map/</loc>
-    <lastmod>2026-09-09</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-11-17</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://piotr.owski.ch/architecture/le-taguy-chamonix/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://piotr.owski.ch/architecture/vst-bridge-warsaw/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://piotr.owski.ch/architecture/zollhaus-zurich/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://piotr.owski.ch/architecture/thun-crematorium/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://piotr.owski.ch/architecture/tvp-headquarters/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://piotr.owski.ch/architecture/house-in-lomnica/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://piotr.owski.ch/architecture/gillian-kit-home/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://piotr.owski.ch/architecture/uallas-kit-home/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://piotr.owski.ch/architecture/ossolineum-museum/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://piotr.owski.ch/architecture/mxv-rail-bridge/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://piotr.owski.ch/architecture/spylaw-park-house/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://piotr.owski.ch/architecture/augusta-raurica/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://piotr.owski.ch/architecture/kindergarten-wildenstein/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://piotr.owski.ch/architecture/kantonsspital-baden/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://piotr.owski.ch/research/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://piotr.owski.ch/research/bim-material-banks/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://piotr.owski.ch/research/whitepaper-digital-epd/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://piotr.owski.ch/research/phase0-transdisziplinaritaet/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://piotr.owski.ch/research/nature-reviews-architectural-beauty/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://piotr.owski.ch/research/sri-conference-2024/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://piotr.owski.ch/research/archivolta-lakhta-center/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://piotr.owski.ch/digitalisation/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://piotr.owski.ch/about/</loc>
-    <lastmod>2026-09-09</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-11-17</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://piotr.owski.ch/enquire/</loc>
-    <lastmod>2026-09-09</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-11-17</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>

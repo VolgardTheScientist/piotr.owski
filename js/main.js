@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cleanPath = path.replace(/^\.?\//, '');
 
     if (isLocal) {
-      return cleanPath;
+      return window.location.protocol === 'file:' ? cleanPath : `/${cleanPath}`;
     }
 
     const cdnBase = (window.SITE_MEDIA_CDN || MEDIA_CDN_CONFIG.r2PublicUrl).replace(/\/$/, '');
@@ -71,7 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   // 1. INITIALIZATION & ENTRANCE ANIMATIONS
   // ==========================================================================
-  
+  const prefersReducedMotion = () => window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   function initHeroVideo() {
     if (!heroVideo) return;
     const isLocal = window.location.hostname === 'localhost' ||
@@ -79,20 +80,28 @@ document.addEventListener('DOMContentLoaded', () => {
                     window.location.hostname === '' ||
                     window.location.protocol === 'file:';
 
-    const videoUrl = isLocal ? 'assets/videos/PPwebVideoIntro.mp4' : getAssetUrl('assets/videos/PPwebVideoIntro.mp4');
+    const videoUrl = isLocal ? '/assets/videos/PPwebVideoIntro.mp4' : getAssetUrl('assets/videos/PPwebVideoIntro.mp4');
 
-    heroVideo.src = videoUrl;
-    const sourceEl = heroVideo.querySelector('source');
-    if (sourceEl) {
-      sourceEl.src = videoUrl;
+    if (!heroVideo.getAttribute('data-loaded')) {
+      heroVideo.setAttribute('data-loaded', '1');
+      heroVideo.poster = isLocal ? '/assets/images/CROPKA_MYS_front_1200_675.jpg' : getAssetUrl('assets/images/CROPKA_MYS_front_1200_675.jpg');
+      heroVideo.src = videoUrl;
+      const sourceEl = heroVideo.querySelector('source');
+      if (sourceEl) {
+        sourceEl.src = videoUrl;
+      }
+      heroVideo.muted = true;
+      heroVideo.defaultMuted = true;
+      heroVideo.setAttribute('muted', '');
+      heroVideo.setAttribute('playsinline', '');
+      heroVideo.setAttribute('webkit-playsinline', '');
+      heroVideo.load();
     }
 
-    heroVideo.muted = true;
-    heroVideo.defaultMuted = true;
-    heroVideo.setAttribute('muted', '');
-    heroVideo.setAttribute('playsinline', '');
-    heroVideo.setAttribute('webkit-playsinline', '');
-    heroVideo.load();
+    if (prefersReducedMotion()) {
+      heroVideo.pause();
+      return;
+    }
 
     const playPromise = heroVideo.play();
     if (playPromise !== undefined) {
@@ -100,7 +109,9 @@ document.addEventListener('DOMContentLoaded', () => {
         heroVideo.muted = true;
         heroVideo.play().catch(() => {});
         const unlockPlay = () => {
-          heroVideo.play().catch(() => {});
+          if (!prefersReducedMotion()) {
+            heroVideo.play().catch(() => {});
+          }
           document.removeEventListener('touchstart', unlockPlay);
           document.removeEventListener('click', unlockPlay);
         };
@@ -111,22 +122,29 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function init() {
-    initHeroVideo();
     applyTheme(state.theme);
     updateLanguageButtons(state.lang);
+    document.documentElement.lang = state.lang;
     renderNavigation();
     updateStaticTranslations();
+    renderHeroOverlay();
     bindEvents();
     initRouter();
+
+    // Only load & play hero video automatically when landing on the home reel
+    if (!state.isContentOpen) {
+      initHeroVideo();
+    }
 
     // Global navigation handler for inter-component linking
     window.handleDirectItemNavigation = (categoryKey, itemId) => {
       handleItemClick(categoryKey, itemId);
     };
 
-    // Global auto-recovery for CDN images if path format differs
+    // Global auto-recovery for CDN images if path format differs (production R2 only)
     document.addEventListener('error', (e) => {
-      if (e.target && e.target.tagName === 'IMG') {
+      const isLocalHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      if (!isLocalHost && e.target && e.target.tagName === 'IMG') {
         const img = e.target;
         if (!img.dataset.retried) {
           img.dataset.retried = '1';
@@ -155,12 +173,15 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('piotrowski_theme', state.theme);
     document.body.classList.toggle('theme-light', state.theme === 'light');
 
-    // Update switcher active labels across desktop and mobile
+    // Update switcher state across desktop and mobile
     document.querySelectorAll('.theme-label-white').forEach(el => {
       el.classList.toggle('active', state.theme === 'light');
     });
     document.querySelectorAll('.theme-label-black').forEach(el => {
       el.classList.toggle('active', state.theme === 'dark');
+    });
+    document.querySelectorAll('.theme-pill-switch, [data-theme-toggle]').forEach(btn => {
+      btn.setAttribute('aria-checked', state.theme === 'dark' ? 'true' : 'false');
     });
 
     // Refresh World Map dimensions/colors if active
@@ -192,6 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!['en', 'de', 'pl'].includes(newLang)) return;
     state.lang = newLang;
     localStorage.setItem('piotrowski_lang', newLang);
+    document.documentElement.lang = newLang;
 
     // Update active state on all language switcher buttons across desktop & mobile
     updateLanguageButtons(newLang);
@@ -199,6 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Re-render navigation with new translations
     renderNavigation();
     updateStaticTranslations();
+    renderHeroOverlay();
 
     // Re-render current stage content if active
     if (state.isContentOpen) {
@@ -224,6 +247,57 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function renderHeroOverlay() {
+    let overlayEl = document.getElementById('heroIntroCaption');
+    const videoContainer = document.getElementById('videoContainer');
+    if (!videoContainer) return;
+
+    if (!overlayEl) {
+      overlayEl = document.createElement('div');
+      overlayEl.id = 'heroIntroCaption';
+      overlayEl.className = 'hero-intro-caption';
+      videoContainer.appendChild(overlayEl);
+    }
+
+    const copyByLang = {
+      en: {
+        name: 'Piotr Piotrowski, Dr. sc.',
+        role: 'Architect, engineer and researcher | Aarau, Switzerland',
+        desc: 'Independent advice on BIM, digital workflows and circular construction. Combining over 20 years of architectural practice with doctoral research and software development.',
+        workLink: 'Selected Work →',
+        researchLink: 'Research →',
+        aboutLink: 'About →'
+      },
+      de: {
+        name: 'Piotr Piotrowski, Dr. sc.',
+        role: 'Architekt, Ingenieur und Forscher | Aarau, Schweiz',
+        desc: 'Unabhängige Beratung zu BIM, digitalen Workflows und zirkulärem Bauen. Über 20 Jahre Architekturpraxis verbunden mit Doktoratsforschung und Softwareentwicklung.',
+        workLink: 'Ausgewählte Projekte →',
+        researchLink: 'Forschung →',
+        aboutLink: 'Über →'
+      },
+      pl: {
+        name: 'Piotr Piotrowski, dr inż. arch.',
+        role: 'Architekt, inżynier i badacz | Aarau, Szwajcaria',
+        desc: 'Niezależne doradztwo w zakresie BIM, procesów cyfrowych i budownictwa cyrkularnego. Ponad 20 lat praktyki architektonicznej połączone z badaniami doktorskimi i tworzeniem oprogramowania.',
+        workLink: 'Wybrane projekty →',
+        researchLink: 'Badania →',
+        aboutLink: 'O mnie →'
+      }
+    };
+    const c = copyByLang[state.lang] || copyByLang.en;
+
+    overlayEl.innerHTML = `
+      <div class="hero-caption-inner">
+        <div class="hero-caption-text">
+          <p class="hero-caption-name">${c.name}</p>
+          <p class="hero-caption-role">${c.role}</p>
+          <p class="hero-caption-desc">${c.desc}</p>
+        </div>
+      </div>
+    `;
+  }
+
   function updateStaticTranslations() {
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.dataset.i18n;
@@ -234,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // 4. NAVIGATION RENDERING (Desktop & Mobile)
+  // 4. NAVIGATION RENDERING (Desktop & Mobile — Crawlable <a> Links)
   // ==========================================================================
 
   function renderNavigation() {
@@ -251,28 +325,28 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // If it's Architecture (hosts the World Map Explorer & Status Filters)
       if (key === 'architecture') {
-        const isMapActive = state.activeCategory === 'architecture';
+        const isMapActive = state.activeCategory === 'architecture' && stageBody.classList.contains('has-fullscreen-map');
         submenuHtml = `
           <ul class="nav-submenu" id="desktop-submenu-${key}">
             <li>
-              <button class="submenu-btn ${isMapActive && (!window.WorldMapController || window.WorldMapController.currentFilter === 'all') ? 'active' : ''}" data-category="architecture" data-map-filter="all">
+              <a href="/architecture/map/" class="submenu-btn ${isMapActive && (!window.WorldMapController || window.WorldMapController.currentFilter === 'all') ? 'active' : ''}" data-category="architecture" data-map-filter="all">
                 ${siteData.ui.filterAll[state.lang]}
-              </button>
+              </a>
             </li>
             <li>
-              <button class="submenu-btn ${isMapActive && window.WorldMapController && window.WorldMapController.currentFilter === 'realisation' ? 'active' : ''}" data-category="architecture" data-map-filter="realisation">
+              <a href="/architecture/realisation/" class="submenu-btn ${isMapActive && window.WorldMapController && window.WorldMapController.currentFilter === 'realisation' ? 'active' : ''}" data-category="architecture" data-map-filter="realisation">
                 ${siteData.ui.filterRealisation[state.lang]}
-              </button>
+              </a>
             </li>
             <li>
-              <button class="submenu-btn ${isMapActive && window.WorldMapController && window.WorldMapController.currentFilter === 'in_progress' ? 'active' : ''}" data-category="architecture" data-map-filter="in_progress">
+              <a href="/architecture/in_progress/" class="submenu-btn ${isMapActive && window.WorldMapController && window.WorldMapController.currentFilter === 'in_progress' ? 'active' : ''}" data-category="architecture" data-map-filter="in_progress">
                 ${siteData.ui.filterInProgress[state.lang]}
-              </button>
+              </a>
             </li>
             <li>
-              <button class="submenu-btn ${isMapActive && window.WorldMapController && window.WorldMapController.currentFilter === 'competition' ? 'active' : ''}" data-category="architecture" data-map-filter="competition">
+              <a href="/architecture/competition/" class="submenu-btn ${isMapActive && window.WorldMapController && window.WorldMapController.currentFilter === 'competition' ? 'active' : ''}" data-category="architecture" data-map-filter="competition">
                 ${siteData.ui.filterCompetition[state.lang]}
-              </button>
+              </a>
             </li>
           </ul>
         `;
@@ -281,9 +355,9 @@ document.addEventListener('DOMContentLoaded', () => {
           const isSubActive = state.activeItemId === item.id;
           return `
             <li>
-              <button class="submenu-btn ${isSubActive ? 'active' : ''}" data-category="${key}" data-item-id="${item.id}">
+              <a href="/${key}/${item.id}/" class="submenu-btn ${isSubActive ? 'active' : ''}" data-category="${key}" data-item-id="${item.id}">
                 ${item.title[state.lang]}
-              </button>
+              </a>
             </li>
           `;
         }).join('');
@@ -291,9 +365,9 @@ document.addEventListener('DOMContentLoaded', () => {
         submenuHtml = `
           <ul class="nav-submenu" id="desktop-submenu-${key}">
             <li>
-              <button class="submenu-btn ${state.activeCategory === key && !state.activeItemId ? 'active' : ''}" data-category="${key}" data-overview="true">
+              <a href="/${key}/" class="submenu-btn ${state.activeCategory === key && !state.activeItemId ? 'active' : ''}" data-category="${key}" data-overview="true">
                 ${siteData.ui.allProjects[state.lang]}
-              </button>
+              </a>
             </li>
             ${subItems}
           </ul>
@@ -302,9 +376,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       return `
         <li class="nav-item ${isActive ? 'active' : ''}" style="--item-idx: ${index}" data-nav-key="${key}">
-          <button class="nav-btn" data-category="${key}">
+          <a href="/${key}/" class="nav-btn" data-category="${key}">
             <span>${navLabel}</span>
-          </button>
+          </a>
           ${submenuHtml}
         </li>
       `;
@@ -317,9 +391,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       return `
         <div class="mobile-nav-item ${isActive ? 'active' : ''}" data-nav-key="${key}">
-          <button class="mobile-nav-btn" data-category="${key}">
+          <a href="/${key}/" class="mobile-nav-btn" data-category="${key}">
             <span>${navLabel}</span>
-          </button>
+          </a>
         </div>
       `;
     }).join('');
@@ -330,8 +404,207 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
 
   // ==========================================================================
-  // ROUTER & DEEP-LINKING ENGINE (Hash '#' Routing with Auto-Scroll & URL Sync)
+  // ROUTER, METADATA SYNC & DEEP-LINKING ENGINE
   // ==========================================================================
+
+  const ROUTE_META = {
+    home: {
+      path: '/',
+      title: 'Piotr Piotrowski PhD | Architect, Engineer and Researcher',
+      desc: 'Architect, engineer and researcher combining over 20 years of practice with independent advice on BIM, digital tools and circular construction.'
+    },
+    architecture: {
+      path: '/architecture/',
+      title: 'Architecture | Piotr Piotrowski PhD',
+      desc: 'Two decades of architectural practice, from individual homes to hospitals, towers and infrastructure. Selected projects and personal contributions.'
+    },
+    map: {
+      path: '/map/',
+      title: 'Project Map | Piotr Piotrowski PhD',
+      desc: 'Explore my contributions to architectural projects across countries and practices, from housing and public buildings to transport infrastructure.'
+    },
+    map_competition: {
+      path: '/architecture/competition/',
+      title: 'Architecture Competitions | Piotr Piotrowski PhD',
+      desc: 'Explore architectural competition entries by location.'
+    },
+    map_in_progress: {
+      path: '/architecture/in_progress/',
+      title: 'Projects in Progress | Piotr Piotrowski PhD',
+      desc: 'Explore architectural projects currently in development.'
+    },
+    map_realisation: {
+      path: '/architecture/realisation/',
+      title: 'Built Projects | Piotr Piotrowski PhD',
+      desc: 'Explore completed buildings and infrastructure projects by location.'
+    },
+    research: {
+      path: '/research/',
+      title: 'Circular Construction Research | Piotr Piotrowski PhD',
+      desc: 'Research connecting BIM data with building component reuse. Doctoral findings, publications and tools developed through architectural practice.'
+    },
+    digitalisation: {
+      path: '/digitalisation/',
+      title: 'BIM and Digital Tools | Piotr Piotrowski PhD',
+      desc: 'BIM advice and digital tools grounded in architectural practice. Turning project requirements into workflows, automation and usable building data.'
+    },
+    about: {
+      path: '/about/',
+      title: 'About Piotr Piotrowski PhD',
+      desc: 'Architect and engineer with a PhD in digital material banks. Connecting international project experience, research and software development.'
+    },
+    enquire: {
+      path: '/enquire/',
+      title: 'Contact Piotr Piotrowski PhD',
+      desc: 'Discuss your project with an architect, engineer and researcher offering independent advice on BIM, digitalisation and circular construction.'
+    }
+  };
+
+  const ITEM_META_OVERRIDES = {
+    'kantonsspital-baden': {
+      title: 'Kantonsspital Baden | Piotr Piotrowski PhD',
+      desc: 'Architectural Project Lead at Nickl and Partner, managing the architectural planning team and coordinating specialist consultants.'
+    },
+    'augusta-raurica': {
+      title: 'Augusta Raurica | Piotr Piotrowski PhD',
+      desc: 'A competition proposal using modular timber construction and external structural frames to create flexible archaeological workspaces.'
+    },
+    'gillian-kit-home': {
+      title: 'Gillian Kit Home | Piotr Piotrowski PhD',
+      desc: 'A compact 60 m² kit home with generous shared living space and minimal circulation.'
+    },
+    'house-in-lomnica': {
+      title: 'House in Łomnica | Piotr Piotrowski PhD',
+      desc: 'An airy, spacious passive house in the Karkonosze Mountains, combining energy efficiency with charred timber cladding.'
+    },
+    'kindergarten-wildenstein': {
+      title: 'Kindergarten Wildenstein | Piotr Piotrowski PhD',
+      desc: 'A kindergarten competition proposal linking flexible learning spaces through a central atrium and connecting to the existing school.'
+    },
+    'le-taguy-chamonix': {
+      title: 'Residence Le Taguy | Piotr Piotrowski PhD',
+      desc: 'Interior design for a 24 m² Alpine apartment, integrating sleeping areas and concealed storage within a compact plan.'
+    },
+    'mxv-rail-bridge': {
+      title: 'Viaduc de la Baye de Clarens | Piotr Piotrowski PhD',
+      desc: 'A railway bridge competition proposal developed with GMASP, addressing ground movement through a modular concrete structure.'
+    },
+    'ossolineum-museum': {
+      title: 'Museum of the Lubomirski Princes | Piotr Piotrowski PhD',
+      desc: 'A museum competition proposal in Wrocław with a green roof and perforated bronze façade recalling the collection’s origins in Lviv.'
+    },
+    'spylaw-park-house': {
+      title: 'Spylaw Park | Piotr Piotrowski PhD',
+      desc: 'A courtyard house concept in Edinburgh, bringing daylight and privacy to a tightly constrained site.'
+    },
+    'thun-crematorium': {
+      title: 'Thun Crematorium | Piotr Piotrowski PhD',
+      desc: 'A crematorium competition proposal arranged around internal gardens, with sheltered spaces for gathering and private reflection.'
+    },
+    'tvp-headquarters': {
+      title: 'TVP Headquarters | Piotr Piotrowski PhD',
+      desc: 'A commended competition design with FORUM Architekci, bringing television production and public space together within Warsaw’s TVP campus.'
+    },
+    'uallas-kit-home': {
+      title: 'Uallas Kit Home | Piotr Piotrowski PhD',
+      desc: 'A 170 m² kit home design exploring flexible family living and connections between indoor and outdoor spaces.'
+    },
+    'vst-bridge-warsaw': {
+      title: 'Vistula Footbridge | Piotr Piotrowski PhD',
+      desc: 'A competition proposal for a pedestrian and cycle bridge in Warsaw, preserving continuity along the riverside promenade.'
+    },
+    'zollhaus-zurich': {
+      title: 'Zollhaus Zürich | Piotr Piotrowski PhD',
+      desc: 'A competition proposal bringing housing, work, education and shared amenities together on a central Zürich site.'
+    },
+    'archivolta-lakhta-center': {
+      title: 'Lakhta Center Geometry and Façade | Piotr Piotrowski PhD',
+      desc: 'An article on the geometry of the Lakhta Center and the engineering of its double skin façade.'
+    },
+    'bim-material-banks': {
+      title: 'Digital Material Banks | Piotr Piotrowski PhD',
+      desc: 'From existing BIM models to component reuse. Doctoral research combining expert interviews, prototype development and real building data.'
+    },
+    'nature-reviews-architectural-beauty': {
+      title: 'Architectural Beauty and Reuse | Piotr Piotrowski PhD',
+      desc: 'A perspective published in Nature Reviews Earth and Environment on how architectural quality can extend building life and reduce waste.'
+    },
+    'phase0-transdisziplinaritaet': {
+      title: 'BIM for Material Reuse | Piotr Piotrowski PhD',
+      desc: 'Research with practitioners in Switzerland and Liechtenstein on the information and tools needed to make BIM useful for component reuse.'
+    },
+    'sri-conference-2024': {
+      title: 'SRI Congress 2024 | Piotr Piotrowski PhD',
+      desc: 'A conference presentation on digital workflows for material reuse in construction.'
+    },
+    'whitepaper-digital-epd': {
+      title: 'Environmental Product Declarations and Building Assessment | Piotr Piotrowski PhD',
+      desc: 'A white paper on how environmental product declarations and digital product passports can support building assessment.'
+    }
+  };
+
+  function updateDocumentMetadata(metaKey, itemObj = null, customPath = null) {
+    const fallback = ROUTE_META[metaKey] || ROUTE_META.home;
+    let title = fallback.title;
+    let desc = fallback.desc;
+    let canonicalPath = customPath || fallback.path;
+
+    if (itemObj) {
+      const override = itemObj.id ? ITEM_META_OVERRIDES[itemObj.id] : null;
+      if (override) {
+        title = override.title;
+        desc = override.desc;
+      } else {
+        const itemTitle = (itemObj.title && (itemObj.title[state.lang] || itemObj.title.en)) || '';
+        const itemDesc = (itemObj.description && (itemObj.description[state.lang] || itemObj.description.en))
+          || (itemObj.leadIntro && (itemObj.leadIntro[state.lang] || itemObj.leadIntro.en))
+          || fallback.desc;
+        if (itemTitle) {
+          title = `${itemTitle} | Piotr Piotrowski PhD`;
+        }
+        desc = itemDesc.slice(0, 160);
+      }
+    }
+
+    const fullCanonical = `https://piotr.owski.ch${canonicalPath}`;
+    document.title = title;
+
+    const setMeta = (selector, attr, val) => {
+      const el = document.querySelector(selector);
+      if (el) el.setAttribute(attr, val);
+    };
+
+    setMeta('meta[name="description"]', 'content', desc);
+    setMeta('link[rel="canonical"]', 'href', fullCanonical);
+    setMeta('meta[property="og:title"]', 'content', title);
+    setMeta('meta[property="og:description"]', 'content', desc);
+    setMeta('meta[property="og:url"]', 'content', fullCanonical);
+    setMeta('meta[name="twitter:title"]', 'content', title);
+    setMeta('meta[name="twitter:description"]', 'content', desc);
+    setMeta('meta[name="twitter:url"]', 'content', fullCanonical);
+
+    const upsertMeta = (attrName, attrValue, contentVal) => {
+      const selector = `meta[${attrName}="${attrValue}"]`;
+      let el = document.querySelector(selector);
+      if (contentVal) {
+        if (!el) {
+          el = document.createElement('meta');
+          el.setAttribute(attrName, attrValue);
+          document.head.appendChild(el);
+        }
+        el.setAttribute('content', contentVal);
+      } else if (el) {
+        el.remove();
+      }
+    };
+
+    const projectImageUrl = (itemObj && itemObj.image)
+      ? (itemObj.image.startsWith('http') ? itemObj.image : `https://assets.piotr.owski.ch/${itemObj.image.replace(/^\/+/, '')}`)
+      : '';
+    upsertMeta('property', 'og:image', projectImageUrl);
+    upsertMeta('name', 'twitter:image', projectImageUrl);
+    setMeta('meta[name="twitter:card"]', 'content', projectImageUrl ? 'summary_large_image' : 'summary');
+  }
 
   function updateUrlRoute(routeStr, push = true) {
     const cleanRoute = (routeStr || '').replace(/^[\/#]+/, '').trim();
@@ -384,6 +657,13 @@ document.addEventListener('DOMContentLoaded', () => {
         renderArchitectureIntroView();
       }
     } else if (primary === 'digitalisation') {
+      if (secondary === 'bim-spital-baden-agnes') {
+        state.activeCategory = 'architecture';
+        state.activeItemId = 'kantonsspital-baden';
+        updateUrlRoute('architecture/kantonsspital-baden', false);
+        renderProjectDetail('architecture', 'kantonsspital-baden');
+        return;
+      }
       state.activeCategory = 'digitalisation';
       if (secondary) {
         state.activeItemId = secondary;
@@ -497,7 +777,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.stopPropagation();
         const route = copyBtn.dataset.copyRoute;
         const cleanRoute = (route || '').replace(/^[\/#]+/, '');
-        const fullUrl = `${window.location.origin}${window.location.pathname}#${cleanRoute}`;
+        const fullUrl = `${window.location.origin}/${cleanRoute}/`;
         
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(fullUrl).then(() => {
@@ -522,6 +802,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const hashSegment = window.location.hash.replace(/^[\/#]+/, '').trim();
     if (pathSegment || hashSegment) {
       handleUrlRouting();
+    } else {
+      updateDocumentMetadata('home');
     }
   }
 
@@ -533,13 +815,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (updateUrl) {
       updateUrlRoute('');
     }
+    updateDocumentMetadata('home');
 
     viewportStage.classList.remove('content-active');
     contentStage.setAttribute('aria-hidden', 'true');
     renderNavigation();
 
-    if (heroVideo) {
-      if (!heroVideo.src || heroVideo.src === window.location.href) {
+    if (heroVideo && !prefersReducedMotion()) {
+      if (!heroVideo.getAttribute('data-loaded')) {
         initHeroVideo();
       } else if (heroVideo.paused) {
         heroVideo.play().catch(() => {});
@@ -596,6 +879,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 0. Architecture Intro Manifesto View ---
   function renderArchitectureIntroView() {
     stageBody.classList.remove('has-fullscreen-map');
+    updateDocumentMetadata('architecture');
     const intro = siteData.architectureIntro;
 
     stageBody.innerHTML = `
@@ -605,16 +889,19 @@ document.addEventListener('DOMContentLoaded', () => {
           <p class="architecture-statement-p">${intro.p2[state.lang]}</p>
         </div>
         <div class="architecture-projects-action">
-          <button class="architecture-map-btn" id="openWorldMapBtn" aria-label="Open Interactive Project World Map">
+          <a href="/map/" class="architecture-map-btn" id="openWorldMapBtn" aria-label="Open Interactive Project World Map">
             <span class="map-btn-text">${intro.projectsBtn[state.lang]}</span>
-          </button>
+          </a>
         </div>
       </div>
     `;
 
     const openMapBtn = document.getElementById('openWorldMapBtn');
     if (openMapBtn) {
-      openMapBtn.addEventListener('click', () => {
+      openMapBtn.addEventListener('click', (e) => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+        e.preventDefault();
+        updateUrlRoute('map');
         renderWorldMapView('all');
       });
     }
@@ -625,6 +912,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 1. Interactive Vector World Map View ---
   function renderWorldMapView(initialFilter = 'all') {
     stageBody.classList.add('has-fullscreen-map');
+    const targetPath = initialFilter && initialFilter !== 'all' ? `/architecture/${initialFilter}/` : '/map/';
+    const filterMetaKeys = {
+      competition: 'map_competition',
+      in_progress: 'map_in_progress',
+      realisation: 'map_realisation'
+    };
+    const metaKey = filterMetaKeys[initialFilter] || 'map';
+    updateDocumentMetadata(metaKey, null, targetPath);
     if (window.WorldMapController) {
       window.WorldMapController.currentFilter = initialFilter;
       window.WorldMapController.render(stageBody, state.lang);
@@ -639,6 +934,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderDigitalisationView() {
     stageBody.classList.remove('has-fullscreen-map');
+    updateDocumentMetadata('digitalisation');
 
     // Clear any previous animation timers
     digitalisationTypingTimers.forEach(t => clearTimeout(t));
@@ -669,16 +965,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <!-- Bottom Centre Enquire Button with Flashing Cursor (Hidden until typing finishes) -->
         <div class="digitalisation-enquire-wrap" id="digitalisationEnquireWrap">
-          <button class="digitalisation-enquire-btn" id="digitalisationEnquireBtn" aria-label="Navigate to enquire page">
+          <a href="/enquire/" class="digitalisation-enquire-btn" id="digitalisationEnquireBtn" aria-label="Navigate to enquire page">
             <span class="enquire-btn-text">${currentEnquireLabel}</span><span class="enquire-btn-cursor">▌</span>
-          </button>
+          </a>
         </div>
       </div>
     `;
 
     const enquireBtn = document.getElementById('digitalisationEnquireBtn');
     if (enquireBtn) {
-      enquireBtn.addEventListener('click', () => {
+      enquireBtn.addEventListener('click', (e) => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+        e.preventDefault();
         handleCategoryClick('enquire');
       });
     }
@@ -913,6 +1211,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const block2 = document.getElementById('codeBlock2');
     const cursor2 = document.getElementById('cursorCol2');
 
+    if (prefersReducedMotion()) {
+      const renderInstant = (blockEl, cursorEl, lines) => {
+        if (!blockEl) return;
+        blockEl.innerHTML = lines.map(line =>
+          line === ''
+            ? '<div class="code-line empty-line">&nbsp;</div>'
+            : `<div class="code-line">${formatPartialLine(line, line)}</div>`
+        ).join('');
+        if (cursorEl) cursorEl.style.display = 'none';
+      };
+      renderInstant(block1, cursor1, col1Lines);
+      renderInstant(block2, cursor2, col2Lines);
+      const enquireWrap = document.getElementById('digitalisationEnquireWrap');
+      if (enquireWrap) {
+        enquireWrap.classList.add('visible');
+      }
+      return;
+    }
+
     if (block1 && cursor1) {
       typeWriter(block1, cursor1, col1Lines, checkAllComplete);
     }
@@ -929,6 +1246,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 2.5. Research & Publications Alternating View ---
   function renderResearchView() {
     stageBody.classList.remove('has-fullscreen-map');
+    updateDocumentMetadata('research');
     const research = siteData.researchPage;
     if (!research) {
       console.error("researchPage data not found in siteData");
@@ -995,6 +1313,11 @@ document.addEventListener('DOMContentLoaded', () => {
               <a href="${item.linkUrl}" target="_blank" rel="noopener noreferrer" class="research-link-btn">
                 <span>${item.linkText[state.lang]}</span>
               </a>
+              ${item.secondLinkUrl && item.secondLinkText ? `
+                <a href="${item.secondLinkUrl}" target="_blank" rel="noopener noreferrer" class="research-link-btn">
+                  <span>${item.secondLinkText[state.lang] || item.secondLinkText.en}</span>
+                </a>
+              ` : ''}
               <button type="button" class="research-copy-link-btn" data-copy-route="research/${item.id}" title="Copy direct link to this publication">
                 <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
@@ -1043,17 +1366,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 3. Category Overview ---
   function renderCategoryOverview(categoryKey) {
     stageBody.classList.remove('has-fullscreen-map');
+    updateDocumentMetadata(categoryKey);
     const category = siteData.categories[categoryKey];
     if (!category) return;
 
     const cardsHtml = category.items.map(item => `
-      <div class="project-card" data-category="${categoryKey}" data-item-id="${item.id}" role="button" tabindex="0" aria-label="${item.title[state.lang]}">
-        <div class="card-img-wrap">
-          <img src="${getAssetUrl(item.image)}" alt="${item.title[state.lang]}" loading="lazy">
-        </div>
+      <a href="/${categoryKey}/${item.id}/" class="project-card" data-category="${categoryKey}" data-item-id="${item.id}" aria-label="${item.title[state.lang]}">
+        ${item.image ? `
+          <div class="card-img-wrap">
+            <img src="${getAssetUrl(item.image)}" alt="${item.title[state.lang]}" loading="lazy">
+          </div>
+        ` : ''}
         <div class="card-meta">${item.year} · ${item.location[state.lang]}</div>
         <h3 class="card-title">${item.title[state.lang]}</h3>
-      </div>
+      </a>
     `).join('');
 
     stageBody.innerHTML = `
@@ -1078,6 +1404,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!category) return;
     const item = category.items.find(i => i.id === itemId);
     if (!item) return;
+
+    updateDocumentMetadata(categoryKey, item, `/${categoryKey}/${item.id}/`);
 
     // A. If Project has an Editorial Magazine Layout (e.g. Residence Le Taguy)
     if (item.isEditorialLayout) {
@@ -1187,13 +1515,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const nextItem = nextCat ? nextCat.items.find(i => i.id === item.nextProjectId) : null;
         if (nextItem) {
           nextProjectHtml = `
-            <div class="editorial-next-banner" data-category="${nextCatKey}" data-item-id="${nextItem.id}" role="button" tabindex="0">
+            <a href="/${nextCatKey}/${nextItem.id}/" class="editorial-next-banner" data-category="${nextCatKey}" data-item-id="${nextItem.id}">
               <div>
                 <span class="next-label">${siteData.ui.nextProject[state.lang]}</span>
                 <h4 class="next-project-title">${nextItem.title[state.lang]}</h4>
               </div>
               <span class="next-arrow">→</span>
-            </div>
+            </a>
           `;
         }
       }
@@ -1247,9 +1575,11 @@ document.addEventListener('DOMContentLoaded', () => {
           <h1 class="project-title">${item.title[state.lang]}</h1>
         </header>
 
-        <div class="project-media-container">
-          <img src="${getAssetUrl(item.image)}" alt="${item.title[state.lang]}" class="project-image">
-        </div>
+        ${item.image ? `
+          <div class="project-media-container">
+            <img src="${getAssetUrl(item.image)}" alt="${item.title[state.lang]}" class="project-image">
+          </div>
+        ` : ''}
 
         <div class="project-details-grid">
           <div class="project-description">
@@ -1288,6 +1618,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 4. About Piotr Piotrowski ---
   function renderAboutView() {
     stageBody.classList.remove('has-fullscreen-map');
+    updateDocumentMetadata('about');
     const about = siteData.about;
     const paragraphsHtml = about.paragraphs.map(p => `
       <p class="about-paragraph">${p[state.lang]}</p>
@@ -1337,6 +1668,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 5. Studio Enquiry Contact Form ---
   function renderEnquireView() {
     stageBody.classList.remove('has-fullscreen-map');
+    updateDocumentMetadata('enquire');
     const enquire = siteData.enquire;
     state.formOpenedAt = Date.now();
 
@@ -1458,12 +1790,14 @@ document.addEventListener('DOMContentLoaded', () => {
           body: JSON.stringify(payload)
         });
 
-        if (res.ok) {
+        const resData = await res.json().catch(() => null);
+
+        if (res.ok && resData && resData.success === true) {
           form.reset();
           feedback.textContent = siteData.ui.sentSuccess[state.lang];
           feedback.className = 'form-feedback show is-success';
         } else {
-          feedback.textContent = siteData.ui.sendError[state.lang];
+          feedback.textContent = (resData && resData.error) || siteData.ui.sendError[state.lang];
           feedback.className = 'form-feedback show is-error';
         }
       } catch (err) {
@@ -1507,10 +1841,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Desktop Nav clicks
+    // Desktop Nav clicks (supports native middle/Cmd+click open in new tab)
     desktopNavList.addEventListener('click', (e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+
       const submenuBtn = e.target.closest('.submenu-btn');
       if (submenuBtn) {
+        e.preventDefault();
         const category = submenuBtn.dataset.category;
         const itemId = submenuBtn.dataset.itemId;
         const isOverview = submenuBtn.dataset.overview === 'true';
@@ -1519,10 +1856,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (category === 'architecture' && mapFilter) {
           state.activeCategory = 'architecture';
           state.activeItemId = null;
+          updateUrlRoute(mapFilter === 'all' ? 'architecture/map' : `architecture/${mapFilter}`);
           renderWorldMapView(mapFilter);
         } else if (isOverview) {
           state.activeCategory = category;
           state.activeItemId = null;
+          updateUrlRoute(category);
           renderCategoryOverview(category);
         } else if (itemId) {
           handleItemClick(category, itemId);
@@ -1532,6 +1871,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const navBtn = e.target.closest('.nav-btn');
       if (navBtn) {
+        e.preventDefault();
         const category = navBtn.dataset.category;
         handleCategoryClick(category);
       }
@@ -1539,8 +1879,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mobile Nav clicks
     mobileNavList.addEventListener('click', (e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+
       const mobileSubBtn = e.target.closest('.mobile-submenu-btn');
       if (mobileSubBtn) {
+        e.preventDefault();
         const category = mobileSubBtn.dataset.category;
         const itemId = mobileSubBtn.dataset.itemId;
         const isOverview = mobileSubBtn.dataset.overview === 'true';
@@ -1551,10 +1894,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (category === 'architecture' && mapFilter) {
           state.activeCategory = 'architecture';
           state.activeItemId = null;
+          updateUrlRoute(mapFilter === 'all' ? 'architecture/map' : `architecture/${mapFilter}`);
           renderWorldMapView(mapFilter);
         } else if (isOverview) {
           state.activeCategory = category;
           state.activeItemId = null;
+          updateUrlRoute(category);
           renderCategoryOverview(category);
         } else if (itemId) {
           handleItemClick(category, itemId);
@@ -1564,6 +1909,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const mobileNavBtn = e.target.closest('.mobile-nav-btn');
       if (mobileNavBtn) {
+        e.preventDefault();
         const category = mobileNavBtn.dataset.category;
         closeMobileMenu();
         handleCategoryClick(category);
@@ -1572,8 +1918,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Card clicks inside overview & Next Project banner clicks
     stageBody.addEventListener('click', (e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+
       const card = e.target.closest('.project-card');
       if (card) {
+        e.preventDefault();
         const category = card.dataset.category;
         const itemId = card.dataset.itemId;
         handleItemClick(category, itemId);
@@ -1582,13 +1931,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const nextBanner = e.target.closest('.editorial-next-banner');
       if (nextBanner) {
+        e.preventDefault();
         const category = nextBanner.dataset.category;
         const itemId = nextBanner.dataset.itemId;
         handleItemClick(category, itemId);
         return;
       }
-
-
     });
 
     // Brand Logo clicks -> return to video reel

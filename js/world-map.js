@@ -112,13 +112,16 @@ window.WorldMapController = {
     const dotsSvgHtml = filteredProjects.map(p => {
       const pt = this.projectPoint(p.lng, p.lat);
       const isSelected = this.activeProjectId === p.id;
+      const pinTitle = (p.title && (p.title[lang] || p.title.en)) || p.id;
+      const pinLabel = `${pinTitle} (${p.year || ''})`.replace(/"/g, '&quot;');
 
       return `
         <g class="map-pin-node ${isSelected ? 'is-active' : ''}" 
            data-project-id="${p.id}" 
            transform="translate(${pt.x.toFixed(4)}, ${pt.y.toFixed(4)})"
            tabindex="0"
-           role="button">
+           role="button"
+           aria-label="${pinLabel}">
           
           <!-- Invisible Outer Touch/Hover Hitbox -->
           <circle class="pin-hitbox" r="6.0" />
@@ -346,9 +349,9 @@ window.WorldMapController = {
 
       if (spreadExists) {
         monographBtnHtml = `
-          <button class="hover-monograph-btn" data-category="${targetCategory}" data-item-id="${project.internalId}">
+          <a href="/${targetCategory}/${project.internalId}/" class="hover-monograph-btn" data-category="${targetCategory}" data-item-id="${project.internalId}">
             ${ui.viewProjectDetail[lang]}
-          </button>
+          </a>
         `;
       }
     }
@@ -697,11 +700,32 @@ window.WorldMapController = {
 
       const monographBtn = e.target.closest('.hover-monograph-btn');
       if (monographBtn) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
+          return;
+        }
+        e.preventDefault();
         const cat = monographBtn.dataset.category || 'architecture';
         const itemId = monographBtn.dataset.itemId;
         if (itemId && typeof window.handleDirectItemNavigation === 'function') {
           window.handleDirectItemNavigation(cat, itemId);
         }
+      }
+    });
+
+    hoverCard.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const clusterEntry = e.target.closest('.hover-cluster-entry');
+        if (clusterEntry) {
+          e.preventDefault();
+          const projId = clusterEntry.dataset.projectId;
+          const project = (siteData.cvProjects || []).find(p => p.id === projId);
+          if (project) {
+            this.currentCluster = this.currentCluster || this.lastActiveCluster;
+            this.showHoverCard(hoverCard, canvasContainer, this.currentPinEl, project, lang, true);
+          }
+        }
+      } else if (e.key === 'Escape') {
+        this.hideHoverCard(hoverCard);
       }
     });
 
@@ -867,12 +891,21 @@ window.WorldMapController = {
       const rBadgeBg = 5.2 / pixelsPerSvgUnit;
       const badgeFontSize = 7.5 / pixelsPerSvgUnit;
 
+      const firstProj = cl.projects[0];
+      const firstTitle = (firstProj && firstProj.title && (firstProj.title[lang] || firstProj.title.en)) || '';
+      const clusterLoc = (firstProj && firstProj.location && (firstProj.location[lang] || firstProj.location.en)) || '';
+      const pinAriaLabel = (isCluster
+        ? `${cl.count} projects near ${clusterLoc}`
+        : `${firstTitle} (${firstProj ? firstProj.year : ''})`
+      ).replace(/"/g, '&quot;');
+
       return `
         <g class="map-pin-node ${isCluster ? 'map-pin-cluster' : ''} ${isSelected ? 'is-active' : ''}" 
            data-cluster-idx="${idx}"
            transform="translate(${cl.x.toFixed(4)}, ${cl.y.toFixed(4)})"
            tabindex="0"
-           role="button">
+           role="button"
+           aria-label="${pinAriaLabel}">
           
           <!-- Hitbox -->
           <circle class="pin-hitbox" r="${rHitboxSvg.toFixed(5)}" />
@@ -924,6 +957,16 @@ window.WorldMapController = {
         // Always display the combined box with all projects in the first place
         this.showHoverCard(hoverCard, canvasContainer, pin, hasMultiple ? cluster : cluster.projects[0], lang, false);
       });
+
+      pin.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          e.stopPropagation();
+          clearTimeout(this.tooltipTimeout);
+          this.activeProjectId = cluster.projects[0].id;
+          this.showHoverCard(hoverCard, canvasContainer, pin, hasMultiple ? cluster : cluster.projects[0], lang, false);
+        }
+      });
     });
   },
 
@@ -947,6 +990,12 @@ window.WorldMapController = {
   animateViewBoxTo(svgEl, containerEl, targetBox, duration = 1200) {
     if (!svgEl) return;
     if (this.animHandle) cancelAnimationFrame(this.animHandle);
+
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      this.viewBox = { ...targetBox };
+      this.updateViewBox(svgEl, containerEl);
+      return;
+    }
 
     const startX = this.viewBox.x;
     const startY = this.viewBox.y;
