@@ -117,7 +117,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
 
-  <!-- Main Stylesheet -->
+  <!-- Main Stylesheet & Initial Theme Paint Guard -->
+  <script>(function(){try{if(localStorage.getItem('piotrowski_theme')==='light'){document.documentElement.classList.add('theme-light');}}catch(e){}})();</script>
+  <style>html{background:#000000;color:#ffffff;}html.theme-light{background:#ffffff;color:#0e0e0e;}</style>
   <link rel="stylesheet" href="/css/styles.css">
   <noscript><style>.content-stage{opacity:1!important;visibility:visible!important;pointer-events:auto!important;position:relative!important;}.hero-video,.video-container{display:none!important;}</style></noscript>
 </head>

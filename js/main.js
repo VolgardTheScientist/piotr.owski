@@ -84,7 +84,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!heroVideo.getAttribute('data-loaded')) {
       heroVideo.setAttribute('data-loaded', '1');
-      heroVideo.poster = isLocal ? '/assets/images/CROPKA_MYS_front_1200_675.jpg' : getAssetUrl('assets/images/CROPKA_MYS_front_1200_675.jpg');
+      heroVideo.removeAttribute('poster');
+      const markVideoReady = () => heroVideo.classList.add('is-ready');
+      heroVideo.addEventListener('loadeddata', markVideoReady, { once: true });
+      heroVideo.addEventListener('canplay', markVideoReady, { once: true });
       heroVideo.src = videoUrl;
       const sourceEl = heroVideo.querySelector('source');
       if (sourceEl) {
@@ -96,6 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
       heroVideo.setAttribute('playsinline', '');
       heroVideo.setAttribute('webkit-playsinline', '');
       heroVideo.load();
+      if (heroVideo.readyState >= 2) {
+        markVideoReady();
+      }
     }
 
     if (prefersReducedMotion()) {
@@ -171,6 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function applyTheme(newTheme) {
     state.theme = newTheme === 'light' ? 'light' : 'dark';
     localStorage.setItem('piotrowski_theme', state.theme);
+    document.documentElement.classList.toggle('theme-light', state.theme === 'light');
     document.body.classList.toggle('theme-light', state.theme === 'light');
 
     // Update switcher state across desktop and mobile
