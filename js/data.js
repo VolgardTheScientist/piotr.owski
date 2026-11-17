@@ -1438,10 +1438,7 @@ const siteData = {
       lat: 47.4736,
       lng: 8.3087,
       scale: "76.215m2 / CHF 478M",
-      awards: "World Architecture Festival (WAF) Award 2025 · Healing Architecture Award 2025 · European Healthcare Design Award 2025",
-      hasInternalDetail: true,
-      internalId: "kantonsspital-baden",
-      internalCategory: "architecture"
+      awards: "World Architecture Festival (WAF) Award 2025 · Healing Architecture Award 2025 · European Healthcare Design Award 2025"
 
     },
     {

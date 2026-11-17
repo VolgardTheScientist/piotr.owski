@@ -270,6 +270,19 @@ window.WorldMapController = {
     }
   },
 
+  hasSpecificProjectUrl(studioUrl) {
+    if (!studioUrl || typeof studioUrl !== 'string') return false;
+    const trimmed = studioUrl.trim();
+    if (!trimmed) return false;
+    try {
+      const parsed = new URL(trimmed);
+      const cleanPath = parsed.pathname.replace(/\/+$/, '');
+      return cleanPath.length > 0 || parsed.search.length > 0;
+    } catch {
+      return false;
+    }
+  },
+
   renderHoverCardContent(target, lang, isFromCluster = false) {
     const ui = siteData.ui;
 
@@ -356,6 +369,11 @@ window.WorldMapController = {
       }
     }
 
+    const hasProjectPageUrl = this.hasSpecificProjectUrl(project.studioUrl);
+    const titleInnerHtml = hasProjectPageUrl
+      ? `<a href="${project.studioUrl}" target="_blank" rel="noopener noreferrer" class="hover-project-title-link" title="Open ${project.title[lang]} project page"><span>${project.title[lang]}</span><span class="link-arrow" aria-hidden="true">↗</span></a>`
+      : project.title[lang];
+
     const backLabel = lang === 'pl' ? 'Wróć' : (lang === 'de' ? 'Zurück' : 'Back');
 
     return `
@@ -373,7 +391,7 @@ window.WorldMapController = {
           <button class="hover-card-close-btn" aria-label="Close project info">✕</button>
         </div>
         
-        <h2 class="hover-project-title">${project.title[lang]}</h2>
+        <h2 class="hover-project-title">${titleInnerHtml}</h2>
         
         <div class="hover-meta-row">
           <span class="meta-label">${ui.studioLabel[lang]}:</span>
