@@ -1214,6 +1214,10 @@ body.theme-light .project-hover-card {
   color: var(--color-text);
 }
 
+.project-hover-card.is-pinned .hover-card-close-btn {
+  display: block;
+}
+
 .hover-status-tag {
   font-size: 10px;
   text-transform: uppercase;

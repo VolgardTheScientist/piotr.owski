@@ -673,7 +673,12 @@ window.WorldMapController = {
     });
 
     hoverCard.addEventListener('mouseleave', () => {
-      this.hideHoverCard(hoverCard);
+      if (this.isCardPinned) return;
+      this.tooltipTimeout = setTimeout(() => {
+        if (!this.isCardPinned && !hoverCard.matches(':hover')) {
+          this.hideHoverCard(hoverCard);
+        }
+      }, 150);
     });
 
     hoverCard.addEventListener('click', (e) => {
@@ -687,6 +692,8 @@ window.WorldMapController = {
       const backBtn = e.target.closest('.hover-back-to-cluster-btn');
       if (backBtn) {
         e.stopPropagation();
+        clearTimeout(this.tooltipTimeout);
+        this.isCardPinned = true;
         const clusterToRestore = this.currentCluster || this.lastActiveCluster;
         if (clusterToRestore) {
           this.showHoverCard(hoverCard, canvasContainer, this.currentPinEl, clusterToRestore, lang, false);
@@ -696,16 +703,13 @@ window.WorldMapController = {
 
       const clusterEntry = e.target.closest('.hover-cluster-entry');
       if (clusterEntry && !e.target.closest('a')) {
-        // Prevent mobile ghost-click/tap-through from initial pin tap
-        if (this.clusterOpenedTime && (Date.now() - this.clusterOpenedTime < 450)) {
-          e.stopPropagation();
-          e.preventDefault();
-          return;
-        }
         e.stopPropagation();
+        clearTimeout(this.tooltipTimeout);
+        this.isCardPinned = true;
         const projId = clusterEntry.dataset.projectId;
         const project = (siteData.cvProjects || []).find(p => p.id === projId);
         if (project) {
+          this.activeProjectId = project.id;
           this.currentCluster = this.currentCluster || this.lastActiveCluster;
           this.showHoverCard(hoverCard, canvasContainer, this.currentPinEl, project, lang, true);
         }
@@ -941,6 +945,14 @@ window.WorldMapController = {
       `;
     }).join('');
 
+    // Keep active pin reference fresh across zoom/pan SVG re-renders
+    if (hoverCard && hoverCard.classList.contains('is-visible')) {
+      const activePinNode = pinsLayer.querySelector('.map-pin-node.is-active');
+      if (activePinNode) {
+        this.currentPinEl = activePinNode;
+      }
+    }
+
     // Bind event listeners on pins
     const pinNodes = pinsLayer.querySelectorAll('.map-pin-node');
     pinNodes.forEach(pin => {
@@ -952,13 +964,19 @@ window.WorldMapController = {
 
       pin.addEventListener('mouseenter', () => {
         clearTimeout(this.tooltipTimeout);
+        const hoveredClusterId = cluster.id || cluster.projects[0].id;
+        if (this.isCardPinned && hoverCard.classList.contains('is-visible') && hoverCard.dataset.clusterId === hoveredClusterId) {
+          return;
+        }
+        this.isCardPinned = false;
         this.activeProjectId = cluster.projects[0].id;
         this.showHoverCard(hoverCard, canvasContainer, pin, hasMultiple ? cluster : cluster.projects[0], lang, false);
       });
 
       pin.addEventListener('mouseleave', () => {
+        if (this.isCardPinned) return;
         this.tooltipTimeout = setTimeout(() => {
-          if (!hoverCard.matches(':hover')) {
+          if (!this.isCardPinned && !hoverCard.matches(':hover')) {
             this.hideHoverCard(hoverCard);
           }
         }, 200);
@@ -967,6 +985,7 @@ window.WorldMapController = {
       pin.addEventListener('click', (e) => {
         e.stopPropagation();
         clearTimeout(this.tooltipTimeout);
+        this.isCardPinned = true;
         this.activeProjectId = cluster.projects[0].id;
         // Always display the combined box with all projects in the first place
         this.showHoverCard(hoverCard, canvasContainer, pin, hasMultiple ? cluster : cluster.projects[0], lang, false);
@@ -977,6 +996,7 @@ window.WorldMapController = {
           e.preventDefault();
           e.stopPropagation();
           clearTimeout(this.tooltipTimeout);
+          this.isCardPinned = true;
           this.activeProjectId = cluster.projects[0].id;
           this.showHoverCard(hoverCard, canvasContainer, pin, hasMultiple ? cluster : cluster.projects[0], lang, false);
         }
@@ -1055,10 +1075,10 @@ window.WorldMapController = {
     if (hasMultiple) {
       this.currentCluster = target;
       this.lastActiveCluster = target;
-      this.clusterOpenedTime = Date.now();
+      hoverCard.dataset.clusterId = target.id || (target.projects && target.projects[0].id) || '';
     } else if (!isFromCluster) {
       this.currentCluster = null;
-      this.clusterOpenedTime = 0;
+      hoverCard.dataset.clusterId = target.id || '';
     }
 
     hoverCard.innerHTML = this.renderHoverCardContent(target, lang, isFromCluster);
@@ -1066,14 +1086,18 @@ window.WorldMapController = {
     this.currentPinEl = pinEl;
 
     this.positionHoverCard(hoverCard, canvasContainer, pinEl);
+    hoverCard.classList.toggle('is-pinned', Boolean(this.isCardPinned));
     hoverCard.classList.add('is-visible');
     hoverCard.setAttribute('aria-hidden', 'false');
   },
 
   hideHoverCard(hoverCard) {
+    clearTimeout(this.tooltipTimeout);
+    this.isCardPinned = false;
     if (hoverCard) {
-      hoverCard.classList.remove('is-visible');
+      hoverCard.classList.remove('is-visible', 'is-pinned');
       hoverCard.setAttribute('aria-hidden', 'true');
+      delete hoverCard.dataset.clusterId;
       this.activeProjectId = null;
       this.currentPinEl = null;
     }
